@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-md navbar-dark header">
+  <div class="logo">
+    <div>
+      <span (click)="navigate([mainPage])">
+      Magenta
+      </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div >
+  <div class="navbar-collapse collapse dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li *ngIf="!isUserLoggedIn()" class="nav-item item"
+          (click)="navigate([registerPage])">Zarejestruj się</li>
+      <li *ngIf="!isUserLoggedIn()" class="nav-item item"
+          (click)="navigate([loginPage])" >Zaloguj się</li>
+
+
+      <li *ngIf="isUserLoggedIn()" class="nav-item item" (click)="navigate([loggedUserPage])">Moje konto</li>
+      <li *ngIf="isUserLoggedIn()" class="nav-item item"
+      (click)="logout()">Wyloguj się</li>
+    </ul>
+  </div>
+
+</nav>

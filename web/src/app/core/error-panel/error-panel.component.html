@@ -1,0 +1,26 @@
+<div *ngIf="hasError() === true" class="error-wrapper">
+  <a *ngIf="errorCode() != 0" href="https://http.cat/{{errorCode()}}">
+    <h1>Błąd</h1>
+  </a>
+  <ng-container *ngIf="errorCode() && errorMessage(); then standardError; else fatalError">
+
+  </ng-container>
+  <ng-template #standardError>
+    <h3>
+      {{errorMessage()}}
+    </h3>
+  </ng-template>
+  <ng-template #fatalError>
+    <ng-container *ngIf="!errorMessage() && !errorCode(); then serviceUnavilable; else unknownError"></ng-container>
+  </ng-template>
+  <ng-template #unknownError>
+    <h3>
+      Nieznany błąd
+    </h3>
+  </ng-template>
+  <ng-template #serviceUnavilable>
+    <h3>
+      Usługa niedostępna
+    </h3>
+  </ng-template>
+</div>

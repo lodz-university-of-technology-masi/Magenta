@@ -1,0 +1,25 @@
+.header {
+  background-color: var(--background-secondary-color);
+  color: var(--secondary-text-color);
+  margin-bottom: 50px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 101;
+}
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: 20px;
+  color: var(--logo-color);
+}
+.item {
+  margin: 0px 5px 0px 5px;
+}
+li, span {
+  cursor: pointer;
+  padding: 5px 15px;
+}
+li:hover, span:hover {
+  background-color: var(--background-secondary-color-hover);
+}

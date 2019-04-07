@@ -1,0 +1,44 @@
+<div class="authentication-form-wrapper " >
+    <form [formGroup]="loginForm" class="material-form authentication-form">
+      <div>
+        <mat-form-field>
+          <input matInput formControlName="username" placeholder="Nazwa użytkownika">
+          <mat-error *ngIf="loginForm.get('username').hasError('required')">
+            Nazwa użytkownika jest wymagana.
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('username').hasError('minlength')">
+            Nazwa użytkownika musi zawierać co najmniej{{minUsernameLength}} znaków.
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('username').hasError('maxlength')">
+            Nazwa użytkownika może zawierać maksymalnie {{maxUsernameLength}} znaków.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput formControlName="password" type="password" placeholder="Hasło">
+
+          <mat-error *ngIf="loginForm.get('password').hasError('required')">
+            Hasło jest wymagane
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password').hasError('minlength')">
+            Hasło musi zawierać co najmniej {{minPasswordLength}} znaków.
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password').hasError('maxlength')">
+            Hasło może zawierać maksymalnie {{maxPasswordLength}} znaków.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="authentication-form-button">
+        <button mat-button [disabled]="loginForm.invalid || getProcessingLogin()" type="submit" (click)="login()">Zaloguj się</button>
+      </div>
+
+    </form>
+  <div>
+    <div class="forgotten-password"
+         [routerLink]="['/', resetPasswordPage]">
+        Zapomniałeś hasła?
+    </div>
+    <div style="clear:both"></div>
+  </div>
+</div>

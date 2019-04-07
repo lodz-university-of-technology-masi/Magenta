@@ -1,0 +1,9 @@
+.danger-button .mat-button:not([disabled]) {
+  background-color: var(--error);
+}
+.full-width-form .mat-form-field  {
+  width: 100%;
+}
+.full-width-button .mat-button {
+  width: 100%;
+}

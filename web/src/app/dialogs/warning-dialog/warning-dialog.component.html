@@ -1,0 +1,13 @@
+<div class="material-form dialog-wrapper">
+  <h3 class="dialog-title" mat-dialog-title>
+    <ng-content select="[title]"></ng-content>
+  </h3>
+  <mat-dialog-content>
+   <ng-content select="[content]"></ng-content>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+      <div>
+        <button class="dialog-button"  mat-button [mat-dialog-close]="true">Ok</button>
+      </div>
+  </mat-dialog-actions>
+</div>
