@@ -1,0 +1,34 @@
+<div class="user-details-edit-wrapper full-width-form">
+  <form [formGroup]="userDetailsForm" class="material-form">
+    <div>
+      <mat-form-field>
+        <input matInput formControlName="username" placeholder="Nazwa użytkownika">
+        <mat-error *ngIf="userDetailsForm.get('username').hasError('required')">
+          Nazwa użytkownika jest wymagana.
+        </mat-error>
+        <mat-error *ngIf="userDetailsForm.get('username').hasError('minlength')">
+          Nazwa użytkownika musi zawierać co najmniej{{minUsernameLength}} znaków.
+        </mat-error>
+        <mat-error *ngIf="userDetailsForm.get('username').hasError('maxlength')">
+          Nazwa użytkownika może zawierać maksymalnie {{maxUsernameLength}} znaków.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput email formControlName="email" placeholder="Email">
+        <mat-error *ngIf="userDetailsForm.get('email').hasError('required')">
+          Email jest wymagany.
+        </mat-error>
+        <mat-error *ngIf="userDetailsForm.get('email').hasError('email')">
+          Podaj prawidłowy adres email.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="full-width-button">
+      <button mat-button
+              [disabled]="userDetailsForm.invalid || userDetailsForm.errors"
+              type="submit" (click)="update()">Zaktualizuj dane konta</button>
+    </div>
+  </form>
+</div>

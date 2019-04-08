@@ -1,0 +1,16 @@
+.error-wrapper {
+  width: 50%;
+  margin: 50px auto;
+  background-color: var(--error);
+  color: var(--primary-text-color);
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+  min-height: 150px;
+  border: 1px var(--primary-text-color) solid;
+}
+a, a:hover, a:visited {
+  color: var(--primary-text-color);
+  cursor: default;
+  text-decoration: none;
+}

@@ -1,0 +1,26 @@
+.material-form .mat-form-field-underline  {
+  background-color: var(--primary-text-color);
+}
+.material-form .mat-focused .mat-form-field-ripple {
+  background-color: var(--main-color);
+}
+.material-form .mat-form-field-invalid .mat-form-field-ripple {
+  background-color: var(--error);
+}
+.material-form .mat-form-field-label,
+.material-form .mat-focused .mat-form-field-label {
+  color: var(--primary-text-color);
+}
+.material-form .mat-form-field-invalid .mat-form-field-label,
+.material-form .mat-error {
+  color: var(--error-material-label);
+}
+.material-form .mat-button {
+  background-color: var(--disabled-button);
+}
+.material-form .mat-button:not([disabled]) {
+  background-color: var(--main-color);
+}
+.material-form .mat-button-wrapper {
+  color: var(--primary-text-color);
+}
