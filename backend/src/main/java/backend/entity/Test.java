@@ -40,4 +40,10 @@ public class Test {
             mappedBy = "test",
             orphanRemoval = true)
     private Set<UserTestSolution> answers;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            mappedBy = "test",
+            orphanRemoval = true)
+    private Set<Standpoint> standpoints;
 }
