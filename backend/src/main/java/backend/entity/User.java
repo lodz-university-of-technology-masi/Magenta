@@ -52,4 +52,12 @@ public class User {
     private Set<Role> roles;
 
 
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "owners")
+    private Set<Test> tests;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            mappedBy = "test",
+            orphanRemoval = true)
+    private Set<UserTestSolution> answers;
 }
