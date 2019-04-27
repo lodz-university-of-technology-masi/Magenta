@@ -15,6 +15,8 @@ public class Standpoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private boolean active;
+
     @OneToOne
     private Test test;
 }
