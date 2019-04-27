@@ -7,6 +7,8 @@ import java.util.Set;
 
 @Builder
 @Data
+@EqualsAndHashCode(exclude = {"variants", "scalaAnswer", "test"})
+@ToString(exclude = {"variants", "scalaAnswer", "test"})
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
@@ -27,7 +29,7 @@ public class Question {
     @ManyToOne
     private Test test;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ScalaAnswer scalaAnswer;
 
     @OneToMany(fetch = FetchType.EAGER,
