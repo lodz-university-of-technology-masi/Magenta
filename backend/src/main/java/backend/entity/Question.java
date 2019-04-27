@@ -36,5 +36,6 @@ public class Question {
             cascade = CascadeType.ALL,
             mappedBy = "question",
             orphanRemoval = true)
+    @OrderBy("id")
     private Set<VariantAnswer> variants;
 }

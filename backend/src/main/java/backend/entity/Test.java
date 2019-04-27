@@ -29,6 +29,7 @@ public class Test {
             cascade = CascadeType.ALL,
             mappedBy = "test",
             orphanRemoval = true)
+    @OrderBy("id")
     private Set<Question> questions;
 
     @ManyToMany(fetch = FetchType.EAGER)

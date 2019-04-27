@@ -8,6 +8,7 @@ import backend.entity.Test;
 import backend.entity.VariantAnswer;
 import backend.exception.bad_request.UnsupportedQuestionType;
 import backend.exception.not_found.TestNotFoundException;
+import backend.repository.QuestionRepository;
 import backend.repository.TestRepository;
 import backend.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Autowired
     private TestRepository testRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
 
     @Override
     public QuestionListDto getAll(int testId) throws TestNotFoundException {
@@ -99,13 +103,13 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     private void addVariantQuestion(QuestionDto questionDto, Question question) {
-        Set<VariantAnswer> variantAnswers = new HashSet<>(questionDto.getVariants().size());
+        question.setVariants(new HashSet<>(questionDto.getVariants().size()));
         questionDto.getVariants().forEach(item -> {
             VariantAnswer variantAnswer = QuestionConverter.getVariantAnswer(item);
-            variantAnswers.add(variantAnswer);
+            question.getVariants().add(variantAnswer);
             variantAnswer.setQuestion(question);
+            questionRepository.save(question);
         });
-        question.setVariants(variantAnswers);
     }
 
 
