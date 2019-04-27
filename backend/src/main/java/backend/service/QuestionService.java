@@ -6,7 +6,7 @@ import backend.exception.bad_request.UnsupportedQuestionType;
 import backend.exception.not_found.TestNotFoundException;
 
 public interface QuestionService {
-    QuestionListDto getAll(int testId);
+    QuestionListDto getAll(int testId) throws TestNotFoundException;
     QuestionListDto create(int testId, QuestionListDto questions) throws TestNotFoundException, UnsupportedQuestionType;
     QuestionDto create(int testId, QuestionDto questionDto) throws TestNotFoundException, UnsupportedQuestionType;
 }

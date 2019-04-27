@@ -22,8 +22,34 @@ public class QuestionServiceImpl implements QuestionService {
     private TestRepository testRepository;
 
     @Override
-    public QuestionListDto getAll(int testId) {
-        return null;
+    public QuestionListDto getAll(int testId) throws TestNotFoundException {
+        Test test = getTest(testId);
+        List<QuestionDto> result = new ArrayList<>(test.getQuestions().size());
+        for (Question question:
+             test.getQuestions()) {
+            switch(question.getType()) {
+                case Question.TYPE_NUMERIC:
+                case Question.TYPE_OPEN: {
+                    result.add(QuestionConverter.getQuestionDto(question));
+                    break;
+                }
+                case Question.TYPE_SCALA: {
+                    QuestionDto questionDto = QuestionConverter.getQuestionDto(question);
+                    QuestionConverter.attachScala(questionDto, question.getScalaAnswer());
+                    result.add(questionDto);
+                    break;
+                }
+                case Question.TYPE_VARIANT: {
+                    QuestionDto questionDto = QuestionConverter.getQuestionDto(question);
+                    QuestionConverter.attachVariants(questionDto, question.getVariants());
+                    result.add(questionDto);
+                    break;
+                }
+            }
+        }
+        return QuestionListDto.builder()
+                .questions(result)
+                .build();
     }
 
     @Override
