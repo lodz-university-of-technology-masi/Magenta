@@ -9,8 +9,8 @@ import java.util.Set;
 
 @Builder
 @Data
-@ToString(exclude = {"roles", "texts"})
-@EqualsAndHashCode(exclude = {"roles", "texts"})
+@ToString(exclude = {"roles"})
+@EqualsAndHashCode(exclude = {"roles"})
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity

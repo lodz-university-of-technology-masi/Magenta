@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
         basePath = "/api/users",
         produces = "application/json",
         description = "Register, get, modify, delete user account")
-public class UserRestController {
+public class UsersRestController {
     public abstract class UserPage implements Page<UserData> {
 
     }

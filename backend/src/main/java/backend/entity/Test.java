@@ -7,6 +7,8 @@ import java.util.Set;
 
 @Builder
 @Data
+@EqualsAndHashCode(exclude = {"questions"})
+@ToString(exclude = {"questions"})
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
@@ -27,6 +29,7 @@ public class Test {
             cascade = CascadeType.ALL,
             mappedBy = "test",
             orphanRemoval = true)
+    @OrderBy("id")
     private Set<Question> questions;
 
     @ManyToMany(fetch = FetchType.EAGER)

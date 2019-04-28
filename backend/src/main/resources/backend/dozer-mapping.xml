@@ -23,4 +23,20 @@
             <b>roles</b>
         </field-exclude>
     </mapping>
+    <mapping>
+        <class-a>backend.entity.ScalaAnswer</class-a>
+        <class-b>backend.dto.question.QuestionDto</class-b>
+        <field-exclude>
+            <a>question</a>
+            <b>question</b>
+        </field-exclude>
+    </mapping>
+    <mapping>
+        <class-a>backend.entity.VariantAnswer</class-a>
+        <class-b>backend.dto.question.QuestionDto</class-b>
+        <field-exclude>
+            <a>question</a>
+            <b>question</b>
+        </field-exclude>
+    </mapping>
 </mappings>

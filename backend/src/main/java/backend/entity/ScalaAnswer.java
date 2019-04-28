@@ -3,10 +3,11 @@ package backend.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Builder
 @Data
+@EqualsAndHashCode(exclude = {"question"})
+@ToString(exclude = {"question"})
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
@@ -19,6 +20,6 @@ public class ScalaAnswer {
     private int min;
     private int max;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Question question;
 }

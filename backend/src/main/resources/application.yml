@@ -2,8 +2,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ChronicleNoReply@gmail.com
-    password: Chronicle12300
+    username: #todo create gmail account and enable untrusted applications
+    password: #todo create gmail account and enable untrusted applications
     protocol: smtp
     properties:
       mail:
