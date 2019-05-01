@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, Router} from '@angular/router';
 import {QuestionService} from './question.service';
-import {Question, Questions} from '../../models/question';
+import {Questions} from '../../models/question';
 import {ErrorHandlingService} from '../../shared/services/error-handling.service';
 import {Observable} from 'rxjs';
-import {NOT_FOUND_PAGE_URL, TEST_URL_VARIABLE} from '../../shared/utils/frontend-urls';
+import {NOT_FOUND_PAGE_URL} from '../../shared/utils/frontend-urls';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class QuestionResolveService {
   : Observable<Questions> | Promise<Questions> | Questions  {
     this.errorHandlingService.clear();
     let strId: string;
-    strId = route.params[TEST_URL_VARIABLE];
+    strId = route.params['test'];
     let testId: number;
     if (strId === undefined) {
       testId = 1;

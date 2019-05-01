@@ -1,0 +1,20 @@
+.variant-input {
+  width: 100%;
+}
+.variant-button {
+  margin-left: 10px;
+  padding: 0px 30px;
+}
+.input-wrapper {
+  width: 80%;
+  float: left;
+}
+.button-wrapper {
+  float: left;
+}
+.variant-wrapper {
+  margin-top: 5px;
+}
+.add-button {
+  margin-top: 5px;
+}

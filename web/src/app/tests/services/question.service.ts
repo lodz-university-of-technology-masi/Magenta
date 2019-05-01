@@ -14,4 +14,7 @@ export class QuestionService {
   get(testId: number): Observable<Questions> {
     return this.http.get<Questions>(`${TESTS_URL}/${testId}/${QUESTION_POSTFIX}`);
   }
+  save(testId: number, questions: Questions): Observable<Questions>  {
+    return this.http.post<Questions>(`${TESTS_URL}/${testId}/${QUESTION_POSTFIX}`, questions);
+  }
 }

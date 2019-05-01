@@ -5,11 +5,16 @@ import { SingleQuestionComponent } from './add-questions/single-question/single-
 import { ScalaAnswerComponent } from './add-questions/single-question/scala-answer/scala-answer.component';
 import { VariantAnswerComponent } from './add-questions/single-question/variant-answer/variant-answer.component';
 import {TestsRoutingModule} from './tests-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSelectModule, MatButtonModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    TestsRoutingModule
+    TestsRoutingModule,
+    MatSelectModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   declarations: [AddQuestionsComponent,
     SingleQuestionComponent,

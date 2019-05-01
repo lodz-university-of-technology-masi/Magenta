@@ -43,7 +43,6 @@ public class QuestionController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @PostMapping("/question")
-
     private ResponseEntity createOne(
             @PathVariable int testId,
             @RequestBody QuestionDto questionDto) throws Exception {
