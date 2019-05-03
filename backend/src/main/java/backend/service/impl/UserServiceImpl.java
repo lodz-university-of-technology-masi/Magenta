@@ -99,6 +99,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(String username, String authorizationToken) throws ForbiddenException {
         canPerformOperation(username, authorizationToken);
+        deleteUser(username);
+    }
+
+    @Override
+    public void deleteUser(String username) {
         Optional<User> userOptional = userRepository.findByUsernameIgnoreCase(username);
         if (userOptional.isPresent()) {
             try {
