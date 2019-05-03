@@ -3,6 +3,7 @@ package backend.controller;
 import backend.dto.user.UserListDto;
 import backend.dto.user.UserLoginDetails;
 import backend.dto.user.UserRegisterDetails;
+import backend.dto.user.UserUpdateData;
 import backend.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -56,5 +57,25 @@ public class RedactorRestController {
         UserLoginDetails loginDetails
                 = userService.addUser(userRegisterDetails, "REDACTOR");
         return ResponseEntity.status(201).body(loginDetails);
+    }
+
+    @ApiOperation(value = "Updates redactors", response = UserLoginDetails.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "User data updated."),
+            @ApiResponse(code = 400, message = "User data not valid."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 404, message = "User not found."),
+            @ApiResponse(code = 409, message = "User data not unique."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @PutMapping("/{username}")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public ResponseEntity update(
+            @PathVariable("username") String username,
+            @RequestBody UserUpdateData userUpdateData) throws Exception {
+        UserLoginDetails user =
+                userService.updateUser(username, userUpdateData);
+        return ResponseEntity.ok(user);
     }
 }
