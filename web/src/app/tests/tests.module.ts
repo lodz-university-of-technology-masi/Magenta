@@ -8,6 +8,9 @@ import {TestsRoutingModule} from './tests-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule, MatButtonModule, MatRadioModule} from '@angular/material';
 import { ResolveTestComponent } from './resolve-test/resolve-test.component';
+import { RedactorTestsComponent } from './redactor-tests/redactor-tests.component';
+import { SolvedTestComponent } from './solved-test/solved-test.component';
+import { CheckSolvedTestComponent } from './check-solved-test/check-solved-test.component';
 
 @NgModule({
   imports: [
@@ -22,6 +25,9 @@ import { ResolveTestComponent } from './resolve-test/resolve-test.component';
     SingleQuestionComponent,
     ScalaAnswerComponent,
     VariantAnswerComponent,
-    ResolveTestComponent]
+    ResolveTestComponent,
+    RedactorTestsComponent,
+    SolvedTestComponent,
+    CheckSolvedTestComponent]
 })
 export class TestsModule { }

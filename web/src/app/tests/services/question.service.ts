@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Questions, TestSolution, TestSolutionWithId} from '../../models/question';
-import {QUESTIONS_POSTFIX, SOLUTIONS_POSTFIX, TESTS_URL, USERS_URL} from '../../shared/utils/backend-urls';
+import {Questions, Solutions, TestSolution, TestSolutionWithId} from '../../models/question';
+import {QUESTIONS_POSTFIX, SOLUTIONS_POSTFIX, SOLUTIONS_URL, TESTS_URL, USERS_URL} from '../../shared/utils/backend-urls';
 import {SessionStorageService} from '../../shared/services/session-storage.service';
 
 @Injectable({
@@ -23,5 +23,11 @@ export class QuestionService {
     return this.http.post<TestSolutionWithId>(
       `${USERS_URL}/${this.sessionStorageService.getUser().username}/${SOLUTIONS_POSTFIX}`,
       solution);
+  }
+  getAllForRedactor(): Observable<Solutions> {
+    return this.http.get<Solutions>(`${SOLUTIONS_URL}`);
+  }
+  getSolution(id: number): Observable<TestSolutionWithId> {
+    return this.http.get<TestSolutionWithId>(`${SOLUTIONS_URL}/${id}`);
   }
 }

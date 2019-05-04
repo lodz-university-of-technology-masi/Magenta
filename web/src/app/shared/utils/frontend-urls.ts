@@ -9,3 +9,5 @@ export const ADD_QUESTIONS = 'questions';
 export const REDACTOR_PAGE = 'main'; //todo: ustwaić odpowiednią ścieżke
 export const RESOLVE_TEST = 'resolve';
 export const USER_PAGE = 'main'; //todo: ustwaić odpowiednią ścieżke
+export const REDACTOR_TESTS = 'redactor-tests';
+export const CHECK_TEST = 'check-test';
