@@ -1,4 +1,18 @@
-<p>
-  check-solved-test works!
-  <app-solved-test [solution]="solution"></app-solved-test>
-</p>
+<div class="check-solved-test-container">
+  <div>
+    <app-solved-test [solution]="solution"></app-solved-test>
+  </div>
+  <div class="score row material-form">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <input matInput placeholder="Wynik"
+             (input)="score = +$event.target.value"
+             type="number">
+    </div>
+    <div class="col-md-4 full-width-button">
+      <button mat-button (click)="send()">Oceń</button>
+    </div>
+  </div>
+</div>
+

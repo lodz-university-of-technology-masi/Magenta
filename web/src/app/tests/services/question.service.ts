@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Questions, Solutions, TestSolution, TestSolutionWithId} from '../../models/question';
+import {Questions, Score, Solutions, TestSolution, TestSolutionWithId} from '../../models/question';
 import {QUESTIONS_POSTFIX, SOLUTIONS_POSTFIX, SOLUTIONS_URL, TESTS_URL, USERS_URL} from '../../shared/utils/backend-urls';
 import {SessionStorageService} from '../../shared/services/session-storage.service';
 
@@ -29,5 +29,10 @@ export class QuestionService {
   }
   getSolution(id: number): Observable<TestSolutionWithId> {
     return this.http.get<TestSolutionWithId>(`${SOLUTIONS_URL}/${id}`);
+  }
+  sendScore(id: number, score: Score): Observable<Score> {
+    return this.http.put<Score>(
+      `${SOLUTIONS_URL}/${id}`,
+      score);
   }
 }
