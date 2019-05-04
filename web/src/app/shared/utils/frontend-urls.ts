@@ -7,3 +7,4 @@ export const USER_EDIT_PAGE_URL = 'account';
 export const REDACTOR_TEST_PAGE_URL = 'test';
 export const ADD_QUESTIONS = 'questions';
 export const RESOLVE_TEST = 'resolve';
+export const USER_PAGE = 'main'; //todo: ustwaić odpowiednią ścieżke

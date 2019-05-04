@@ -12,3 +12,29 @@ export class Question {
 export class Variant {
   text: string;
 }
+export class TestSolution {
+  testId: number;
+  answers: TestAnswer[];
+}
+
+export class TestSolutionWithId {
+  id: number;
+  checked: boolean;
+  score: number;
+  test: TestSolutionTest;
+  user: TestSolutionUser;
+  answers: TestAnswer[];
+}
+export class TestSolutionTest {
+  id: number;
+  language: string;
+  name: string;
+}
+export class TestSolutionUser {
+  id: number;
+  username: string;
+}
+export class TestAnswer {
+  answer: string;
+  question: string;
+}

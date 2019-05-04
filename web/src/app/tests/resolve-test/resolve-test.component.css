@@ -1,0 +1,13 @@
+.question {
+  margin-bottom: 10px;
+}
+.answer {
+  border-bottom: 1px solid var(--main-color);
+  padding-bottom: 5px;
+}
+.open-input {
+  width: 100%;
+}
+.send-button {
+  margin-top: 20px;
+}

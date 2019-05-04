@@ -24,3 +24,9 @@
 .material-form .mat-button-wrapper {
   color: var(--primary-text-color);
 }
+.material-form .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-inner-circle {
+  background-color: var(--main-color)
+}
+.material-form .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: var(--main-color)
+}
