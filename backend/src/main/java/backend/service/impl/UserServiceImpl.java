@@ -80,6 +80,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserLoginDetails updateUser(String username, UserUpdateData userUpdateData, String authorizationToken) throws CustomException {
         canPerformOperation(username, authorizationToken);
+        return updateUser(username, userUpdateData);
+    }
+
+    @Override
+    public UserLoginDetails updateUser(String username, UserUpdateData userUpdateData) throws CustomException {
         User currentUser = userRepository.findByUsernameIgnoreCase(username)
                 .orElseThrow(UserNotFoundException::new);
 
