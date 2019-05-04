@@ -28,7 +28,7 @@ public class QuestionController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping("/questions")
-    private ResponseEntity getAll(
+    public ResponseEntity getAll(
             @PathVariable int testId) throws Exception {
         return ResponseEntity.ok(questionService.getAll(testId));
     }
@@ -43,8 +43,7 @@ public class QuestionController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @PostMapping("/question")
-
-    private ResponseEntity createOne(
+    public ResponseEntity createOne(
             @PathVariable int testId,
             @RequestBody QuestionDto questionDto) throws Exception {
         return ResponseEntity.ok(questionService.create(testId, questionDto));
@@ -60,7 +59,7 @@ public class QuestionController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @PostMapping("/questions")
-    private ResponseEntity setQuestions(
+    public ResponseEntity setQuestions(
             @PathVariable int testId,
             @RequestBody QuestionListDto questionsDto) throws Exception {
         return ResponseEntity.ok(questionService.create(testId, questionsDto));

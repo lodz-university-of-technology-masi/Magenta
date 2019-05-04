@@ -3,9 +3,11 @@ package backend.service.impl;
 import backend.converter.SolutionConverter;
 import backend.dto.solution.SolutionDto;
 import backend.dto.solution.SolutionDtoWithId;
+import backend.dto.solution.SolutionWithIdListDto;
 import backend.entity.Test;
 import backend.entity.User;
 import backend.entity.UserTestSolution;
+import backend.exception.SolutionNotFoundException;
 import backend.exception.not_found.TestNotFoundException;
 import backend.exception.not_found.UserNotFoundException;
 import backend.repository.SolutionRepository;
@@ -31,13 +33,28 @@ public class SolutionServiceImpl implements SolutionService {
     private SolutionRepository solutionRepository;
 
     @Override
-    public List<SolutionDtoWithId> getAll(String username) {
-        return null;
+    public SolutionWithIdListDto getAll() {
+        List<UserTestSolution> solutions =
+                solutionRepository.findAll();
+        return SolutionWithIdListDto.builder()
+                .solutions(SolutionConverter.getSolutionDtosWithId(solutions))
+                .build();
     }
 
     @Override
-    public SolutionDtoWithId get(int id) {
-        return null;
+    public SolutionWithIdListDto getAll(String username) {
+        List<UserTestSolution> solutions =
+                solutionRepository.getAllForUser(username);
+        return SolutionWithIdListDto.builder()
+                .solutions(SolutionConverter.getSolutionDtosWithId(solutions))
+                .build();
+    }
+
+    @Override
+    public SolutionDtoWithId get(int id) throws SolutionNotFoundException {
+        UserTestSolution userTestSolution = solutionRepository.findById(id)
+                .orElseThrow(SolutionNotFoundException::new);
+        return SolutionConverter.getSolutionDtoWithId(userTestSolution);
     }
 
     @Override

@@ -12,9 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/solution")
+@RequestMapping("/api/solutions")
 @Api(value = "User roles management",
-        basePath = "/api/solution",
+        basePath = "/api/solutions",
         produces = "application/json",
         description = "Solutions")
 public class SolutionController {
@@ -31,8 +31,22 @@ public class SolutionController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping("/{id}")
-    private ResponseEntity get(
+    public ResponseEntity get(
             @PathVariable int id) throws Exception {
         return ResponseEntity.ok(solutionService.get(id));
+    }
+
+    @ApiOperation(value = "Get solutions",
+            response = SolutionWithIdListDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 404, message = "Test not found."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @GetMapping()
+    public ResponseEntity getAll() throws Exception {
+        return ResponseEntity.ok(solutionService.getAll());
     }
 }

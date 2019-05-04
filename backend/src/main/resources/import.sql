@@ -39,4 +39,11 @@ INSERT INTO variants(text, question_id) VALUES ('C#', 8);
 INSERT INTO variants(text, question_id) VALUES ('Java', 8);
 INSERT INTO variants(text, question_id) VALUES ('C++', 8);
 
+--for test purposes only
+INSERT INTO users(username, password, email) VALUES ('string', '$2a$10$lV.ebyqr7eoUadzIbetnHOETWHdcGznM9YAn4OQyhjif2.mk2ICKy', 'string@string');
+INSERT INTO user_roles(user_id, role_id) VALUES(5,1);
+INSERT INTO user_roles(user_id, role_id) VALUES(5,2);
+INSERT INTO user_roles(user_id, role_id) VALUES(5,3);
+INSERT INTO user_roles(user_id, role_id) VALUES(5,4);
+
 
