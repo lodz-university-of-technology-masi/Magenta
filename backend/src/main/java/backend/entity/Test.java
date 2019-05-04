@@ -25,9 +25,6 @@ public class Test {
 
     private String language;
 
-    @ManyToOne
-    private Position position;
-
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             mappedBy = "test",
@@ -46,4 +43,10 @@ public class Test {
             mappedBy = "test",
             orphanRemoval = true)
     private Set<UserTestSolution> answers;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            mappedBy = "test",
+            orphanRemoval = true)
+    private Set<Position> positions;
 }
