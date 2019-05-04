@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TestSolutionWithId} from '../../models/question';
 
 @Component({
   selector: 'app-solved-test',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class SolvedTestComponent implements OnInit {
 
   constructor() { }
+
+  @Input()
+  solution: TestSolutionWithId;
 
   ngOnInit() {
   }

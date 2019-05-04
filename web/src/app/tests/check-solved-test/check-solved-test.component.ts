@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TestSolutionWithId} from '../../models/question';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-check-solved-test',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckSolvedTestComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private router: Router) { }
+
+  solution: TestSolutionWithId;
 
   ngOnInit() {
+    this.solution = this.route.snapshot.data['solution'];
   }
 
 }
