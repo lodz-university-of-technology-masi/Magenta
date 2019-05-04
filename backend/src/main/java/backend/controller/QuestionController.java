@@ -18,7 +18,7 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-    @ApiOperation(value = "Set questions",
+    @ApiOperation(value = "Get questions",
             response = QuestionListDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success."),
