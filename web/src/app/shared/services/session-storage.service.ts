@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {LoggedUser} from '../../models/user/logged-user';
-import {ROLE_ADMIN} from '../utils/global-variables';
+import {ROLE_ADMIN, ROLE_REDACTOR} from '../utils/global-variables';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +45,9 @@ export class SessionStorageService {
   }
   isAdmin(): boolean {
     return this.hasRole(ROLE_ADMIN);
+  }
+  isRedactor(): boolean {
+    return this.hasRole(ROLE_REDACTOR);
   }
   checkUsername(username: string): boolean {
     return this.getUser().username === username;
