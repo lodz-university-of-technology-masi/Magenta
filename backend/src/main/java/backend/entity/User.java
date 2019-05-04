@@ -21,6 +21,7 @@ public class User {
 
     public static final int MIN_PASSWORD_LENGTH = 3;
     public static final int MAX_PASSWORD_LENGTH = 20;
+
     public static final int MAX_PASSWORD_HASH_LENGTH = 60;
 
     public static final int MAX_DESCRIPTION_LENGTH = 1000;
@@ -34,6 +35,8 @@ public class User {
     @Size(min = MIN_USERNAME_LENGTH, max = MAX_USERNAME_LENGTH)
     @Column(unique = true)
     private String username;
+
+    private String nameSurname;
 
     @NotBlank
     @Size(max = MAX_PASSWORD_HASH_LENGTH)

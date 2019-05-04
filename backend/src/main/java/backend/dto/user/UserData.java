@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class UserData {
     private String username;
-    private String description;
+    private String nameSurname;
     private String email;
     private List<RoleDto> roles;
 }
