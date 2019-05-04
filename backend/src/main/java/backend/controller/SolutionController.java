@@ -3,11 +3,9 @@ package backend.controller;
 import backend.dto.solution.SolutionScoreDto;
 import backend.dto.solution.SolutionDtoWithId;
 import backend.dto.solution.SolutionWithIdListDto;
+import backend.security.TokenAuthenticationUtils;
 import backend.service.SolutionService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -48,8 +46,10 @@ public class SolutionController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping()
-    public ResponseEntity getAll() throws Exception {
-        return ResponseEntity.ok(solutionService.getAll());
+    public ResponseEntity getAll(
+            @ApiParam(hidden = true) @RequestHeader(value = "Authorization", required = false) String authorization
+    ) throws Exception {
+        return ResponseEntity.ok(solutionService.getAllForRedactor(authorization));
     }
 
     @ApiOperation(value = "Set test score",

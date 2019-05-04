@@ -146,5 +146,7 @@ public class TokenAuthentication {
         response.getWriter().flush();
         response.getWriter().close();
     }
-
+    public String getUsername(String token) {
+        return tokenAuthenticationUtils.getUsername(token);
+    }
 }
