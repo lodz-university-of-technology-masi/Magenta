@@ -7,6 +7,8 @@ import java.util.Set;
 
 @Builder
 @Data
+@EqualsAndHashCode(exclude = {"answers", "test"})
+@ToString(exclude = {"answers", "test"})
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity

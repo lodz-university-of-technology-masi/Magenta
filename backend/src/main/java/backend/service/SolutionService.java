@@ -2,6 +2,8 @@ package backend.service;
 
 import backend.dto.solution.SolutionDto;
 import backend.dto.solution.SolutionDtoWithId;
+import backend.exception.not_found.TestNotFoundException;
+import backend.exception.not_found.UserNotFoundException;
 
 import java.util.List;
 
@@ -10,5 +12,5 @@ public interface SolutionService {
 
     SolutionDtoWithId get(int id);
 
-    SolutionDtoWithId create(String username, SolutionDto solutionDto);
+    SolutionDtoWithId create(String username, SolutionDto solutionDto) throws UserNotFoundException, TestNotFoundException;
 }
