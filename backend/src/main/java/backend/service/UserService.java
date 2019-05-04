@@ -16,5 +16,6 @@ public interface UserService {
     UserLoginDetails updateUser(String username, UserUpdateData userRegisterDetails, String authorizationToken) throws CustomException;
     UserLoginDetails updateUser(String id, UserUpdateData userRegisterDetails) throws CustomException;
     void deleteUser(String username, String authorizationToken) throws ForbiddenException;
+    void deleteUser(String username) throws ForbiddenException;
     UserData getUserData(String username, String authorizationToken) throws UserNotFoundException;
 }

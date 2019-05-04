@@ -78,4 +78,21 @@ public class RedactorRestController {
                 userService.updateUser(username, userUpdateData);
         return ResponseEntity.ok(user);
     }
+
+    @ApiOperation(value = "Deletes redactor")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Not used."),
+            @ApiResponse(code = 204, message = "User deleted."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @DeleteMapping("/{username}")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public ResponseEntity deleteUser(
+            @PathVariable("username") String username)
+            throws Exception {
+        userService.deleteUser(username);
+        return ResponseEntity.noContent().build();
+    }
 }
