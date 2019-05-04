@@ -7,6 +7,8 @@ import { VariantAnswerComponent } from './add-questions/single-question/variant-
 import {TestsRoutingModule} from './tests-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule, MatButtonModule} from '@angular/material';
+import { ResolveComponent } from './resolve/resolve.component';
+import { ResolveTestComponent } from './resolve-test/resolve-test.component';
 
 @NgModule({
   imports: [
@@ -19,6 +21,8 @@ import {MatSelectModule, MatButtonModule} from '@angular/material';
   declarations: [AddQuestionsComponent,
     SingleQuestionComponent,
     ScalaAnswerComponent,
-    VariantAnswerComponent]
+    VariantAnswerComponent,
+    ResolveComponent,
+    ResolveTestComponent]
 })
 export class TestsModule { }
