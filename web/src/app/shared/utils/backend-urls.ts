@@ -7,3 +7,4 @@ export const PASSWORD_POSTFIX = 'password';
 export const TESTS_URL = '/api/tests';
 export const QUESTIONS_POSTFIX = 'questions';
 export const SOLUTIONS_POSTFIX = 'solutions';
+export const SOLUTIONS_URL = '/api/solutions';

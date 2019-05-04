@@ -9,7 +9,7 @@ import backend.exception.not_found.TestNotFoundException;
 import backend.exception.not_found.UserNotFoundException;
 
 public interface SolutionService {
-    SolutionWithIdListDto getAll();
+    SolutionWithIdListDto getAllForRedactor(String authorization);
 
     SolutionWithIdListDto getAll(String username);
 

@@ -12,6 +12,9 @@ export class Question {
 export class Variant {
   text: string;
 }
+export class Solutions {
+  solutions: TestSolutionWithId[];
+}
 export class TestSolution {
   testId: number;
   answers: TestAnswer[];
