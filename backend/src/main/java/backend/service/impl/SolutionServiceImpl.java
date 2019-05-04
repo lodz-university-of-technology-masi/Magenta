@@ -3,6 +3,7 @@ package backend.service.impl;
 import backend.converter.SolutionConverter;
 import backend.dto.solution.SolutionDto;
 import backend.dto.solution.SolutionDtoWithId;
+import backend.dto.solution.SolutionScoreDto;
 import backend.dto.solution.SolutionWithIdListDto;
 import backend.entity.Test;
 import backend.entity.User;
@@ -75,6 +76,16 @@ public class SolutionServiceImpl implements SolutionService {
             );
             solutionRepository.save(solution);
         });
+        return SolutionConverter.getSolutionDtoWithId(solution);
+    }
+
+    @Override
+    public SolutionDtoWithId updateScore(int id, SolutionScoreDto solutionScoreDto) throws SolutionNotFoundException {
+        UserTestSolution solution = solutionRepository.findById(id)
+                .orElseThrow(SolutionNotFoundException::new);
+        solution.setChecked(true);
+        solution.setScore(solutionScoreDto.getScore());
+        solutionRepository.save(solution);
         return SolutionConverter.getSolutionDtoWithId(solution);
     }
 }

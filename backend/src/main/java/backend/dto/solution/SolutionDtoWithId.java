@@ -11,7 +11,7 @@ import java.util.List;
 public class SolutionDtoWithId {
     private int id;
     boolean checked;
-    private int score;
+    private double score;
     private SolutionTestDto test;
     private SolutionUserDto user;
     private List<AnswerDto> answers;

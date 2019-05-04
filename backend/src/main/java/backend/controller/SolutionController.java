@@ -1,5 +1,6 @@
 package backend.controller;
 
+import backend.dto.solution.SolutionScoreDto;
 import backend.dto.solution.SolutionDtoWithId;
 import backend.dto.solution.SolutionWithIdListDto;
 import backend.service.SolutionService;
@@ -9,6 +10,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -48,5 +50,21 @@ public class SolutionController {
     @GetMapping()
     public ResponseEntity getAll() throws Exception {
         return ResponseEntity.ok(solutionService.getAll());
+    }
+
+    @ApiOperation(value = "Set test score",
+            response = SolutionDtoWithId.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 404, message = "Test not found."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public ResponseEntity create(@PathVariable int id,
+                                 @RequestBody SolutionScoreDto solutionScoreDto) throws Exception {
+        return ResponseEntity.ok(solutionService.updateScore(id, solutionScoreDto));
     }
 }
