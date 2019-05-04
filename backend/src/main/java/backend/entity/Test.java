@@ -25,6 +25,9 @@ public class Test {
 
     private String language;
 
+    @ManyToOne
+    private Position position;
+
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             mappedBy = "test",

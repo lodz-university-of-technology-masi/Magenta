@@ -1,32 +1,30 @@
 package backend.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import backend.converter.UserConverter;
+import backend.dto.user.*;
+import backend.entity.Role;
+import backend.entity.User;
 import backend.exception.CustomException;
 import backend.exception.bad_request.InvalidEmailException;
 import backend.exception.bad_request.InvalidPasswordException;
 import backend.exception.bad_request.InvalidUsernameException;
 import backend.exception.confict.EmailNotUniqueException;
+import backend.exception.confict.UsernameNotUniqueException;
 import backend.exception.forbidden.ForbiddenException;
 import backend.exception.not_found.UserNotFoundException;
-import backend.exception.confict.UsernameNotUniqueException;
-import backend.converter.UserConverter;
-import backend.entity.Role;
-import backend.entity.User;
 import backend.repository.UserRepository;
-import backend.dto.user.*;
 import backend.security.TokenAuthentication;
 import backend.service.EmailService;
 import backend.service.PasswordService;
 import backend.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -55,12 +53,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<UserData> getUsersData(int page, int pageSize) {
-        Pageable pageable = PageRequest.of(page, pageSize);
-        List<User> users = userRepository.getUsersFromTo(pageable);
-        return new PageImpl<>(UserConverter.getUserDatas(users),
-                pageable,
-                userRepository.getTotalCount());
+    public UserListDto getUsersDataByRole(String roleName) throws CustomException {
+        Role role = roleService.getRole(roleName);
+        List<User> users = userRepository.getUserByRoles(role);
+        return UserListDto.builder()
+                .users(UserConverter.getUserDatas(users))
+                .build();
     }
 
     @Override
@@ -78,9 +76,15 @@ public class UserServiceImpl implements UserService {
 
         return UserConverter.getUserLoginDetails(user);
     }
+
     @Override
     public UserLoginDetails updateUser(String username, UserUpdateData userUpdateData, String authorizationToken) throws CustomException {
         canPerformOperation(username, authorizationToken);
+        return updateUser(username, userUpdateData);
+    }
+
+    @Override
+    public UserLoginDetails updateUser(String username, UserUpdateData userUpdateData) throws CustomException {
         User currentUser = userRepository.findByUsernameIgnoreCase(username)
                 .orElseThrow(UserNotFoundException::new);
 
@@ -91,16 +95,24 @@ public class UserServiceImpl implements UserService {
         userRepository.save(currentUser);
         return UserConverter.getUserLoginDetails(currentUser);
     }
+
     @Override
     public void deleteUser(String username, String authorizationToken) throws ForbiddenException {
         canPerformOperation(username, authorizationToken);
+        deleteUser(username);
+    }
+
+    @Override
+    public void deleteUser(String username) {
         Optional<User> userOptional = userRepository.findByUsernameIgnoreCase(username);
         if (userOptional.isPresent()) {
             try {
                 userRepository.delete(userOptional.get());
-            } catch (EmptyResultDataAccessException e) { }
+            } catch (EmptyResultDataAccessException e) {
+            }
         }
     }
+
     @Override
     public UserData getUserData(String username, String authorizationToken) throws UserNotFoundException {
         User user = userRepository.findByUsernameIgnoreCase(username).orElseThrow(UserNotFoundException::new);
@@ -124,6 +136,7 @@ public class UserServiceImpl implements UserService {
             throw new InvalidUsernameException();
         }
     }
+
     private void validateUsername(String username) throws InvalidUsernameException, UsernameNotUniqueException {
         validateUsernameLength(username);
 
@@ -131,6 +144,7 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotUniqueException();
         }
     }
+
     private void validateUsername(String username, String currentUsername) throws InvalidUsernameException, UsernameNotUniqueException {
         validateUsernameLength(username);
 
@@ -138,10 +152,12 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotUniqueException();
         }
     }
+
     private void validateEmail(String email) throws EmailNotUniqueException, InvalidEmailException {
         emailService.validateEmail(email);
         emailService.checkIfEmailIsUnique(-1, email);
     }
+
     private void validateEmail(int userId, String email) throws EmailNotUniqueException, InvalidEmailException {
         emailService.validateEmail(email);
         emailService.checkIfEmailIsUnique(userId, email);

@@ -1,15 +1,14 @@
 package backend.controller;
 
-import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
 import backend.dto.user.*;
 import backend.security.TokenAuthentication;
 import backend.service.RoleService;
 import backend.service.UserService;
+import io.swagger.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,9 +19,7 @@ import javax.servlet.http.HttpServletResponse;
         produces = "application/json",
         description = "Register, get, modify, delete user account")
 public class UsersRestController {
-    public abstract class UserPage implements Page<UserData> {
 
-    }
     @Autowired
     private UserService userService;
 
@@ -33,7 +30,7 @@ public class UsersRestController {
     private TokenAuthentication tokenAuthenticationUtils;
 
     @ApiOperation(value = "Get users data",
-            response = UserPage.class)
+            response = UserListDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success."),
             @ApiResponse(code = 401, message = "You are not authorized."),
@@ -42,9 +39,8 @@ public class UsersRestController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping()
-    public ResponseEntity getUsers(@ApiParam() @RequestParam(value = "page", required = false, defaultValue = "0") int page,
-                                   @ApiParam() @RequestParam(value = "size", required = false, defaultValue = "10") int pageSize) throws Exception {
-        return ResponseEntity.ok(userService.getUsersData(page, pageSize));
+    public ResponseEntity getUsers() throws Exception {
+        return ResponseEntity.ok(userService.getUsersDataByRole("USER"));
     }
 
     @ApiOperation(value = "Register new user.",
@@ -69,7 +65,7 @@ public class UsersRestController {
                                 loginDetails.getRoles())
                 ));
         return ResponseEntity.status(201)
-            .body(loginDetails);
+                .body(loginDetails);
     }
 
     @ApiOperation(value = "Updates user", response = UserLoginDetails.class)
@@ -100,6 +96,7 @@ public class UsersRestController {
                 ));
         return ResponseEntity.ok(user);
     }
+
     @ApiOperation(value = "Get user data",
             response = UserData.class)
     @ApiResponses(value = {
@@ -115,6 +112,7 @@ public class UsersRestController {
             @ApiParam(hidden = true) @RequestHeader(value = "Authorization", required = false) String authorization) throws Exception {
         return ResponseEntity.ok(userService.getUserData(username, authorization));
     }
+
     @ApiOperation(value = "Deletes user")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Not used."),
