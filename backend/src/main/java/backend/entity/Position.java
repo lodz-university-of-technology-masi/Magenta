@@ -19,4 +19,9 @@ public class Position {
     private String name;
 
     private boolean active;
+
+    public Position withActive(boolean active) {
+        this.active = active;
+        return this;
+    }
 }
