@@ -20,8 +20,16 @@ public class Position {
 
     private boolean active;
 
+    @OneToOne
+    private Test test;
+
     public Position withActive(boolean active) {
         this.active = active;
+        return this;
+    }
+
+    public Position withTest(Test test) {
+        this.test = test;
         return this;
     }
 }
