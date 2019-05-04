@@ -3,10 +3,10 @@ INSERT INTO roles(name) VALUES ('ADMIN');
 INSERT INTO roles(name) VALUES ('MODERATOR');
 INSERT INTO roles(name) VALUES ('REDACTOR');
 
-INSERT INTO users(username, password, email) VALUES ('user', '$2a$10$.BR9gtXEQFZsVxQCFXgavOvTfkyTjDYqBtyzNKIpwvxdDI2tuEooa', 'user@example.com');
-INSERT INTO users(username, password, email) VALUES ('admin', '$2a$10$w6j7reyRSZzBps0s23CZgeYYg2QlSjNUDxzwPxBiSqcWPNWWQMDge', 'admin@example.com');
-INSERT INTO users(username, password, email) VALUES ('moderator', '$2a$10$w6j7reyRSZzBps0s23CZgeYYg2QlSjNUDxzwPxBiSqcWPNWWQMDge', 'moderator@example.com');
-INSERT INTO users(username, password, email) VALUES ('redactor', '$2a$10$w6j7reyRSZzBps0s23CZgeYYg2QlSjNUDxzwPxBiSqcWPNWWQMDge', 'redactor@example.com');
+INSERT INTO users(username, password, name_surname, email) VALUES ('user', '$2a$10$.BR9gtXEQFZsVxQCFXgavOvTfkyTjDYqBtyzNKIpwvxdDI2tuEooa', 'user user', 'user@example.com');
+INSERT INTO users(username, password, name_surname, email) VALUES ('admin', '$2a$10$w6j7reyRSZzBps0s23CZgeYYg2QlSjNUDxzwPxBiSqcWPNWWQMDge', 'admin admin', 'admin@example.com');
+INSERT INTO users(username, password, name_surname, email) VALUES ('moderator', '$2a$10$w6j7reyRSZzBps0s23CZgeYYg2QlSjNUDxzwPxBiSqcWPNWWQMDge', 'moderator moderator', 'moderator@example.com');
+INSERT INTO users(username, password, name_surname, email) VALUES ('redactor', '$2a$10$w6j7reyRSZzBps0s23CZgeYYg2QlSjNUDxzwPxBiSqcWPNWWQMDge', 'redactor redactor', 'redactor@example.com');
 
 INSERT INTO user_roles(user_id, role_id) VALUES(1, 1);
 
