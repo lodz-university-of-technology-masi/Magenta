@@ -35,7 +35,7 @@ config:
   security:
     jwt:
       secret: "SecretKey"
-      expiration-time: 6_000_000
+      expiration-time: 600_000_000
       refresh-after: 600_000
     password-reset:
       characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
