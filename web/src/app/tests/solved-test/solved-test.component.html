@@ -1,3 +1,10 @@
-<p>
-  solved-test works!
-</p>
+<div class="resolve-test-container material-form">
+  <div *ngFor="let question of solution.answers;">
+    <div class="question">
+      Pytanie: <b>{{question.question}}</b>
+    </div>
+    <div class="answer">
+      Odpowiedź: {{question.answer}}
+    </div>
+  </div>
+</div>

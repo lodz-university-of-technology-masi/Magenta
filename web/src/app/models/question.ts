@@ -41,3 +41,6 @@ export class TestAnswer {
   answer: string;
   question: string;
 }
+export class Score {
+  score: number;
+}
