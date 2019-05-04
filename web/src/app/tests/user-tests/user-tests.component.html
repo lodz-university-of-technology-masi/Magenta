@@ -1,0 +1,26 @@
+<div class="solved-test-container material-form">
+  <table>
+    <thead>
+    <tr>
+      <td>Id</td>
+      <td>Nazwa</td>
+      <td>Język</td>
+      <td>Sprawdzony</td>
+      <td>Wynik</td>
+      <td>Szczegóły</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let solution of solutions.solutions">
+      <td>{{solution.id}}</td>
+      <td>{{solution.test.name}}</td>
+      <td>{{solution.test.language}}</td>
+      <td><span *ngIf="solution.checked">Tak</span><span *ngIf="!solution.checked">Nie</span></td>
+      <td>{{solution.score}}</td>
+      <td>
+        <button mat-button [routerLink]="['..', mySolutions, solution.id]">Szczegóły</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

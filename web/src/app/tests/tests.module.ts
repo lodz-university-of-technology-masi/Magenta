@@ -11,6 +11,8 @@ import { ResolveTestComponent } from './resolve-test/resolve-test.component';
 import { RedactorTestsComponent } from './redactor-tests/redactor-tests.component';
 import { SolvedTestComponent } from './solved-test/solved-test.component';
 import { CheckSolvedTestComponent } from './check-solved-test/check-solved-test.component';
+import { UserTestsComponent } from './user-tests/user-tests.component';
+import { UserSolutionComponent } from './user-solution/user-solution.component';
 
 @NgModule({
   imports: [
@@ -28,6 +30,8 @@ import { CheckSolvedTestComponent } from './check-solved-test/check-solved-test.
     ResolveTestComponent,
     RedactorTestsComponent,
     SolvedTestComponent,
-    CheckSolvedTestComponent]
+    CheckSolvedTestComponent,
+    UserTestsComponent,
+    UserSolutionComponent]
 })
 export class TestsModule { }

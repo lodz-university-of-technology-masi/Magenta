@@ -21,6 +21,9 @@ export class SolutionsService {
   getAllForRedactor(): Observable<Solutions> {
     return this.http.get<Solutions>(`${SOLUTIONS_URL}`);
   }
+  getAllForUser(): Observable<Solutions> {
+    return this.http.get<Solutions>(`${USERS_URL}/${this.sessionStorageService.getUser().username}/${SOLUTIONS_POSTFIX}`);
+  }
   getSolution(id: number): Observable<TestSolutionWithId> {
     return this.http.get<TestSolutionWithId>(`${SOLUTIONS_URL}/${id}`);
   }

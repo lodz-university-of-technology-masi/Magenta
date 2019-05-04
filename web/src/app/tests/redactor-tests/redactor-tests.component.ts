@@ -11,8 +11,7 @@ import {CHECK_TEST} from '../../shared/utils/frontend-urls';
 })
 export class RedactorTestsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
-              private router: Router) { }
+  constructor(private route: ActivatedRoute) { }
 
   solutions: Solutions;
   checkPage = CHECK_TEST;
