@@ -45,6 +45,7 @@ export class RegistrationPageComponent implements OnInit {
       ]],
       confirmPassword: ['', [Validators.required]],
       email: ['', [Validators.required]],
+      nameSurname: ['']
     }, {
       validator: this.confirmPassword.matchPassword
     } );
