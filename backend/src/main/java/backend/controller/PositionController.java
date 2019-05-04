@@ -54,4 +54,22 @@ public class PositionController {
         return ResponseEntity.noContent().build();
     }
 
+    @ApiOperation(value = "Change position status",
+            response = PositionDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Not used."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 404, message = "Position not found."),
+            @ApiResponse(code = 409, message = "User data not unique."),
+            @ApiResponse(code = 500, message = "Unknown error."),
+            @ApiResponse(code = 503, message = "Books service is unavailable.")
+    })
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public ResponseEntity changePositionStatus(
+            @PathVariable int id,
+            @RequestParam boolean active) throws Exception {
+        return ResponseEntity.ok(positionService.changeStatus(id, active));
+    }
 }
