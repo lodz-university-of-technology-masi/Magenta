@@ -9,5 +9,5 @@ import lombok.*;
 public class UserUpdateData {
     private String username;
     private String email;
-    private String description;
+    private String nameSurname;
 }
