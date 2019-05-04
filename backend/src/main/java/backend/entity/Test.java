@@ -7,8 +7,8 @@ import java.util.Set;
 
 @Builder
 @Data
-@EqualsAndHashCode(exclude = {"questions"})
-@ToString(exclude = {"questions"})
+@EqualsAndHashCode(of = {"id", "name", "language"})
+@ToString(of = {"id", "name", "language"})
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
@@ -25,9 +25,6 @@ public class Test {
 
     private String language;
 
-    @ManyToOne
-    private Position position;
-
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             mappedBy = "test",
@@ -37,8 +34,8 @@ public class Test {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_tests",
-            joinColumns = @JoinColumn(name = "owner_id"),
-            inverseJoinColumns = @JoinColumn(name = "test_id"))
+            joinColumns = @JoinColumn(name = "test_id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id"))
     private Set<User> owners;
 
     @OneToMany(fetch = FetchType.EAGER,
@@ -46,4 +43,10 @@ public class Test {
             mappedBy = "test",
             orphanRemoval = true)
     private Set<UserTestSolution> answers;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            mappedBy = "test",
+            orphanRemoval = true)
+    private Set<Position> positions;
 }
