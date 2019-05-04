@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Question, Questions} from '../../models/question';
 import {OPEN_QUESTION, VARIANT_QUESTION} from '../../shared/utils/global-variables';
 import {QuestionService} from '../services/question.service';
+import {REDACTOR_PAGE} from '../../shared/utils/frontend-urls';
 
 @Component({
   selector: 'app-add-questions',
@@ -12,6 +13,7 @@ import {QuestionService} from '../services/question.service';
 export class AddQuestionsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private questionService: QuestionService) { }
   questions: Questions;
   ngOnInit(): void {
@@ -33,7 +35,11 @@ export class AddQuestionsComponent implements OnInit {
     this.questionService.save(
       +this.route.snapshot.paramMap.get('test'),
       this.questions
-    ).subscribe();
+    ).subscribe(
+      result => {
+        this.router.navigate([REDACTOR_PAGE]);
+      }
+    )
   }
   areQuestionsValid(): boolean {
     for (let i = 0; i < this.questions.questions.length; i++) {
