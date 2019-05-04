@@ -45,5 +45,6 @@ INSERT INTO user_roles(user_id, role_id) VALUES(5,1);
 INSERT INTO user_roles(user_id, role_id) VALUES(5,2);
 INSERT INTO user_roles(user_id, role_id) VALUES(5,3);
 INSERT INTO user_roles(user_id, role_id) VALUES(5,4);
+INSERT INTO positions(name, active) VALUES ('Senior Java Developer', false);
 
 
