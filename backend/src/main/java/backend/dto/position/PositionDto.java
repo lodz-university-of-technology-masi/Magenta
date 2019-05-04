@@ -1,5 +1,6 @@
 package backend.dto.position;
 
+import backend.dto.test.TestDto;
 import lombok.*;
 
 @Data
@@ -13,4 +14,6 @@ public class PositionDto {
     private String name;
 
     private boolean active;
+
+    private TestDto test;
 }
