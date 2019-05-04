@@ -39,4 +39,5 @@ INSERT INTO variants(text, question_id) VALUES ('C#', 8);
 INSERT INTO variants(text, question_id) VALUES ('Java', 8);
 INSERT INTO variants(text, question_id) VALUES ('C++', 8);
 
+INSERT INTO positions(name, active) VALUES ('Senior Java Developer', false);
 
