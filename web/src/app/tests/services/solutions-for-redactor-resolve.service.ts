@@ -4,6 +4,7 @@ import {QuestionService} from './question.service';
 import {ActivatedRouteSnapshot, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Solutions} from '../../models/question';
+import {SolutionsService} from './solutions.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,13 @@ import {Solutions} from '../../models/question';
 export class SolutionsForRedactorResolveService {
 
   constructor(private errorHandlingService: ErrorHandlingService,
-              private questionService: QuestionService,
+              private solutionService: SolutionsService,
               private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot)
     : Observable<Solutions> | Promise<Solutions> | Solutions  {
     this.errorHandlingService.clear();
-    return this.questionService
+    return this.solutionService
       .getAllForRedactor()
       .toPromise()
       .then( result => {

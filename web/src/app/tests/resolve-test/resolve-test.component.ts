@@ -4,6 +4,7 @@ import {QuestionService} from '../services/question.service';
 import {Questions, TestAnswer, TestSolution} from '../../models/question';
 import {NUMERIC_QUESTION, OPEN_QUESTION, SCALA_QUESTION, VARIANT_QUESTION} from '../../shared/utils/global-variables';
 import {USER_PAGE} from '../../shared/utils/frontend-urls';
+import {SolutionsService} from '../services/solutions.service';
 
 @Component({
   selector: 'app-resolve-test',
@@ -14,7 +15,7 @@ export class ResolveTestComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private questionService: QuestionService) { }
+              private solutionsService: SolutionsService) { }
   solution: TestSolution;
   test: Questions;
   variant = VARIANT_QUESTION;
@@ -51,7 +52,7 @@ export class ResolveTestComponent implements OnInit {
     return result;
   }
   send(): void {
-    this.questionService.sendSolution(this.solution).subscribe(
+    this.solutionsService.sendSolution(this.solution).subscribe(
       result => {
         this.router.navigate([USER_PAGE]);
       }
