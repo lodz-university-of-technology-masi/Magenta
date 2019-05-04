@@ -14,12 +14,14 @@ import backend.exception.not_found.UserNotFoundException;
 import backend.repository.SolutionRepository;
 import backend.repository.TestRepository;
 import backend.repository.UserRepository;
+import backend.security.TokenAuthentication;
 import backend.service.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SolutionServiceImpl implements SolutionService {
@@ -33,13 +35,29 @@ public class SolutionServiceImpl implements SolutionService {
     @Autowired
     private SolutionRepository solutionRepository;
 
+    @Autowired
+    private TokenAuthentication tokenAuthentication;
+
     @Override
-    public SolutionWithIdListDto getAll() {
+    public SolutionWithIdListDto getAllForRedactor(String authorization) {
+        String redactor = tokenAuthentication.getUsername(authorization);
+
         List<UserTestSolution> solutions =
-                solutionRepository.findAll();
+                solutionRepository.findAll().stream()
+                .filter(item -> isOwner(item, redactor))
+                .collect(Collectors.toList());
         return SolutionWithIdListDto.builder()
                 .solutions(SolutionConverter.getSolutionDtosWithId(solutions))
                 .build();
+    }
+
+    private boolean isOwner(UserTestSolution item, String username) {
+        for (User owner:
+            item.getTest().getOwners()) {
+            if(owner.getUsername().equals(username))
+                return true;
+        }
+        return false;
     }
 
     @Override
