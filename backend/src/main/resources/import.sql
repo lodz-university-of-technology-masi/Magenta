@@ -1,7 +1,7 @@
 INSERT INTO roles(name) VALUES ('USER');
 INSERT INTO roles(name) VALUES ('ADMIN');
-INSERT INTO roles(name) VALUES ('MODERATOR');
 INSERT INTO roles(name) VALUES ('REDACTOR');
+INSERT INTO roles(name) VALUES ('MODERATOR');
 
 INSERT INTO users(username, password, name_surname, email) VALUES ('user', '$2a$10$.BR9gtXEQFZsVxQCFXgavOvTfkyTjDYqBtyzNKIpwvxdDI2tuEooa', 'user user', 'user@example.com');
 INSERT INTO users(username, password, name_surname, email) VALUES ('admin', '$2a$10$w6j7reyRSZzBps0s23CZgeYYg2QlSjNUDxzwPxBiSqcWPNWWQMDge', 'admin admin', 'admin@example.com');
