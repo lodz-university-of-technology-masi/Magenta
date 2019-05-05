@@ -1,19 +1,20 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {PASSWORD_RESET_URL} from '../../shared/utils/backend-urls';
 import {Observable} from 'rxjs/Observable';
+import {User} from '../../models/user/user';
+import {USERS_URL} from '../../shared/utils/backend-urls';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PasswordService {
+export class UserService {
 
   constructor(private httpClient: HttpClient) {
   }
 
-  getTests(): Observable<any> {
-    return this.httpClient.get(
-      PASSWORD_RESET_URL // TODO change
+  getUsers(): Observable<[User]> {
+    return this.httpClient.get<[User]>(
+      USERS_URL
     );
   }
 }

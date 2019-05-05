@@ -13,7 +13,7 @@ import {UserEditModule} from './user-edit/user-edit.module';
 import {DialogsModule} from './dialogs/dialogs.module';
 import {ErrorModule} from './error/error.module';
 import {Interceptor} from './interceptor';
-import {EditorModule} from './editor/editor.module';
+import {RedactorModule} from './redactor/redactor.module';
 
 
 @NgModule({
@@ -32,7 +32,7 @@ import {EditorModule} from './editor/editor.module';
     BrowserAnimationsModule,
     DialogsModule,
     ErrorModule,
-    EditorModule
+    RedactorModule
   ],
   providers: [
     {
