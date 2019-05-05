@@ -6,7 +6,7 @@ import {REDACTOR_PAGE_URL} from '../shared/utils/frontend-urls';
 
 const REDACTOR_PAGE_ROUTES: Route[] = [
   {
-    path: `${REDACTOR_PAGE_URL}`,
+    path: REDACTOR_PAGE_URL,
     component: <any>RedactorMainPageComponent,
     runGuardsAndResolvers: 'always'
   }
