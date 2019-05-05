@@ -13,8 +13,9 @@ INSERT INTO user_roles(user_id, role_id) VALUES(1, 1);
 INSERT INTO user_roles(user_id, role_id) VALUES(2, 1);
 INSERT INTO user_roles(user_id, role_id) VALUES(2, 2);
 
-INSERT INTO user_roles(user_id, role_id) VALUES(3, 3);
 INSERT INTO user_roles(user_id, role_id) VALUES(4, 4);
+INSERT INTO user_roles(user_id, role_id) VALUES(3, 1);
+INSERT INTO user_roles(user_id, role_id) VALUES(3, 3);
 
 INSERT INTO tests(id, language, name) VALUES(1, 'pl', 'Testowy test po polsku');
 INSERT INTO tests(id, language, name) VALUES(2, 'en', 'Test test in english');
@@ -28,9 +29,9 @@ INSERT INTO scala(min, max, question_id) VALUES (1, 5, 2);
 UPDATE questions SET scala_answer_id = 1 WHERE id = 2;
 INSERT INTO questions(question, type, test_id) VALUES ('Co jest lepsze JSON czy XML i dlaczego?', 'open', 1);
 INSERT INTO questions(question, type, test_id) VALUES ('Jak oceniasz jakość kodu?', 'numeric', 1);
-INSERT INTO variants(text, question_id) VALUES ('C#', 4);
-INSERT INTO variants(text, question_id) VALUES ('Java', 4);
-INSERT INTO variants(text, question_id) VALUES ('C++', 4);
+INSERT INTO variants(text, question_id) VALUES ('C#', 1);
+INSERT INTO variants(text, question_id) VALUES ('Java', 1);
+INSERT INTO variants(text, question_id) VALUES ('C++', 1);
 
 INSERT INTO questions(question, type, test_id) VALUES ('What is the best language?', 'variant', 2);
 INSERT INTO questions(question, type, test_id) VALUES ('What is score of movie Butter?', 'scala', 2);
@@ -38,9 +39,9 @@ INSERT INTO scala(min, max, question_id) VALUES (1, 5, 6);
 UPDATE questions SET scala_answer_id = 2 WHERE id = 6;
 INSERT INTO questions(question, type, test_id) VALUES ('What is better JSON or XML and why?', 'open', 2);
 INSERT INTO questions(question, type, test_id) VALUES ('How do you rate the quality of the code?', 'numeric', 2);
-INSERT INTO variants(text, question_id) VALUES ('C#', 8);
-INSERT INTO variants(text, question_id) VALUES ('Java', 8);
-INSERT INTO variants(text, question_id) VALUES ('C++', 8);
+INSERT INTO variants(text, question_id) VALUES ('C#', 5);
+INSERT INTO variants(text, question_id) VALUES ('Java', 5);
+INSERT INTO variants(text, question_id) VALUES ('C++', 5);
 
 --for test purposes only
 INSERT INTO users(username, password, email) VALUES ('string', '$2a$10$lV.ebyqr7eoUadzIbetnHOETWHdcGznM9YAn4OQyhjif2.mk2ICKy', 'string@string');

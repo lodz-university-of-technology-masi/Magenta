@@ -1,0 +1,13 @@
+.add-questions-container {
+  width: 80%;
+  margin: 5px auto;
+}
+.add-button,
+.send-button {
+  margin-top: 10px;
+}
+.single-question-container {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--main-color);
+}

@@ -9,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/test/{testId}")
+@RequestMapping("/api/tests/{testId}")
 @Api(value = "Questions management",
-        basePath = "/api/test/{testId}",
+        basePath = "/api/tests/{testId}",
         produces = "application/json",
         description = "Get, create, replace test's questions")
 public class QuestionController {
