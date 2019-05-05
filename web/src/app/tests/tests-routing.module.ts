@@ -1,7 +1,7 @@
 import {Route, RouterModule} from '@angular/router';
 
 import {NgModule} from '@angular/core';
-import {ADD_QUESTIONS, CHECK_TEST, REDACTOR_TEST_PAGE_URL, REDACTOR_TESTS, RESOLVE_TEST} from '../shared/utils/frontend-urls';
+import {ADD_QUESTIONS, CHECK_TEST, MY_SOLUTIONS, REDACTOR_TEST_PAGE_URL, REDACTOR_TESTS, RESOLVE_TEST} from '../shared/utils/frontend-urls';
 import {RedactorGuard} from '../guards/redactor-quard';
 import {AddQuestionsComponent} from './add-questions/add-questions.component';
 import {QuestionResolveService} from './services/question-resolve.service';
@@ -11,6 +11,9 @@ import {SolutionsForRedactorResolveService} from './services/solutions-for-redac
 import {RedactorTestsComponent} from './redactor-tests/redactor-tests.component';
 import {CheckSolvedTestComponent} from './check-solved-test/check-solved-test.component';
 import {SolutionResolveService} from './services/solution-resolve.service';
+import {UserTestsComponent} from './user-tests/user-tests.component';
+import {UserSolutionComponent} from './user-solution/user-solution.component';
+import {UserSolutionsResolveService} from './services/user-solutions-resolve.service';
 
 const MAIN_PAGE_ROUTES: Route[] = [
   {
@@ -54,6 +57,28 @@ const MAIN_PAGE_ROUTES: Route[] = [
     },
     canActivate: [
       RedactorGuard
+    ],
+    runGuardsAndResolvers: 'always'
+  },
+  {
+    path: `${MY_SOLUTIONS}`,
+    component: <any>UserTestsComponent,
+    resolve: {
+      solutions: UserSolutionsResolveService
+    },
+    canActivate: [
+      UserGuard
+    ],
+    runGuardsAndResolvers: 'always'
+  },
+  {
+    path: `${MY_SOLUTIONS}/:test`,
+    component: <any>UserSolutionComponent,
+    resolve: {
+      solution: SolutionResolveService
+    },
+    canActivate: [
+      UserGuard
     ],
     runGuardsAndResolvers: 'always'
   },

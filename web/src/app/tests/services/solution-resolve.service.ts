@@ -5,6 +5,7 @@ import {ActivatedRouteSnapshot, Resolve, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {TestSolutionWithId} from '../../models/question';
 import {NOT_FOUND_PAGE_URL} from '../../shared/utils/frontend-urls';
+import {SolutionsService} from './solutions.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import {NOT_FOUND_PAGE_URL} from '../../shared/utils/frontend-urls';
 export class SolutionResolveService {
 
   constructor(private errorHandlingService: ErrorHandlingService,
-              private questionService: QuestionService,
+              private solutionsService: SolutionsService,
               private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot)
@@ -30,7 +31,7 @@ export class SolutionResolveService {
       this.router.navigate([NOT_FOUND_PAGE_URL]);
       return {} as TestSolutionWithId;
     } else {
-      return this.questionService
+      return this.solutionsService
         .getSolution(testId)
         .toPromise()
         .then( result => {
