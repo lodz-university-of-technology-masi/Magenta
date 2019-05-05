@@ -37,21 +37,20 @@ public class PositionController {
         return ResponseEntity.ok(positionService.getPositions());
     }
 
-    @ApiOperation(value = "Add new position")
+    @ApiOperation(value = "Add new position",
+            response = PositionDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Not used."),
             @ApiResponse(code = 204, message = "Success"),
             @ApiResponse(code = 401, message = "You are not authorized."),
             @ApiResponse(code = 403, message = "You haven't permissions."),
             @ApiResponse(code = 500, message = "Unknown error."),
-            @ApiResponse(code = 503, message = "Books service is unavailable.")
     })
     @PostMapping()
     @PreAuthorize("hasRole('MODERATOR')")
     public ResponseEntity addPosition(
             @RequestBody PositionDto positionDto) {
-        positionService.addPosition(positionDto);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(positionService.addPosition(positionDto));
     }
 
     @ApiOperation(value = "Change position status",
@@ -63,7 +62,6 @@ public class PositionController {
             @ApiResponse(code = 404, message = "Position not found."),
             @ApiResponse(code = 409, message = "User data not unique."),
             @ApiResponse(code = 500, message = "Unknown error."),
-            @ApiResponse(code = 503, message = "Books service is unavailable.")
     })
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('MODERATOR')")
@@ -71,5 +69,24 @@ public class PositionController {
             @PathVariable int id,
             @RequestParam boolean active) throws Exception {
         return ResponseEntity.ok(positionService.changeStatus(id, active));
+    }
+
+    @ApiOperation(value = "Assign test to position",
+            response = PositionDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Not used."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 404, message = "Position not found."),
+            @ApiResponse(code = 404, message = "Test not found."),
+            @ApiResponse(code = 409, message = "User data not unique."),
+            @ApiResponse(code = 500, message = "Unknown error."),
+    })
+    @PutMapping("/assign/{id}")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public ResponseEntity assignTest(
+            @PathVariable int id,
+            @RequestParam int testId) throws Exception {
+        return ResponseEntity.ok(positionService.assignTest(id, testId));
     }
 }

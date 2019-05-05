@@ -1,13 +1,13 @@
-package backend.dto.user;
+package backend.dto.solution;
 
 import lombok.*;
 
-@Builder
 @Data
+@Builder
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class UserUpdateData {
+public class SolutionUserDto {
+    private int id;
     private String username;
-    private String email;
-    private String nameSurname;
 }
+
