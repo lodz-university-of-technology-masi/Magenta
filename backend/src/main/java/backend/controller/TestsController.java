@@ -3,15 +3,11 @@ package backend.controller;
 
 import backend.dto.test.TestListDto;
 import backend.service.TestService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/tests")
@@ -36,5 +32,23 @@ public class TestsController {
     @GetMapping()
     public ResponseEntity getTests() throws Exception {
         return ResponseEntity.ok(testService.getAllTests());
+    }
+
+    @ApiOperation(value = "Deletes test")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Not used."),
+            @ApiResponse(code = 204, message = "User deleted."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('REDACTOR')")
+    public ResponseEntity deleteTest(
+            @PathVariable("id") int id,
+            @ApiParam(hidden = true) @RequestHeader(value = "Authorization", required = false) String authorization)
+            throws Exception {
+        testService.deleteTest(id, authorization);
+        return ResponseEntity.noContent().build();
     }
 }
