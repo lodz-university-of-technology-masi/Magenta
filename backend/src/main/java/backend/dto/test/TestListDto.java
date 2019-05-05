@@ -2,15 +2,12 @@ package backend.dto.test;
 
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class TestDto {
-
-    private int id;
-
-    private String name;
-
-    private String language;
+public class TestListDto {
+    private List<TestDto> tests;
 }
