@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Test} from '../../models/test';
+import {User} from '../../models/user/user';
+import {UserRole} from '../../models/user/user-role';
 
 @Component({
   selector: 'app-editor-main-page',
@@ -22,10 +24,52 @@ export class EditorMainPageComponent implements OnInit {
       name: 'Test 3'
     }
   ];
+  role: UserRole = new class implements UserRole {
+    name: 'sasa';
+  };
+  users: User[] = [
+    {
+      username: 'Janek',
+      email: 'Janek@gmail.com',
+      roles: [this.role]
+    },
+    {
+      username: 'Ania',
+      email: 'Ania@gmail.com',
+      roles: [this.role]
+    }
+  ];
+  selectedTest: Test;
+  selectedUser: User;
 
   constructor() {
   }
 
+
+  checkIfSelectedTestIsNull(): Boolean {
+    return this.selectedTest == null;
+  }
+
+  checkIfSelectedTestAndUserIsNull(): Boolean {
+    return this.selectedTest == null || this.selectedUser == null;
+  }
+
   ngOnInit(): void {
+  }
+
+  onCheckTestButtonClick(): void {
+
+  }
+
+  onEditTestButtonClick(): void {
+
+  }
+
+  onCreateTestButtonClick(): void {
+
+  }
+
+  onDeleteTestButtonClick(): void {
+
   }
 }
