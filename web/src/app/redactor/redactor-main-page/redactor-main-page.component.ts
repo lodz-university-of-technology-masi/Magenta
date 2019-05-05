@@ -1,13 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Test} from '../../models/test';
 import {User} from '../../models/user/user';
-import {UserRole} from '../../models/user/user-role';
-import {AuthenticationService} from '../../authentication/services/authentication.service';
 import {UserService} from '../services/user.service';
-import {HttpResponse} from '@angular/common/http';
-import {LoggedUser} from '../../models/user/logged-user';
-import {RegisterUserDetails} from '../../models/user/register-user-details';
-import {REGISTER_URL} from '../../shared/utils/backend-urls';
 import {TestService} from '../services/test.service';
 
 @Component({
