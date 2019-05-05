@@ -1,0 +1,44 @@
+<div class="resolve-test-container material-form">
+  <div *ngFor="let question of test.questions; let i = index;">
+    <div class="question">
+      {{question.question}}
+    </div>
+    <div class="answer">
+      <div *ngIf="question.type === variant">
+          <mat-radio-group>
+            <div class="row">
+              <div class="col-md-3" *ngFor="let variant of question.variants; let j = index">
+                <mat-radio-button value="{{j}}" (click)="setAnswer(i, variant.text)">
+                  {{variant.text}}
+                </mat-radio-button>
+              </div>
+            </div>
+          </mat-radio-group>
+      </div>
+      <div *ngIf="question.type === scala">
+        <mat-radio-group>
+          <div class="row">
+            <div class="col-md-2" *ngFor="let variant of getScalaVariants(question.min, question.max);">
+              <mat-radio-button value="{{variant}}" (click)="setAnswer(i, variant.toString())">
+                {{variant}}
+              </mat-radio-button>
+            </div>
+          </div>
+        </mat-radio-group>
+      </div>
+      <div *ngIf="question.type === numeric">
+        <input matInput placeholder="Odpowiedź"
+               (input)="setAnswer(i, $event.target.value)"
+               type="number">
+      </div>
+      <div *ngIf="question.type === open">
+        <input class="open-input"
+               matInput placeholder="Odpowiedź"
+               (input)="setAnswer(i, $event.target.value)">
+      </div>
+    </div>
+  </div>
+  <div class="full-width-button send-button">
+    <button mat-button (click)="send()">Zakończ test</button>
+  </div>
+</div>

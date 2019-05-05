@@ -6,7 +6,11 @@ import { ScalaAnswerComponent } from './add-questions/single-question/scala-answ
 import { VariantAnswerComponent } from './add-questions/single-question/variant-answer/variant-answer.component';
 import {TestsRoutingModule} from './tests-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatSelectModule, MatButtonModule} from '@angular/material';
+import {MatSelectModule, MatButtonModule, MatRadioModule} from '@angular/material';
+import { ResolveTestComponent } from './resolve-test/resolve-test.component';
+import { RedactorTestsComponent } from './redactor-tests/redactor-tests.component';
+import { SolvedTestComponent } from './solved-test/solved-test.component';
+import { CheckSolvedTestComponent } from './check-solved-test/check-solved-test.component';
 
 @NgModule({
   imports: [
@@ -14,11 +18,16 @@ import {MatSelectModule, MatButtonModule} from '@angular/material';
     TestsRoutingModule,
     MatSelectModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    MatRadioModule,
+    BrowserAnimationsModule,
   ],
   declarations: [AddQuestionsComponent,
     SingleQuestionComponent,
     ScalaAnswerComponent,
-    VariantAnswerComponent]
+    VariantAnswerComponent,
+    ResolveTestComponent,
+    RedactorTestsComponent,
+    SolvedTestComponent,
+    CheckSolvedTestComponent]
 })
 export class TestsModule { }
