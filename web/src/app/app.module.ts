@@ -14,7 +14,7 @@ import {DialogsModule} from './dialogs/dialogs.module';
 import {ErrorModule} from './error/error.module';
 import {Interceptor} from './interceptor';
 import {RedactorModule} from './redactor/redactor.module';
-
+import {TestsModule} from './tests/tests.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import {RedactorModule} from './redactor/redactor.module';
     BrowserModule,
     MainPageModule,
     UserEditModule,
+    TestsModule,
     AuthenticationModule,
     AppRoutingModule,
     HttpClientModule,

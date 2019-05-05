@@ -1,0 +1,22 @@
+<div class="single-question-container full-width-form">
+  <mat-form-field >
+    <mat-label>Typ pytania</mat-label>
+    <mat-select [(value)]="question.type">
+      <mat-option *ngFor="let type of types" [value]="type.value">
+        {{type.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <input class="question-input" matInput placeholder="Pytanie"
+         [value]="question.question" (input)="question.question = $event.target.value">
+  <mat-error *ngIf="question.question.length === 0">
+    Musisz podać treść pytania
+  </mat-error>
+
+  <div #scala *ngIf="isScala()">
+    <app-scala-answer [question]="question" ></app-scala-answer>
+  </div>
+  <div #variant *ngIf="isVariant()">
+    <app-variant-answer [variants]="question.variants"></app-variant-answer>
+  </div>
+</div>
