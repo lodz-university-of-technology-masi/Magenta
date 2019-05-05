@@ -28,7 +28,9 @@ public class TestsController {
             response = TestListDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
             @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 404, message = "User not found."),
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping()
