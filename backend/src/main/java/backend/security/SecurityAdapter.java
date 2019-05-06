@@ -27,7 +27,8 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
             "/api/users/{username}/texts",
             "/api/images/{imageId}",
             "/api/users/{username}",
-            "/api/password/reset"
+            "/api/password/reset",
+            "/api/tests"
     };
 
     @Override
