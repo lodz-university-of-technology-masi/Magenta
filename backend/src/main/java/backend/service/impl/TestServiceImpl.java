@@ -2,10 +2,16 @@ package backend.service.impl;
 
 import backend.converter.TestConverter;
 import backend.dto.test.TestListDto;
+import backend.entity.Role;
 import backend.entity.Test;
+import backend.entity.User;
 import backend.exception.forbidden.ForbiddenException;
 import backend.repository.TestRepository;
+import backend.repository.UserRepository;
+import backend.security.TokenAuthentication;
 import backend.service.TestService;
+import backend.utils.Constans;
+import backend.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -21,6 +27,12 @@ public class TestServiceImpl implements TestService {
     @Autowired
     private TestRepository testRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private TokenAuthentication tokenAuthentication;
+
     @Override
     public TestListDto getAllTests() {
         return TestListDto.builder()
@@ -30,13 +42,17 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public void deleteTest(int id, String authorizationToken) {
-        Optional<Test> testOptional = testRepository.findById(id);
-        if (testOptional.isPresent()) {
-            try {
-                testRepository.delete(testOptional.get());
-            } catch (EmptyResultDataAccessException e) {
+    public void deleteTest(int id, String authorizationToken) throws ForbiddenException {
+        String currentUserName = tokenAuthentication.getUsername(authorizationToken);
+        Optional<User> currentUser = userRepository.findByUsernameIgnoreCase(currentUserName);
+        if (currentUser.isPresent()) {
+            if (UserUtils.checkUserRole(currentUser.get(), Constans.USER_ROLES.MODERATOR) ||
+                    UserUtils.checkUserRole(currentUser.get(), Constans.USER_ROLES.REDACTOR)) {
+                testRepository.deleteById(id);
+            } else {
+                throw new ForbiddenException();
             }
         }
     }
 }
+

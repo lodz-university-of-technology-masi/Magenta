@@ -43,7 +43,6 @@ public class TestsController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('REDACTOR')")
     public ResponseEntity deleteTest(
             @PathVariable("id") int id,
             @ApiParam(hidden = true) @RequestHeader(value = "Authorization", required = false) String authorization)
