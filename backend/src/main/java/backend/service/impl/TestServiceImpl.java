@@ -6,6 +6,7 @@ import backend.entity.Role;
 import backend.entity.Test;
 import backend.entity.User;
 import backend.exception.forbidden.ForbiddenException;
+import backend.exception.not_found.TestNotFoundException;
 import backend.repository.TestRepository;
 import backend.repository.UserRepository;
 import backend.security.TokenAuthentication;
@@ -42,16 +43,20 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public void deleteTest(int id, String authorizationToken) throws ForbiddenException {
+    public void deleteTest(int testId, String authorizationToken) throws ForbiddenException, TestNotFoundException {
         String currentUserName = tokenAuthentication.getUsername(authorizationToken);
         Optional<User> currentUser = userRepository.findByUsernameIgnoreCase(currentUserName);
-        if (currentUser.isPresent()) {
+        Optional<Test> currentTest = testRepository.findById(testId);
+        if (currentUser.isPresent() && currentTest.isPresent()) {
             if (UserUtils.checkUserRole(currentUser.get(), Constans.USER_ROLES.MODERATOR) ||
-                    UserUtils.checkUserRole(currentUser.get(), Constans.USER_ROLES.REDACTOR)) {
-                testRepository.deleteById(id);
+                    (UserUtils.checkUserRole(currentUser.get(), Constans.USER_ROLES.REDACTOR) &&
+                            currentTest.get().getOwners().contains(currentUser))) {
+                testRepository.deleteById(testId);
             } else {
                 throw new ForbiddenException();
             }
+        } else {
+            throw new TestNotFoundException();
         }
     }
 }
