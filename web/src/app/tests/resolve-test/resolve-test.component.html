@@ -1,8 +1,9 @@
 <div class="resolve-test-container material-form">
-  <div *ngFor="let question of test.questions; let i = index;">
+  <div class="question-answer-container" *ngFor="let question of test.questions; let i = index;">
     <div class="question">
       {{question.question}}
     </div>
+    <hr>
     <div class="answer">
       <div *ngIf="question.type === variant">
           <mat-radio-group>

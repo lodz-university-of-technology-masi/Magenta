@@ -1,5 +1,5 @@
 .add-questions-container {
-  width: 80%;
+  width: 60%;
   margin: 5px auto;
 }
 .add-button,
@@ -8,6 +8,9 @@
 }
 .single-question-container {
   padding-bottom: 20px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--main-color);
+  margin: 0 auto 20px auto;
+  background-color: var(--background-secondary-color);
+}
+.delete-button {
+  padding: 20px 40px 20px 40px;
 }
