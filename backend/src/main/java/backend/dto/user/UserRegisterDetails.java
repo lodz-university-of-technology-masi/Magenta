@@ -10,5 +10,6 @@ public class UserRegisterDetails {
     private String username;
     private String password;
     private String nameSurname;
+    private String language;
     private String email;
 }

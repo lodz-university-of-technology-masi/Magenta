@@ -13,5 +13,6 @@ public class UserData {
     private String username;
     private String nameSurname;
     private String email;
+    private String language;
     private List<RoleDto> roles;
 }
