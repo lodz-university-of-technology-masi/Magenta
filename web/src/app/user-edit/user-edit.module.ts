@@ -5,7 +5,7 @@ import { UserDetailsEditComponent } from './user-edit-page/user-details-edit/use
 import { UserPasswordChangeComponent } from './user-edit-page/user-password-change/user-password-change.component';
 import { DeleteAccountComponent } from './user-edit-page/delete-account/delete-account.component';
 import {DeleteUserAccountDialogComponent} from '../dialogs/yes-no-dialog/delete-user-account-dialog/delete-user-account-dialog.component';
-import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserEditRoutingModule} from './user-edit-routing.module';
@@ -15,6 +15,7 @@ import {UserEditRoutingModule} from './user-edit-routing.module';
     CommonModule,
     UserEditRoutingModule,
     MatButtonModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     MatDialogModule,
     ReactiveFormsModule,
