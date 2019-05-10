@@ -40,6 +40,7 @@ export class AuthenticationService {
       .subscribe((response: HttpResponse<LoggedUser>) => {
         this.handleValidUser(response);
       });
+    this.router.navigate([REDACTOR_PAGE_URL]);
   }
 
   register(registerDetails: RegisterUserDetails): void {
