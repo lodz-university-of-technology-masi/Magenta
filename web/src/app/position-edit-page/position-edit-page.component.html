@@ -1,0 +1,35 @@
+<p class="position-edit-header">Zarządzaj stanowiskami</p>
+
+<div class="position-edit-container">
+  <form action="#" method="post">
+    <div class="row form-group">
+      <div class="col-sm-6">
+        <label>Wybierz stanowisko</label>
+        <select name="positions">
+          <option value="position1">Stanowisko #1</option>
+          <option value="position2">Stanowisko #2</option>
+          <option value="position3">Stanowisko #3</option>
+          <option value="position4">Stanowisko #4</option>
+        </select>
+        <!--<div class="full-width-button">
+          <button mat-button
+                  [disabled]="#"
+                  type="submit" (click)="deactivate()">Dezaktywuj stanowisko</button>
+        </div>-->
+        <input type="submit" value="Dezaktywuj">
+      </div>
+
+      <div class="col-sm-6">
+        <label>Nazwa stanowiska</label>
+        <input type="text" class="form-control" placeholder="wpisz nazwę">
+        <input type="submit" value="Aktywuj">
+      </div>
+      <!--<div class="full-width-button">
+          <button mat-button
+                  [disabled]="#"
+                  type="submit" (click)="activate()">Aktywuj stanowisko</button>
+        </div>-->
+    </div>
+
+  </form>
+</div>
