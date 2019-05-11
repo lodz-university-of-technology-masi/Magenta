@@ -11,9 +11,11 @@ INSERT INTO users(username, password, email, name_surname) VALUES ('redactor', '
 INSERT INTO users(username, password, email, name_surname) VALUES ('moderator', '$2a$10$K8YiaFHt8yMA.twuqstwo.fiE.GLlKyG8DbZuxZkMbFtmRP2dufrK', 'moderator@example.com', 'moderator moderator');
 
 INSERT INTO user_roles(user_id, role_id) VALUES(1, 1);
-INSERT INTO user_roles(user_id, role_id) VALUES(2, 2);
-INSERT INTO user_roles(user_id, role_id) VALUES(3, 3);
-INSERT INTO user_roles(user_id, role_id) VALUES(4, 4);
+INSERT INTO user_roles(user_id, role_id) VALUES(2, 1);
+INSERT INTO user_roles(user_id, role_id) VALUES(3, 1);
+INSERT INTO user_roles(user_id, role_id) VALUES(4, 2);
+INSERT INTO user_roles(user_id, role_id) VALUES(5, 3);
+INSERT INTO user_roles(user_id, role_id) VALUES(6, 4);
 
 INSERT INTO tests(id, language, name) VALUES(1, 'pl', 'Testowy test po polsku');
 INSERT INTO tests(id, language, name) VALUES(2, 'en', 'Test test in english');
@@ -43,12 +45,12 @@ INSERT INTO variants(text, question_id) VALUES ('C++', 5);
 
 --for test purposes only
 INSERT INTO users(username, password, email, name_surname, language) VALUES ('string', '$2a$10$lV.ebyqr7eoUadzIbetnHOETWHdcGznM9YAn4OQyhjif2.mk2ICKy', 'string@string', 'string string', 'pl');
-INSERT INTO user_roles(user_id, role_id) VALUES(5,1);
-INSERT INTO user_roles(user_id, role_id) VALUES(5,2);
-INSERT INTO user_roles(user_id, role_id) VALUES(5,3);
-INSERT INTO user_roles(user_id, role_id) VALUES(5,4);
-INSERT INTO user_tests(owner_id, test_id) VALUES (5, 1);
-INSERT INTO user_tests(owner_id, test_id) VALUES (5, 2);
+INSERT INTO user_roles(user_id, role_id) VALUES(7, 1);
+INSERT INTO user_roles(user_id, role_id) VALUES(7, 2);
+INSERT INTO user_roles(user_id, role_id) VALUES(7, 3);
+INSERT INTO user_roles(user_id, role_id) VALUES(7, 4);
+INSERT INTO user_tests(owner_id, test_id) VALUES (7, 1);
+INSERT INTO user_tests(owner_id, test_id) VALUES (7, 2);
 INSERT INTO positions(name, active) VALUES ('Senior Java Developer', false);
 
 
