@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--background-secondary-color);
+  background-color: var(--header-background-color);
   color: var(--secondary-text-color);
   margin-bottom: 50px;
   position: -webkit-sticky; /* Safari */
@@ -21,5 +21,5 @@ li, span {
   padding: 5px 15px;
 }
 li:hover, span:hover {
-  background-color: var(--background-secondary-color-hover);
+  background-color: var(--header-background-color-hover);
 }

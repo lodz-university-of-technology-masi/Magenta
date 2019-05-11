@@ -1,22 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 :root {
-  --background-primary-color: rgb(210, 210, 210);
+  --background-primary-color: rgb(180, 180, 190);
 
---background-secondary-color: rgb(150, 150, 150);
---background-secondary-color-hover: darkgrey;
+--header-background-color: rgb(120, 120, 130);
+--header-background-color-hover: darkgrey;
+
+--background-secondary-color: rgb(210, 210, 210);
 
 --primary-text-color: black;
 --secondary-text-color: white;
 
---logo-color: rgb(255, 0, 144);
---main-color: green;
+--logo-color: rgb(200, 0, 144);
+--main-color: rgb(0, 150, 0);
 --pagination-button: rgb(121, 121, 121);
 --pagination-selected-button: rgb(81, 101, 51);
 
 --disabled-button: rgb(129, 129, 129);
 --error: red;
---error-material-label: rgb(244, 67, 54);
+--error-material-label: rgb(200, 0, 0);
 }
 body {
   background-color: var(--background-primary-color);

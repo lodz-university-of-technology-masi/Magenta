@@ -1,13 +1,17 @@
 .question {
   margin-bottom: 10px;
 }
-.answer {
-  border-bottom: 1px solid var(--main-color);
-  padding-bottom: 5px;
+.answer  {
+  padding: 10px;
 }
 .open-input {
-  width: 100%;
+  width: 70%;
 }
 .send-button {
   margin-top: 20px;
+}
+.question-answer-container {
+  background-color: var(--background-secondary-color);
+  margin-bottom: 15px;
+  padding: 10px;
 }
