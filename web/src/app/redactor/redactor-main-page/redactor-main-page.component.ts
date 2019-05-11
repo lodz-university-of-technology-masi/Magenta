@@ -40,6 +40,13 @@ export class RedactorMainPageComponent implements OnInit {
     ));
   }
 
+  selectTest(test: Test): void {
+    this.selectedTest = test;
+  }
+
+  selectUser(user: User): void {
+    this.selectedUser = user;
+  }
 
   onCheckTestButtonClick(): void {
   }
@@ -48,7 +55,7 @@ export class RedactorMainPageComponent implements OnInit {
   }
 
   onCreateTestButtonClick(): void {
-    print();
+
   }
 
   onDeleteTestButtonClick(): void {
