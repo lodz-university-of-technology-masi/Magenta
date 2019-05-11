@@ -1,0 +1,30 @@
+<div class="all-test-container material-form">
+  <table>
+    <thead>
+    <tr>
+      <td>Id</td>
+      <td>Nazwa</td>
+      <td>Język</td>
+      <td>Edytuj</td>
+      <td>Skasuj</td>
+      <td>Przetłumacz ręcznie</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let test of tests.tests">
+      <td>{{test.id}}</td>
+      <td>{{test.name}}</td>
+      <td>{{test.language}}</td>
+      <td>
+        <button mat-button (click)="edit(test.id)">Edutuj</button>
+      </td>
+      <td class="danger-button">
+        <button mat-button (click)="delete(test.id)">Skasuj</button>
+      </td>
+      <td>
+        <button mat-button (click)="translate(test.id)">Tłumacz</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

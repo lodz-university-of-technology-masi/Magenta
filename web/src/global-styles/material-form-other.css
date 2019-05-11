@@ -1,6 +1,9 @@
 .danger-button .mat-button:not([disabled]) {
   background-color: var(--error);
 }
+.danger-button .mat-button-wrapper:not([disabled]) {
+  color: var(--secondary-text-color)
+}
 .full-width-form .mat-form-field  {
   width: 100%;
 }

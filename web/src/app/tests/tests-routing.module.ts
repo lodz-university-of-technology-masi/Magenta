@@ -6,9 +6,9 @@ import {
   CHECK_TEST,
   MY_SOLUTIONS,
   TEST_PAGE_URL,
-  REDACTOR_TESTS,
+  SOLUTIONS_PAGE_URL,
   RESOLVE_TEST,
-  TRANSLATE_TEXT_PAGE_URL
+  TRANSLATE_TEST_PAGE_URL
 } from '../shared/utils/frontend-urls';
 import {RedactorGuard} from '../guards/redactor-quard';
 import {TestEditorComponent} from './test-editor/test-editor.component';
@@ -39,7 +39,7 @@ const MAIN_PAGE_ROUTES: Route[] = [
     runGuardsAndResolvers: 'always'
   },
   {
-    path: `${TRANSLATE_TEXT_PAGE_URL}/:test/${ADD_QUESTIONS}`,
+    path: `${TRANSLATE_TEST_PAGE_URL}/:test/${ADD_QUESTIONS}`,
     component: <any>TestEditorComponent,
     resolve: {
       questions: QuestionResolveService,
@@ -70,7 +70,7 @@ const MAIN_PAGE_ROUTES: Route[] = [
     runGuardsAndResolvers: 'always'
   },
   {
-    path: `${REDACTOR_TESTS}`,
+    path: `${SOLUTIONS_PAGE_URL}`,
     component: <any>RedactorTestsComponent,
     resolve: {
       solutions: SolutionsForRedactorResolveService

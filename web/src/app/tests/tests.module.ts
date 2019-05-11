@@ -13,6 +13,8 @@ import { SolvedTestComponent } from './solved-test/solved-test.component';
 import { CheckSolvedTestComponent } from './check-solved-test/check-solved-test.component';
 import { UserTestsComponent } from './user-tests/user-tests.component';
 import { UserSolutionComponent } from './user-solution/user-solution.component';
+import { AllTestsComponent } from './all-tests/all-tests.component';
+import {TestsResolveService} from './services/tests-resolve.service';
 
 @NgModule({
   imports: [
@@ -32,6 +34,10 @@ import { UserSolutionComponent } from './user-solution/user-solution.component';
     SolvedTestComponent,
     CheckSolvedTestComponent,
     UserTestsComponent,
-    UserSolutionComponent]
+    UserSolutionComponent,
+    AllTestsComponent],
+  exports: [
+    AllTestsComponent
+  ]
 })
 export class TestsModule { }

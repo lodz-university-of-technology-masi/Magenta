@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SolutionsService} from '../services/solutions.service';
 import {Score, TestSolutionWithId} from '../../models/question';
-import {REDACTOR_TESTS} from '../../shared/utils/frontend-urls';
+import {SOLUTIONS_PAGE_URL} from '../../shared/utils/frontend-urls';
 
 @Component({
   selector: 'app-user-solution',
