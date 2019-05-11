@@ -36,6 +36,16 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
+    public PositionListDto getPositionsByLanguage(String language) {
+        List<PositionDto> positions = positionRepository.getPositionByTestLanguage(language).stream()
+                .map(PositionConverter::getPositionDto)
+                .collect(Collectors.toList());
+        return PositionListDto.builder()
+                .positions(positions)
+                .build();
+    }
+
+    @Override
     public PositionDto addPosition(PositionDto positionDto) {
         Position position = positionRepository.save(PositionConverter.getPosition(positionDto));
         return PositionConverter.getPositionDto(position);
