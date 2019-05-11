@@ -1,0 +1,59 @@
+<p class="editor-edit-header">Zarządzaj redaktorami</p>
+
+<div class="editor-edit-container">
+  <form action="#" method="post">
+    <div class="row form-group">
+      <div class="col-sm-3">
+        <label>Wybierz redaktora: </label>
+        <select name="editors">
+          <option value="editor1">Redaktor #1</option>
+          <option value="editor2">Redaktor #2</option>
+          <option value="editor3">Redaktor #3</option>
+          <option value="editor4">Redaktor #4</option>
+        </select>
+      </div>
+
+      <div class="col-sm-3">
+        <label>Imię: </label>
+        <input type="text" class="form-control" placeholder="wpisz imię">
+      </div>
+      <div class="col-sm-3">
+        <label>Nazwisko: </label>
+        <input type="text" class="form-control" placeholder="wpisz nazwisko">
+      </div>
+      <div class="col-sm-3">
+        <label>Wybierz stanowisko: </label>
+        <select name="positions">
+          <option value="position1">Stanowisko #1</option>
+          <option value="position2">Stanowisko #2</option>
+          <option value="position3">Stanowisko #3</option>
+          <option value="position4">Stanowisko #4</option>
+        </select>
+      </div>
+      <input (click)="modify()" type="submit" value="Zapisz zmiany">
+      <input (click)="add()" type="submit" value="Dodaj redaktora">
+      <input (click)="delete()" type="submit" value="Usuń redaktora">
+
+      <!--<div class="full-width-button">
+          <button mat-button
+                  [disabled]="#"
+                  type="submit" (click)="modify()">Zapisz zmiany</button>
+        </div>
+
+      <div class="full-width-button">
+          <button mat-button
+                  [disabled]="#"
+                  type="submit" (click)="add()">Dodaj redaktora</button>
+
+        </div>
+
+      <div class="full-width-button">
+          <button mat-button
+                  [disabled]="#"
+                  type="submit" (click)="delete()">Usuń redaktora</button>
+        </div>-->
+
+    </div>
+
+  </form>
+</div>
