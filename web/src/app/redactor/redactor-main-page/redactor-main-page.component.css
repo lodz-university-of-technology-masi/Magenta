@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+  border: 1px solid var(--secondary-text-color);
+}
+
+td {
+  text-align: center;
+  padding: 5px 20px;
+  border: 1px solid var(--secondary-text-color);
+}
+
+thead td {
+  background-color: var(--background-secondary-color);
+  font-weight: bold;
+}
