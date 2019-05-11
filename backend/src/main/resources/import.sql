@@ -9,10 +9,7 @@ INSERT INTO users(username, password, name_surname, email) VALUES ('redactor', '
 INSERT INTO users(username, password, name_surname, email) VALUES ('moderator', '$2a$10$K8YiaFHt8yMA.twuqstwo.fiE.GLlKyG8DbZuxZkMbFtmRP2dufrK', 'moderator moderator', 'moderator@example.com');
 
 INSERT INTO user_roles(user_id, role_id) VALUES(1, 1);
-
-INSERT INTO user_roles(user_id, role_id) VALUES(2, 1);
 INSERT INTO user_roles(user_id, role_id) VALUES(2, 2);
-
 INSERT INTO user_roles(user_id, role_id) VALUES(3, 3);
 INSERT INTO user_roles(user_id, role_id) VALUES(4, 4);
 

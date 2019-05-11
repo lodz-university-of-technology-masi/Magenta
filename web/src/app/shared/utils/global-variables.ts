@@ -9,6 +9,7 @@ export const MIN_PASSWORD_LENGTH = 3;
 
 export const ROLE_ADMIN = 'ADMIN';
 export const ROLE_REDACTOR = 'REDACTOR';
+export const ROLE_MODERATOR = 'MODERATOR';
 export const ROLE_USER = 'USER';
 
 export const LANGUAGE_PL = 'pl';
