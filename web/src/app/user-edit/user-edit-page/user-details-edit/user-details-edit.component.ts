@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {User} from '../../../models/user/user';
 import {UserAccountService} from '../../services/user-account.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ErrorHandlingService} from '../../../shared/services/error-handling.service';
@@ -8,7 +7,8 @@ import {USER_EDIT_PAGE_URL} from '../../../shared/utils/frontend-urls';
 import {HttpResponse} from '@angular/common/http';
 import {SessionStorageService} from '../../../shared/services/session-storage.service';
 import {LoggedUser} from '../../../models/user/logged-user';
-import {MAX_DESCRIPTION_LENGTH, MAX_USERNAME_LENGTH, MIN_USERNAME_LENGTH} from '../../../shared/utils/global-variables';
+import {MAX_USERNAME_LENGTH, MIN_USERNAME_LENGTH} from '../../../shared/utils/global-variables';
+import {UserUpdateData} from '../../../models/user/user-update-data';
 
 @Component({
   selector: 'app-user-details-edit',
@@ -17,12 +17,11 @@ import {MAX_DESCRIPTION_LENGTH, MAX_USERNAME_LENGTH, MIN_USERNAME_LENGTH} from '
 })
 export class UserDetailsEditComponent implements OnInit {
 
-  user: User;
+  user: UserUpdateData;
   userDetailsForm: FormGroup;
 
   minUsernameLength = MIN_USERNAME_LENGTH;
   maxUsernameLength = MAX_USERNAME_LENGTH;
-  maxDescriptionLength = MAX_DESCRIPTION_LENGTH;
 
   constructor(private formBuilder: FormBuilder,
               private userAccountService: UserAccountService,
@@ -42,7 +41,9 @@ export class UserDetailsEditComponent implements OnInit {
         Validators.minLength(this.minUsernameLength),
         Validators.maxLength(this.maxUsernameLength)
       ]],
-      email: [this.user.email, Validators.required]
+      email: [this.user.email, Validators.required],
+      nameSurname: [this.user.nameSurname],
+      language: [this.user.language, Validators.required]
     });
   }
   update(): void {

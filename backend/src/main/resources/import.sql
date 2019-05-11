@@ -3,10 +3,12 @@ INSERT INTO roles(name) VALUES ('ADMIN');
 INSERT INTO roles(name) VALUES ('REDACTOR');
 INSERT INTO roles(name) VALUES ('MODERATOR');
 
-INSERT INTO users(username, password, name_surname, email) VALUES ('user', '$2a$10$.BR9gtXEQFZsVxQCFXgavOvTfkyTjDYqBtyzNKIpwvxdDI2tuEooa', 'user user', 'user@example.com');
-INSERT INTO users(username, password, name_surname, email) VALUES ('admin', '$2a$10$w6j7reyRSZzBps0s23CZgeYYg2QlSjNUDxzwPxBiSqcWPNWWQMDge', 'admin admin', 'admin@example.com');
-INSERT INTO users(username, password, name_surname, email) VALUES ('redactor', '$2a$10$VRdDEBU.M8FtVpLK7jYlFOQyzcnYx4ktmXehJFvIdej/DIHd0Lciy', 'redactor redactor', 'redactor@example.com');
-INSERT INTO users(username, password, name_surname, email) VALUES ('moderator', '$2a$10$K8YiaFHt8yMA.twuqstwo.fiE.GLlKyG8DbZuxZkMbFtmRP2dufrK', 'moderator moderator', 'moderator@example.com');
+INSERT INTO users(username, password, email, name_surname, language) VALUES ('user', '$2a$10$.BR9gtXEQFZsVxQCFXgavOvTfkyTjDYqBtyzNKIpwvxdDI2tuEooa', 'user@example.com', 'user user', 'pl');
+INSERT INTO users(username, password, email, name_surname, language) VALUES ('userpl', '$2a$10$u0P9jRBf0HXbFk9STNXRlun80eL.vDhY7mJAlnJD.ne.dMZJIAX22', 'userpl@example.com', 'user polski', 'pl');
+INSERT INTO users(username, password, email, name_surname, language) VALUES ('useren', '$2a$10$wv9IJ.CKcaR6QGmIO7dVbep69mwn3y8x95OLSQZ1vlWD0rU8toz8.', 'useren@example.com', 'user angielski', 'en');
+INSERT INTO users(username, password, email, name_surname) VALUES ('admin', '$2a$10$w6j7reyRSZzBps0s23CZgeYYg2QlSjNUDxzwPxBiSqcWPNWWQMDge', 'admin@example.com', 'admin admin');
+INSERT INTO users(username, password, email, name_surname) VALUES ('redactor', '$2a$10$VRdDEBU.M8FtVpLK7jYlFOQyzcnYx4ktmXehJFvIdej/DIHd0Lciy', 'redactor@example.com', 'redactor redactor');
+INSERT INTO users(username, password, email, name_surname) VALUES ('moderator', '$2a$10$K8YiaFHt8yMA.twuqstwo.fiE.GLlKyG8DbZuxZkMbFtmRP2dufrK', 'moderator@example.com', 'moderator moderator');
 
 INSERT INTO user_roles(user_id, role_id) VALUES(1, 1);
 INSERT INTO user_roles(user_id, role_id) VALUES(2, 2);
@@ -40,7 +42,7 @@ INSERT INTO variants(text, question_id) VALUES ('Java', 5);
 INSERT INTO variants(text, question_id) VALUES ('C++', 5);
 
 --for test purposes only
-INSERT INTO users(username, password, name_surname, email) VALUES ('string', '$2a$10$lV.ebyqr7eoUadzIbetnHOETWHdcGznM9YAn4OQyhjif2.mk2ICKy', 'string string', 'string@string');
+INSERT INTO users(username, password, email, name_surname, language) VALUES ('string', '$2a$10$lV.ebyqr7eoUadzIbetnHOETWHdcGznM9YAn4OQyhjif2.mk2ICKy', 'string@string', 'string string', 'pl');
 INSERT INTO user_roles(user_id, role_id) VALUES(5,1);
 INSERT INTO user_roles(user_id, role_id) VALUES(5,2);
 INSERT INTO user_roles(user_id, role_id) VALUES(5,3);

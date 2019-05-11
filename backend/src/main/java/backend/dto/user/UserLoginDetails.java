@@ -12,5 +12,6 @@ import java.util.List;
 public class UserLoginDetails {
     private String username;
     private String email;
+    private String language;
     private List<RoleDto> roles;
 }

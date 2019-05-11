@@ -10,4 +10,5 @@ public class UserUpdateData {
     private String username;
     private String email;
     private String nameSurname;
+    private String language;
 }
