@@ -20,8 +20,8 @@ INSERT INTO user_roles(user_id, role_id) VALUES(6, 4);
 INSERT INTO tests(id, language, name) VALUES(1, 'pl', 'Testowy test po polsku');
 INSERT INTO tests(id, language, name) VALUES(2, 'en', 'Test test in english');
 
-INSERT INTO user_tests(owner_id, test_id) VALUES (4, 1);
-INSERT INTO user_tests(owner_id, test_id) VALUES (4, 2);
+INSERT INTO user_tests(owner_id, test_id) VALUES (5, 1);
+INSERT INTO user_tests(owner_id, test_id) VALUES (5, 2);
 
 INSERT INTO questions(question, type, test_id) VALUES ('Jaki język jest najlepsiejszy?', 'variant', 1);
 INSERT INTO questions(question, type, test_id) VALUES ('Jaka jest ocena filmu Masło?', 'scala', 1);
