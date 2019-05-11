@@ -13,14 +13,8 @@ import {Log} from '@angular/core/testing/src/logger';
 })
 export class RedactorMainPageComponent implements OnInit {
 
-  tests: Test[] = [
-    {
-      id: 1,
-      name: 'aaa',
-      language: 'pl',
-    }
-  ];
-  users: User[];
+  tests: Test[] = [];
+  users: User[] = [];
   selectedTest: Test;
   selectedUser: User;
 
@@ -39,6 +33,10 @@ export class RedactorMainPageComponent implements OnInit {
   ngOnInit(): void {
     this.testService.getTests().subscribe(result => result.tests.forEach(test =>
       this.tests.push(test)
+    ));
+
+    this.userService.getUsers().subscribe(result => result.users.forEach(user =>
+      this.users.push(user)
     ));
   }
 

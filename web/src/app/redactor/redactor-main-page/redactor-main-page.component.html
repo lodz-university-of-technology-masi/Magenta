@@ -1,6 +1,6 @@
 <div class="center">
 
-  <div>
+  <div class="margin-top">
     <table>
       <thead>
       <tr>
@@ -19,6 +19,23 @@
         <td>
           <button mat-button [routerLink]="['..', mySolutions, solution.id]">Szczegóły</button>
         </td>-->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="margin-top">
+    <table>
+      <thead>
+      <tr>
+        <td>Imie</td>
+        <td>Nazwisko</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.username}}</td>
+        <td>{{user.nameSurname}}</td>
       </tr>
       </tbody>
     </table>
