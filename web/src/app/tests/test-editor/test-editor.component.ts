@@ -77,14 +77,18 @@ export class TestEditorComponent implements OnInit {
   }
   send(): void {
     this.sendTest().subscribe(testResult => {
-      this.questionService.save(
-        +this.route.snapshot.paramMap.get('test'),
-        this.questions
-      ).subscribe(
-        questionResult => {
-          this.navigate();
-        }
-      );
+      if ( this.isRedactor()) {
+        this.questionService.save(
+          +this.route.snapshot.paramMap.get('test'),
+          this.questions
+        ).subscribe(
+          questionResult => {
+            this.navigate();
+          }
+        );
+      } else {
+        this.navigate();
+      }
     });
   }
 
@@ -108,6 +112,9 @@ export class TestEditorComponent implements OnInit {
     return true;
   }
   areQuestionsValid(): boolean {
+    if (!this.isRedactor()) {
+      return true;
+    }
     if (this.questions.questions.length === 0) {
       return false;
     }
@@ -127,5 +134,8 @@ export class TestEditorComponent implements OnInit {
       }
     }
     return true;
+  }
+  isRedactor(): boolean {
+    return this.sessionStorageService.isRedactor();
   }
 }

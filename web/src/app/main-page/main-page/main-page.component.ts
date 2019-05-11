@@ -18,16 +18,18 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    switch (this.sessionStorage.getUser().roles[0].name) {
-      case ROLE_USER:
-        this.router.navigate([USER_PAGE_URL]);
-        break;
-      case ROLE_MODERATOR:
-        this.router.navigate([MODERATOR_PAGE_URL]);
-        break;
-      case ROLE_REDACTOR:
-        this.router.navigate([REDACTOR_PAGE_URL]);
-        break;
+    if (this.sessionStorage.getUser() !== undefined && this.sessionStorage.getUser() !== null) {
+      switch (this.sessionStorage.getUser().roles[0].name) {
+        case ROLE_USER:
+          this.router.navigate([USER_PAGE_URL]);
+          break;
+        case ROLE_MODERATOR:
+          this.router.navigate([MODERATOR_PAGE_URL]);
+          break;
+        case ROLE_REDACTOR:
+          this.router.navigate([REDACTOR_PAGE_URL]);
+          break;
+      }
     }
   }
 }

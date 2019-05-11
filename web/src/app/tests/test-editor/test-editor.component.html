@@ -17,19 +17,22 @@
         </mat-error>
     </div>
   </div>
-  <div *ngFor="let question of questions.questions; let i = index;">
-    <div class="single-question-container">
-      <app-single-question [question]="question"></app-single-question>
-      <div>
-        <div class="danger-button full-width-button delete-button row">
-          <div class="col-md-8"></div>
-          <button class="col-md-4" mat-button (click)="delete(i)">Skasuj pytnie</button>
+  <div *ngIf="isRedactor()">
+    <div  *ngFor="let question of questions.questions; let i = index;">
+      <div class="single-question-container">
+        <app-single-question [question]="question"></app-single-question>
+        <div>
+          <div class="danger-button full-width-button delete-button row">
+            <div class="col-md-8"></div>
+            <button class="col-md-4" mat-button (click)="delete(i)">Skasuj pytnie</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="row">
-    <div class="full-width-button col-md-6 add-button">
+    <div *ngIf="isRedactor()" class="full-width-button col-md-6 add-button">
       <button mat-button (click)="add()">Dodaj pytnie</button>
     </div>
     <div class="full-width-button col-md-6 send-button">
