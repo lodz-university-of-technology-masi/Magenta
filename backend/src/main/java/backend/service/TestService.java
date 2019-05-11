@@ -6,7 +6,7 @@ import backend.exception.not_found.TestNotFoundException;
 
 public interface TestService {
 
-    TestListDto getAllTests();
+    TestListDto getAllTests(String authorizationToken);
 
     void deleteTest(int testId, String authorizationToken) throws ForbiddenException, TestNotFoundException;
 }

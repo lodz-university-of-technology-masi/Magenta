@@ -30,8 +30,8 @@ public class TestsController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping()
-    public ResponseEntity getTests() throws Exception {
-        return ResponseEntity.ok(testService.getAllTests());
+    public ResponseEntity getTests(@ApiParam(hidden = true) @RequestHeader(value = "Authorization", required = false) String authorization) throws Exception {
+        return ResponseEntity.ok(testService.getAllTests(authorization));
     }
 
     @ApiOperation(value = "Deletes test")
