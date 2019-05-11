@@ -1,7 +1,15 @@
 import {Route, RouterModule} from '@angular/router';
 
 import {NgModule} from '@angular/core';
-import {ADD_QUESTIONS, CHECK_TEST, MY_SOLUTIONS, REDACTOR_TEST_PAGE_URL, REDACTOR_TESTS, RESOLVE_TEST} from '../shared/utils/frontend-urls';
+import {
+  ADD_QUESTIONS,
+  CHECK_TEST,
+  MY_SOLUTIONS,
+  TEST_PAGE_URL,
+  REDACTOR_TESTS,
+  RESOLVE_TEST,
+  TRANSLATE_TEXT_PAGE_URL
+} from '../shared/utils/frontend-urls';
 import {RedactorGuard} from '../guards/redactor-quard';
 import {TestEditorComponent} from './test-editor/test-editor.component';
 import {QuestionResolveService} from './services/question-resolve.service';
@@ -19,7 +27,7 @@ import {TestResolveService} from './services/test-resolve.service';
 
 const MAIN_PAGE_ROUTES: Route[] = [
   {
-    path: `${REDACTOR_TEST_PAGE_URL}/:test/${ADD_QUESTIONS}`,
+    path: `${TEST_PAGE_URL}/:test/${ADD_QUESTIONS}`,
     component: <any>TestEditorComponent,
     resolve: {
       questions: QuestionResolveService,
@@ -31,7 +39,19 @@ const MAIN_PAGE_ROUTES: Route[] = [
     runGuardsAndResolvers: 'always'
   },
   {
-    path: `${REDACTOR_TEST_PAGE_URL}/${ADD_QUESTIONS}`,
+    path: `${TRANSLATE_TEXT_PAGE_URL}/:test/${ADD_QUESTIONS}`,
+    component: <any>TestEditorComponent,
+    resolve: {
+      questions: QuestionResolveService,
+      test: TestResolveService
+    },
+    canActivate: [
+      RedactorOrModeratorGuard
+    ],
+    runGuardsAndResolvers: 'always'
+  },
+  {
+    path: `${TEST_PAGE_URL}/${ADD_QUESTIONS}`,
     component: <any>TestEditorComponent,
     canActivate: [
       RedactorOrModeratorGuard

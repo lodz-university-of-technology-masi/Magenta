@@ -3,7 +3,7 @@ import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
 import {Question, Questions} from '../../models/question';
 import {OPEN_QUESTION, VARIANT_QUESTION} from '../../shared/utils/global-variables';
 import {QuestionService} from '../services/question.service';
-import {MAIN_PAGE_URL, MODERATOR_PAGE_URL, REDACTOR_PAGE_URL} from '../../shared/utils/frontend-urls';
+import {MAIN_PAGE_URL, MODERATOR_PAGE_URL, REDACTOR_PAGE_URL, TRANSLATE_TEXT_PAGE_URL} from '../../shared/utils/frontend-urls';
 import {Observable} from 'rxjs';
 import {Test} from '../../models/test';
 import {TestService} from '../services/test.service';
@@ -36,6 +36,7 @@ export class TestEditorComponent implements OnInit {
     }
     if (this.test === null || this.test === undefined) {
       this.test = new Test();
+      this.test.id = 0;
       this.test.language = '';
       this.test.name = '';
     }
@@ -67,7 +68,8 @@ export class TestEditorComponent implements OnInit {
     this.questions.questions.splice(id, 1);
   }
   sendTest(): Observable<Test> {
-    if (this.test.id === 0) {
+    console.log(this.test.id);
+    if (this.test.id === 0 || this.checkUrl(TRANSLATE_TEXT_PAGE_URL)) {
       return this.testService.create(this.test);
     } else {
       return this.testService.update(this.test.id, this.test);
