@@ -2,7 +2,7 @@ export interface Tests {
   tests: Test[];
 }
 
-export interface Test {
+export class Test {
   id: number;
   name: string;
   language: string;

@@ -1,0 +1,41 @@
+<div class="test-editor-container material-form">
+  <div class="row test-container">
+    <div class="col-md-8">
+        <input matInput class="name-input" placeholder="Nazwa" [value]="test.name"
+               (input)="test.name = $event.target.value" >
+        <mat-error *ngIf="test.name.length === 0">
+          Nazwa jest wymagana.
+        </mat-error>
+    </div>
+    <div class="col-md-4">
+      <mat-select placeholder="Język" [(value)]="test.language">
+          <mat-option [value]="'pl'">Polski</mat-option>
+          <mat-option [value]="'en'">Angielski</mat-option>
+        </mat-select>
+        <mat-error *ngIf="test.language.length === 0">
+          Język jest wymagany.
+        </mat-error>
+    </div>
+  </div>
+  <div *ngFor="let question of questions.questions; let i = index;">
+    <div class="single-question-container">
+      <app-single-question [question]="question"></app-single-question>
+      <div>
+        <div class="danger-button full-width-button delete-button row">
+          <div class="col-md-8"></div>
+          <button class="col-md-4" mat-button (click)="delete(i)">Skasuj pytnie</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="full-width-button col-md-6 add-button">
+      <button mat-button (click)="add()">Dodaj pytnie</button>
+    </div>
+    <div class="full-width-button col-md-6 send-button">
+      <button mat-button (click)="send()" [disabled]="!isTestValid() || !areQuestionsValid()">Zapisz</button>
+    </div>
+  </div>
+  <pre>
+</pre>
+</div>
