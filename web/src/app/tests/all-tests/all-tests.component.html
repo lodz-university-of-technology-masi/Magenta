@@ -7,7 +7,7 @@
       <td>Język</td>
       <td>Edytuj</td>
       <td>Skasuj</td>
-      <td>Przetłumacz ręcznie</td>
+      <td *ngIf="isRedactor()">Przetłumacz ręcznie</td>
     </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
       <td class="danger-button">
         <button mat-button (click)="delete(test.id)">Skasuj</button>
       </td>
-      <td>
+      <td *ngIf="isRedactor()">
         <button mat-button (click)="translate(test.id)">Tłumacz</button>
       </td>
     </tr>

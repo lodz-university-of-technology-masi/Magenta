@@ -11,23 +11,10 @@ import {ADD_QUESTIONS, SOLUTIONS_PAGE_URL, TEST_PAGE_URL} from '../../shared/uti
   styleUrls: ['./redactor-main-page.component.css']
 })
 export class RedactorMainPageComponent implements OnInit {
-
-  tests: Test[] = [];
   users: User[] = [];
-  selectedTest: Test;
-  selectedUser: User;
 
   constructor(private userService: UserService,
               private router: Router) {
-  }
-
-
-  checkIfSelectedTestIsNull(): Boolean {
-    return this.selectedTest == null;
-  }
-
-  checkIfSelectedTestAndUserIsNull(): Boolean {
-    return this.selectedTest == null || this.selectedUser == null;
   }
 
   ngOnInit(): void {

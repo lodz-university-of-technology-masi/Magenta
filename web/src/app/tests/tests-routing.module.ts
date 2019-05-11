@@ -22,7 +22,7 @@ import {SolutionResolveService} from './services/solution-resolve.service';
 import {UserTestsComponent} from './user-tests/user-tests.component';
 import {UserSolutionComponent} from './user-solution/user-solution.component';
 import {UserSolutionsResolveService} from './services/user-solutions-resolve.service';
-import {RedactorOrModeratorGuard} from '../guards/RedactorOrModeratorGuard';
+import {RedactorOrModeratorGuard} from '../guards/redactor-or-moderator-guard';
 import {TestResolveService} from './services/test-resolve.service';
 
 const MAIN_PAGE_ROUTES: Route[] = [

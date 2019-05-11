@@ -3,6 +3,7 @@ import {Test, Tests} from '../../models/test';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TestService} from '../services/test.service';
 import {ADD_QUESTIONS, TEST_PAGE_URL, TRANSLATE_TEST_PAGE_URL} from '../../shared/utils/frontend-urls';
+import {SessionStorageService} from '../../shared/services/session-storage.service';
 
 @Component({
   selector: 'app-all-tests',
@@ -18,7 +19,8 @@ export class AllTestsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private testService: TestService) { }
+              private testService: TestService,
+              private sessionStorageService: SessionStorageService) { }
 
   ngOnInit(): void {
     this.tests = this.route.snapshot.data['tests'];
@@ -32,5 +34,8 @@ export class AllTestsComponent implements OnInit {
   }
   translate(id: number): void {
     this.router.navigate([TRANSLATE_TEST_PAGE_URL, id, ADD_QUESTIONS]);
+  }
+  isRedactor(): boolean {
+    return this.sessionStorageService.isRedactor();
   }
 }

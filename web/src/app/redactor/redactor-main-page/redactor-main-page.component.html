@@ -10,16 +10,12 @@
       <tr>
         <td>Imie</td>
         <td>Nazwisko</td>
-        <td></td>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let user of users">
         <td>{{user.username}}</td>
         <td>{{user.nameSurname}}</td>
-        <td>
-          <input type="radio" name="users" (click)=selectUser(user) [disabled]=checkIfSelectedTestIsNull()>
-        </td>
       </tr>
       </tbody>
     </table>
