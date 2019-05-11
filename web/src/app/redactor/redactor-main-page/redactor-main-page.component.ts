@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterContentInit, Component, OnInit} from '@angular/core';
 import {Test} from '../../models/test';
 import {User} from '../../models/user/user';
 import {UserService} from '../services/user.service';
 import {TestService} from '../services/test.service';
+import {map} from 'rxjs/operators';
+import {Log} from '@angular/core/testing/src/logger';
 
 @Component({
   selector: 'app-editor-main-page',
@@ -11,7 +13,13 @@ import {TestService} from '../services/test.service';
 })
 export class RedactorMainPageComponent implements OnInit {
 
-  tests: Test[];
+  tests: Test[] = [
+    {
+      id: 1,
+      name: 'aaa',
+      language: 'pl',
+    }
+  ];
   users: User[];
   selectedTest: Test;
   selectedUser: User;
@@ -29,26 +37,20 @@ export class RedactorMainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUsers().toPromise()
-      .then(result => {
-        this.users = result;
-      });
-    this.testService.getTests().toPromise()
-      .then(result => {
-        this.tests = result;
-      });
+    this.testService.getTests().subscribe(result => result.tests.forEach(test =>
+      this.tests.push(test)
+    ));
   }
 
+
   onCheckTestButtonClick(): void {
-    this.testService.getTests(); // TODO go to checking module
   }
 
   onEditTestButtonClick(): void {
-    this.testService.getTests(); // TODO got to editing module
   }
 
   onCreateTestButtonClick(): void {
-    // TODO got to creating test module
+    print();
   }
 
   onDeleteTestButtonClick(): void {

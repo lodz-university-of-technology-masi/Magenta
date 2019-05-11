@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TESTS_URL} from '../../shared/utils/backend-urls';
 import {Observable} from 'rxjs/Observable';
-import {Test} from '../../models/test';
+import {Test, Tests} from '../../models/test';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class TestService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getTests(): Observable<[Test]> {
-    return this.httpClient.get<[Test]>(
+  getTests(): Observable<Tests> {
+    return this.httpClient.get<Tests>(
       TESTS_URL
     );
   }

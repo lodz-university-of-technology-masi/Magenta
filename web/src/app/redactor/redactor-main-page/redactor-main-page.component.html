@@ -1,5 +1,30 @@
 <div class="center">
+
   <div>
+    <table>
+      <thead>
+      <tr>
+        <td>Id</td>
+        <td>Nazwa</td>
+        <td>Język</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let test of tests">
+        <td>{{test.id}}</td>
+        <td>{{test.name}}</td>
+        <td>{{test.language}}</td>
+        <!--<td><span *ngIf="solution.checked">Tak</span><span *ngIf="!solution.checked">Nie</span></td>
+        <td>{{solution.score}}</td>®
+        <td>
+          <button mat-button [routerLink]="['..', mySolutions, solution.id]">Szczegóły</button>
+        </td>-->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+<!--  <div class="margin-top">
     Wybierz test :
     <select [(ngModel)]="selectedTest">
       <option *ngFor="let t of tests" [value]="t.id">{{t.name}}</option>
@@ -11,7 +36,7 @@
     <select [(ngModel)]="selectedUser" [disabled]=checkIfSelectedTestIsNull()>
       <option *ngFor="let u of users" [value]="u.username">{{u.username}}</option>
     </select>
-  </div>
+  </div>-->
 
   <div class="margin-top">
     <button class="main-editor-button" (click)=onCheckTestButtonClick() [disabled]=checkIfSelectedTestAndUserIsNull()
