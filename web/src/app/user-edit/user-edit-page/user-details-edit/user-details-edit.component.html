@@ -16,6 +16,22 @@
     </div>
     <div>
       <mat-form-field>
+        <input matInput formControlName="nameSurname" placeholder="Imię i nazwisko">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-select formControlName="language" placeholder="Język">
+          <mat-option [value]="'pl'">Polski</mat-option>
+          <mat-option [value]="'en'">Angielski</mat-option>
+        </mat-select>
+        <mat-error *ngIf="userDetailsForm.get('language').hasError('required')">
+          Język jest wymagany.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
         <input matInput email formControlName="email" placeholder="Email">
         <mat-error *ngIf="userDetailsForm.get('email').hasError('required')">
           Email jest wymagany.
@@ -32,3 +48,6 @@
     </div>
   </form>
 </div>
+<pre>
+  {{userDetailsForm.value | json}}
+</pre>

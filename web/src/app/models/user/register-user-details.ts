@@ -3,4 +3,5 @@ export interface RegisterUserDetails {
   password: string;
   email: string;
   nameSurname: string;
+  language: string;
 }

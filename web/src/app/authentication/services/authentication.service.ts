@@ -7,8 +7,9 @@ import {LoginDetails} from '../../models/user/login-details';
 import {LoggedUser} from '../../models/user/logged-user';
 import {RegisterUserDetails} from '../../models/user/register-user-details';
 import {LOGIN_URL, REGISTER_URL} from '../../shared/utils/backend-urls';
-import {MAIN_PAGE_URL, REDACTOR_PAGE_URL} from '../../shared/utils/frontend-urls';
-import {ROLE_REDACTOR} from '../../shared/utils/global-variables';
+
+import {MODERATOR_PAGE_URL, REDACTOR_PAGE_URL, USER_PAGE_URL} from '../../shared/utils/frontend-urls';
+import {ROLE_MODERATOR, ROLE_REDACTOR, ROLE_USER} from '../../shared/utils/global-variables';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +25,20 @@ export class AuthenticationService {
   handleValidUser(response: HttpResponse<LoggedUser>): void {
     this.sessionStorage.storeSession(response.body,
       response.headers.get('Authorization'));
-    if (this.checkIfContainsRole(response, ROLE_REDACTOR)) {
-      this.router.navigate([REDACTOR_PAGE_URL]);
-    } else {
-      this.router.navigate([MAIN_PAGE_URL]);
+    switch (this.sessionStorage.getUser().roles[0].name) {
+      case ROLE_USER:
+        this.router.navigate([USER_PAGE_URL]);
+        console.log('user');
+        break;
+      case ROLE_MODERATOR:
+        this.router.navigate([MODERATOR_PAGE_URL]);
+        console.log('moderator');
+        break;
+      case ROLE_REDACTOR:
+        this.router.navigate([REDACTOR_PAGE_URL]);
+        console.log('redactor');
+        break;
     }
-  }
-
-  private checkIfContainsRole(response: HttpResponse<LoggedUser>, checkingRole: String): Boolean {
-    return response.body.roles.some(role => role.name === checkingRole);
   }
 
   login(loginDetails: LoginDetails): void {
@@ -40,7 +46,6 @@ export class AuthenticationService {
       .subscribe((response: HttpResponse<LoggedUser>) => {
         this.handleValidUser(response);
       });
-    this.router.navigate([REDACTOR_PAGE_URL]);
   }
 
   register(registerDetails: RegisterUserDetails): void {

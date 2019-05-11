@@ -7,3 +7,12 @@
 .full-width-button .mat-button {
   width: 100%;
 }
+.big-button .mat-button {
+  width: 75%;
+}
+.medium-button .mat-button {
+  width: 50%;
+}
+.small-button .mat-button {
+  width: 25%;
+}
