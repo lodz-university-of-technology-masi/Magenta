@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Solutions} from '../../models/question';
 import {ActivatedRoute, Router} from '@angular/router';
-import {QuestionService} from '../services/question.service';
 import {CHECK_TEST} from '../../shared/utils/frontend-urls';
 
 @Component({
@@ -11,11 +10,13 @@ import {CHECK_TEST} from '../../shared/utils/frontend-urls';
 })
 export class RedactorTestsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+  }
 
   solutions: Solutions;
   checkPage = CHECK_TEST;
-  ngOnInit() {
+
+  ngOnInit(): void {
     this.solutions = this.route.snapshot.data['solutions'];
   }
 

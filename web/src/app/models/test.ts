@@ -1,5 +1,8 @@
-// tslint:disable-next-line:comment-format
-export interface Test { //TODO adjust to api
+export interface Tests {
+  tests: Test[];
+}
+
+export interface Test {
   id: number;
   name: string;
   language: string;

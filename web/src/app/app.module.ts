@@ -13,6 +13,7 @@ import {UserEditModule} from './user-edit/user-edit.module';
 import {DialogsModule} from './dialogs/dialogs.module';
 import {ErrorModule} from './error/error.module';
 import {Interceptor} from './interceptor';
+import {RedactorModule} from './redactor/redactor.module';
 import {TestsModule} from './tests/tests.module';
 
 @NgModule({
@@ -32,6 +33,7 @@ import {TestsModule} from './tests/tests.module';
     BrowserAnimationsModule,
     DialogsModule,
     ErrorModule,
+    RedactorModule
   ],
   providers: [
     {

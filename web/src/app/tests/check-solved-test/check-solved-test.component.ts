@@ -14,13 +14,16 @@ export class CheckSolvedTestComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private solutionsService: SolutionsService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   solution: TestSolutionWithId;
   score = 0;
-  ngOnInit() {
+
+  ngOnInit(): void {
     this.solution = this.route.snapshot.data['solution'];
   }
+
   send(): void {
     const scoreModel = new Score();
     scoreModel.score = this.score;
