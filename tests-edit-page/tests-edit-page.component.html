@@ -1,0 +1,44 @@
+<p class="tests-edit-header">Zarządzaj testami</p>
+
+<div class="tests-edit-container">
+  <form action="#" method="post">
+    <div class="row form-group">
+
+      <div class="col-sm-6">
+        <label>Wybierz test: </label>
+        <select name="tests">
+          <option value="test1">Test #1</option>
+          <option value="test2">Test #2</option>
+          <option value="test3">Test #3</option>
+          <option value="test4">Test #4</option>
+        </select>
+      </div>
+
+      <div class="col-sm-6">
+        <label>Wybierz stanowisko: </label>
+        <select name="positions">
+          <option value="positon1">Stanowisko #1</option>
+          <option value="positon2">Stanowisko #2</option>
+          <option value="positon3">Stanowisko #3</option>
+          <option value="positon4">Stanowisko #4</option>
+        </select>
+      </div>
+      <input (click)="assign()" type="submit" value="Przypisz test do stanowiska">
+      <input (click)="delete()" type="submit" value="Usuń test">
+
+      <!--<div class="full-width-button">
+          <button mat-button
+                  [disabled]="#"
+                  type="submit" (click)="assign()">Przypisz test do stanowiska</button>
+        </div>
+
+      <div class="full-width-button">
+          <button mat-button
+                  [disabled]="#"
+                  type="submit" (click)="delete()">Usuń test</button>
+        </div>-->
+
+    </div>
+
+  </form>
+</div>
