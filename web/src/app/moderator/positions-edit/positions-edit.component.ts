@@ -13,25 +13,35 @@ export class PositionsEditComponent implements OnInit {
 
   positions: Positions;
   tests: Tests;
-  name: string;
+  name = '';
 
   constructor(private route: ActivatedRoute,
               private positionService: PositionsService) { }
 
   ngOnInit() {
-    this.positions = this.route.data['positions'];
-    this.tests = this.route.data['tests'];
+    this.positions = this.route.snapshot.data['positions'];
+    this.tests = this.route.snapshot.data['tests'];
   }
   add(): void {
     const position = new Position();
-    position.name = name;
+    position.name = this.name;
     position.active = false;
-    this.positionService.add(position).subscribe();
+    this.positionService.add(position).subscribe(
+      result => {
+        this.positions.positions.push(result);
+      }
+    );
   }
   assign(positionId: number, testId: number): void {
     this.positionService.assign(testId, positionId).subscribe();
   }
   setActive(positionId: number, active: boolean): void {
-    this.positionService.setActive(positionId, active);
+    this.positionService.setActive(positionId, active).subscribe();
+  }
+  getSelectValue(position: Position): number {
+    if (position.test === null) {
+      return null;
+    }
+    return position.test.id;
   }
 }

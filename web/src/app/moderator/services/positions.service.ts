@@ -18,9 +18,9 @@ export class PositionsService {
     return this.http.put<Position>(`${POSITIONS_URL}/${ASSIGN_POSTFIX}/${positionId}?testId=${testId}`, null);
   }
   add(position: Position): Observable<Position> {
-    return this.http.post<Position>(`${POSITIONS_URL}/${ASSIGN_POSTFIX}`, position);
+    return this.http.post<Position>(`${POSITIONS_URL}`, position);
   }
   setActive(positionId: number, active: boolean): Observable<Position> {
-    return this.http.put<Position>(`${POSITIONS_URL}/${ASSIGN_POSTFIX}/${positionId}?active=${active}`, null);
+    return this.http.put<Position>(`${POSITIONS_URL}/${positionId}?active=${active}`, null);
   }
 }

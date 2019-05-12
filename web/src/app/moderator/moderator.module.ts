@@ -4,13 +4,17 @@ import { ModeratorPageComponent } from './moderator-page/moderator-page.componen
 import {ModeratorRoutingModule} from './moderator-routing.module';
 import {TestsModule} from '../tests/tests.module';
 import {SharedModule} from '../shared/shared.module';
-import {MatButtonModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule} from '@angular/material';
 import { PositionsEditComponent } from './positions-edit/positions-edit.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatInputModule,
     ModeratorRoutingModule,
     TestsModule,
     SharedModule
