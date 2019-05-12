@@ -1,4 +1,4 @@
-.add-questions-container {
+.test-editor-container {
   width: 60%;
   margin: 5px auto;
 }
@@ -13,4 +13,12 @@
 }
 .delete-button {
   padding: 20px 40px 20px 40px;
+}
+.name-input {
+  width: 100%;
+}
+.test-container {
+  margin: 0 auto 40px auto;
+  background-color: var(--background-secondary-color);
+  padding: 20px;
 }

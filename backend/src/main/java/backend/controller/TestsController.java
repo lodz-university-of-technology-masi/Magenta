@@ -8,6 +8,7 @@ import backend.service.TestService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,8 +32,8 @@ public class TestsController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping()
-    public ResponseEntity getTests() throws Exception {
-        return ResponseEntity.ok(testService.getAllTests());
+    public ResponseEntity getTests(@ApiParam(hidden = true) @RequestHeader(value = "Authorization", required = false) String authorization) throws Exception {
+        return ResponseEntity.ok(testService.getAllTests(authorization));
     }
 
     @ApiOperation(value = "Get test data",

@@ -1,26 +1,7 @@
-<div class="center">
+<div class="center redactor-main-page-container">
 
   <div class="margin-top">
-    <table>
-      <thead>
-      <tr>
-        <td>Id</td>
-        <td>Nazwa</td>
-        <td>Język</td>
-        <td></td>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let test of tests">
-        <td>{{test.id}}</td>
-        <td>{{test.name}}</td>
-        <td>{{test.language}}</td>
-        <td>
-          <input type="radio" name="tests" (click)=selectTest(test)>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    <app-all-tests></app-all-tests>
   </div>
 
   <div class="margin-top">
@@ -29,16 +10,12 @@
       <tr>
         <td>Imie</td>
         <td>Nazwisko</td>
-        <td></td>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let user of users">
         <td>{{user.username}}</td>
         <td>{{user.nameSurname}}</td>
-        <td>
-          <input type="radio" name="users" (click)=selectUser(user) [disabled]=checkIfSelectedTestIsNull()>
-        </td>
       </tr>
       </tbody>
     </table>
@@ -58,18 +35,18 @@
       </select>
     </div>-->
 
-  <div class="margin-top">
-    <button class="main-editor-button" (click)=onCheckTestButtonClick() [disabled]=checkIfSelectedTestAndUserIsNull()
-            type="button">Sprawdź test
-    </button>
-    <button class="main-editor-button" (click)=onEditTestButtonClick() [disabled]=checkIfSelectedTestIsNull()
-            type="button">Edytuj test
-    </button>
-  </div>
-  <div class="margin-top">
-    <button class="main-editor-button" (click)=onCreateTestButtonClick() type="button">Stwórz test</button>
-    <button class="main-editor-button-delete" (click)=onDeleteTestButtonClick() [disabled]=checkIfSelectedTestIsNull()
-            type="button">Usuń test
-    </button>
+  <div class="row material-form full-width-button">
+    <div class="margin-top col-md-6">
+      <button mat-button class="main-editor-button" (click)=onCheckTestButtonClick()
+              type="button">
+        Sprawdź testy
+      </button>
+    </div>
+    <div class="margin-top col-md-6">
+      <button mat-button class="main-editor-button" (click)=onCreateTestButtonClick()
+              type="button">
+        Stwórz test
+      </button>
+    </div>
   </div>
 </div>

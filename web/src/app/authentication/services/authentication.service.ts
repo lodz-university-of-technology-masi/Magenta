@@ -28,15 +28,12 @@ export class AuthenticationService {
     switch (this.sessionStorage.getUser().roles[0].name) {
       case ROLE_USER:
         this.router.navigate([USER_PAGE_URL]);
-        console.log('user');
         break;
       case ROLE_MODERATOR:
         this.router.navigate([MODERATOR_PAGE_URL]);
-        console.log('moderator');
         break;
       case ROLE_REDACTOR:
         this.router.navigate([REDACTOR_PAGE_URL]);
-        console.log('redactor');
         break;
     }
   }

@@ -1,10 +1,9 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Test} from '../../models/test';
 import {User} from '../../models/user/user';
 import {UserService} from '../services/user.service';
-import {TestService} from '../services/test.service';
-import {map} from 'rxjs/operators';
-import {Log} from '@angular/core/testing/src/logger';
+import {Router} from '@angular/router';
+import {ADD_QUESTIONS, SOLUTIONS_PAGE_URL, TEST_PAGE_URL} from '../../shared/utils/frontend-urls';
 
 @Component({
   selector: 'app-editor-main-page',
@@ -12,53 +11,23 @@ import {Log} from '@angular/core/testing/src/logger';
   styleUrls: ['./redactor-main-page.component.css']
 })
 export class RedactorMainPageComponent implements OnInit {
-
-  tests: Test[] = [];
   users: User[] = [];
-  selectedTest: Test;
-  selectedUser: User;
 
-  constructor(private userService: UserService, private testService: TestService) {
-  }
-
-
-  checkIfSelectedTestIsNull(): Boolean {
-    return this.selectedTest == null;
-  }
-
-  checkIfSelectedTestAndUserIsNull(): Boolean {
-    return this.selectedTest == null || this.selectedUser == null;
+  constructor(private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-    this.testService.getTests().subscribe(result => result.tests.forEach(test =>
-      this.tests.push(test)
-    ));
-
     this.userService.getUsers().subscribe(result => result.users.forEach(user =>
       this.users.push(user)
     ));
   }
 
-  selectTest(test: Test): void {
-    this.selectedTest = test;
-  }
-
-  selectUser(user: User): void {
-    this.selectedUser = user;
-  }
-
   onCheckTestButtonClick(): void {
-  }
-
-  onEditTestButtonClick(): void {
+    this.router.navigate([SOLUTIONS_PAGE_URL]);
   }
 
   onCreateTestButtonClick(): void {
-
-  }
-
-  onDeleteTestButtonClick(): void {
-    this.testService.deleteTest(this.selectedTest.id);
+    this.router.navigate([TEST_PAGE_URL, ADD_QUESTIONS]);
   }
 }
