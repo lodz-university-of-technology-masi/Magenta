@@ -10,3 +10,4 @@ export const SOLUTIONS_POSTFIX = 'solutions';
 export const SOLUTIONS_URL = '/api/solutions';
 export const POSITIONS_URL = '/api/positions';
 export const TESTS_POSTFIX = 'tests';
+export const ASSIGN_POSTFIX = 'assign';

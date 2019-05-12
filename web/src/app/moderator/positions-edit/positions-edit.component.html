@@ -1,0 +1,41 @@
+<div>
+  <div class="new-position row material-form">
+    <div class="col-md-8 name-input-wrapper">
+      <input mat-input placeholder="Nazwa" class="name-input"
+             [value]="name" (input)="name = $event.target.value">
+    </div>
+    <div class="col-md-4 full-width-button">
+      <button mat-button (click)="add()" [disabled]="name.length === 0">
+        Dodaj
+      </button>
+    </div>
+  </div>
+  <div class="positions-table">
+    <table>
+      <thead>
+        <tr>
+          <td>Id</td>
+          <td>Nazwa</td>
+          <td>Aktywny</td>
+          <td>Test</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let position of positions.positions">
+          <td>{{position.id}}</td>
+          <td>{{position.name}}</td>
+          <td class="material-form">
+            <mat-checkbox [checked]="position.active" (change)="setActive(position.id, $event.checked)"></mat-checkbox>
+          </td>
+          <td class="test-column">
+            <mat-select placeholder="Test" [value]="getSelectValue(position)" (selectionChange)="assign(position.id, $event.value)">
+              <mat-option *ngFor="let test of tests.tests" [value]="test.id">
+                {{test.name}}
+              </mat-option>
+            </mat-select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

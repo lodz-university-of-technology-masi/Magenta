@@ -30,3 +30,15 @@
 .material-form .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: var(--main-color)
 }
+.material-form .mat-checkbox .mat-checkbox-frame {
+  border-color: var(--main-color)
+}
+.material-form .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: var(--main-color);
+}
+.material-form .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
+   background-color:  var(--main-color);
+ }
+.material-form .mat-checkbox-input .cdk-visually-hidden {
+  background-color: yellow;
+}
