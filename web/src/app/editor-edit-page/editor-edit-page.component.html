@@ -1,0 +1,113 @@
+<p class="editor-edit-header">Zarządzaj redaktorami</p>
+
+<div class="editor-edit-container">
+  <form action="#" method="post">
+    <div class="row form-group">
+      <div class="col-sm-2">
+
+        <!--
+        Jeśli chcecie tabelkę zamiast listy, to proszę o poprawienie by działała, bo nie do końca wiem jak to ma wyglądać w tabelce.
+
+        <table>
+          <thead>
+          <tr>
+            <td>ID redaktora</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>
+              <button mat-button [routerLink]="['..', checkPage, user.id]">Wybierz redaktora</button>
+            </td>
+          </tr>
+          </tbody>
+        </table> -->
+
+        <label>Wybierz redaktora: </label>
+        <select name="editors">
+          <option value="editor1">Redaktor #1</option>
+          <option value="editor2">Redaktor #2</option>
+          <option value="editor3">Redaktor #3</option>
+          <option value="editor4">Redaktor #4</option>
+        </select>
+      </div>
+
+      <div class="col-sm-2">
+        <mat-form-field>
+          <label>Imię: </label>
+          <input matInput formControlName="name" placeholder="Wpisz imię">
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-2">
+        <mat-form-field>
+          <label>Nazwisko: </label>
+          <input matInput formControlName="surname" placeholder="Wpisz nazwisko">
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-2">
+        <mat-form-field>
+          <label>Login: </label>
+          <input matInput formControlName="username" placeholder="Wpisz login">
+          <mat-error *ngIf="registerForm.get('username').hasError('required')">
+            Login jest wymagany!
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('username').hasError('minlength')">
+            Login musi zawierać co najmniej {{minUsernameLength}} znaków!
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('username').hasError('maxlength')">
+            Login może zawierać co najwyżej {{maxUsernameLength}} znaków!
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-2">
+        <mat-form-field>
+          <label>Hasło: </label>
+          <input matInput formControlName="password" type="password" placeholder="Wpisz hasło" >
+          <mat-error *ngIf="registerForm.get('password').hasError('required')">
+            Hasło jest wymagane!
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('password').hasError('minlength')">
+            Hasło musi zawierać co najmniej {{minPasswordLength}} znaków!
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('password').hasError('maxlength')">
+            Hasło może zawierać co najwyżej {{maxPasswordLength}} znaków!
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-2">
+        <label>E-mail: </label>
+        <mat-form-field>
+          <input matInput email formControlName="email" placeholder="Wpisz adres e-mail">
+          <mat-error *ngIf="registerForm.get('email').hasError('required')">
+            Adres e-mail jest wymagany!
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('email').hasError('email')">
+            Nieprawidłowy adres e-mail!
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="authentication-form-button">
+        <button mat-button
+                [disabled]="registerForm.invalid || registerForm.errors"
+                type="submit" (click)="add()">
+          Dodaj redaktora</button>
+
+        <button mat-button
+                type="submit" (click)="delete()">
+          Usuń redaktora</button>
+
+        <button mat-button
+                [disabled]="registerForm.invalid || registerForm.errors"
+                type="submit" (click)="modify()">
+          Zapisz zmiany</button>
+      </div>
+
+    </div>
+  </form>
+</div>
