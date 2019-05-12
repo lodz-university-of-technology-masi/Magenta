@@ -1,5 +1,7 @@
 package backend;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,10 +30,18 @@ public class Wikipedia {
                     (conn.getInputStream())));
 
             String output;
+            StringBuilder whole = new StringBuilder();
             System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
                 System.out.println(output);
+                whole.append(output);
             }
+
+            ObjectMapper mapper = new ObjectMapper();
+
+            Object obj = mapper.readValue(whole.toString(), Object.class);
+
+            System.out.println(obj);
 
             conn.disconnect();
 
