@@ -26,7 +26,7 @@ public class UtilsController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping("wikipedia")
-    public String getTest(
+    public String getDefinition(
             @RequestParam String wantedText,
             @RequestParam(required = false, defaultValue = "pl") String language)
             throws WikipediaDefinitionNotFound {
