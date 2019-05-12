@@ -12,11 +12,8 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class FullTestDto {
-
     private int id;
     private String name;
     private String language;
-    private List<QuestionDto> questions;
-    private List<SolutionDto> answers;
     private List<PositionDto> positions;
 }
