@@ -34,10 +34,10 @@ import {TestsResolveService} from './services/tests-resolve.service';
     SolvedTestComponent,
     CheckSolvedTestComponent,
     UserTestsComponent,
+    UserSolutionComponent],
+  exports: [
+    UserTestsComponent
     UserSolutionComponent,
     AllTestsComponent],
-  exports: [
-    AllTestsComponent
-  ]
 })
 export class TestsModule { }

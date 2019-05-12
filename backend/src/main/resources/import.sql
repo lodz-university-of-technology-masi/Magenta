@@ -43,6 +43,9 @@ INSERT INTO variants(text, question_id) VALUES ('C#', 5);
 INSERT INTO variants(text, question_id) VALUES ('Java', 5);
 INSERT INTO variants(text, question_id) VALUES ('C++', 5);
 
+INSERT INTO positions(name, active, test_id) VALUES ('Senior Java Developer', true, 1);
+INSERT INTO positions(name, active, test_id) VALUES ('Senior Java Developer', true, 2);
+
 --for test purposes only
 INSERT INTO users(username, password, email, name_surname, language) VALUES ('string', '$2a$10$lV.ebyqr7eoUadzIbetnHOETWHdcGznM9YAn4OQyhjif2.mk2ICKy', 'string@string', 'string string', 'pl');
 INSERT INTO user_roles(user_id, role_id) VALUES(7, 1);
@@ -51,6 +54,5 @@ INSERT INTO user_roles(user_id, role_id) VALUES(7, 3);
 INSERT INTO user_roles(user_id, role_id) VALUES(7, 4);
 INSERT INTO user_tests(owner_id, test_id) VALUES (7, 1);
 INSERT INTO user_tests(owner_id, test_id) VALUES (7, 2);
-INSERT INTO positions(name, active) VALUES ('Senior Java Developer', false);
 
 
