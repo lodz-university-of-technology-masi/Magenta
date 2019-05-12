@@ -12,8 +12,7 @@ public class WikipediaUtils {
     public static String getWikipediaDefinition(String wantedText, String language) {
 
         try {
-            //TODO obsługa poliskch znaków i spacji
-            URL url = new URL("https://" + language + ".wikipedia.org/w/api.php?action=opensearch&format=json&search=" + wantedText + "&limit=1 ");
+            URL url = new URL("https://" + language + ".wikipedia.org/w/api.php?action=opensearch&format=json&search=" + wantedText.replace(" ", "") + "&limit=1 ");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
@@ -41,6 +40,8 @@ public class WikipediaUtils {
 
             conn.disconnect();
 
+            returnString = replacePolishUnicodeSigns(returnString);
+
             return returnString;
 
         } catch (MalformedURLException e) {
@@ -53,5 +54,28 @@ public class WikipediaUtils {
 
         }
         return Constans.WIKIPEDIA_RESPONSE.WIKIPEDIA_RESPONSE_ERROR;
+    }
+
+    private static String replacePolishUnicodeSigns(String currentString) {
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.Ą, "Ą");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.ą, "ą");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.Ć, "Ć");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.ć, "ć");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.Ę, "Ę");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.ę, "ę");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.Ł, "Ł");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.ł, "ł");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.Ń, "Ń");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.ń, "ń");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.Ó, "Ó");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.ó, "ó");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.Ś, "Ś");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.ś, "ś");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.Ź, "Ź");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.ź, "ź");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.Ż, "Ż");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.ż, "ż");
+        currentString = currentString.replace(Constans.UNICODE_SIGNS.DASH, "-");
+        return currentString;
     }
 }

@@ -1,7 +1,7 @@
 package backend.controller;
 
 import backend.exception.not_found.WikipediaDefinitionNotFound;
-import backend.exception.unauthorized.UserNotFoundException;
+
 import backend.service.UtilsService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +25,11 @@ public class UtilsController {
             @ApiResponse(code = 404, message = "Definition not found."),
             @ApiResponse(code = 500, message = "Unknown error.")
     })
-    @GetMapping("wikipedia/{wantedText}")
+    @GetMapping("wikipedia")
     public String getTest(
-            @PathVariable String wantedText,
-            @ApiParam(hidden = true) @RequestHeader(value = "Authorization", required = false) String authorization)
-            throws UserNotFoundException, WikipediaDefinitionNotFound {
-        return utilsService.getWikipediaDefinition(wantedText, authorization);
+            @RequestParam String wantedText,
+            @RequestParam(required = false, defaultValue = "pl") String language)
+            throws WikipediaDefinitionNotFound {
+        return utilsService.getWikipediaDefinition(wantedText, language);
     }
 }
