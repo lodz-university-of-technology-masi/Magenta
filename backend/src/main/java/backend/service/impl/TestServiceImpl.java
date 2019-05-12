@@ -20,7 +20,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static backend.converter.TestConverter.getFullTestDto;
 import static backend.converter.TestConverter.getTestDto;
@@ -41,9 +44,28 @@ public class TestServiceImpl implements TestService {
     private TokenAuthentication tokenAuthentication;
 
     @Override
-    public TestListDto getAllTests() {
+    public TestListDto getAllTests(String authorizationToken) {
+        String currentUserName = tokenAuthentication.getUsername(authorizationToken);
+        Optional<User> currentUser = userRepository.findByUsernameIgnoreCase(currentUserName);
+
+        List<Test> tests = testRepository.findAll();
+
+        List<Test> testsForUser;
+
+        if (UserUtils.checkUserRole(currentUser.get(), Constans.USER_ROLES.MODERATOR)) {
+            testsForUser = tests;
+        } else if (UserUtils.checkUserRole(currentUser.get(), Constans.USER_ROLES.REDACTOR)) {
+            testsForUser = tests.stream()
+                    .filter(item -> item.getOwners().contains(currentUser.get()))
+                    .collect(Collectors.toList());
+        } else {
+            testsForUser = tests.stream()
+                    .filter(item -> item.getLanguage().equals(currentUser.get().getLanguage()))
+                    .collect(Collectors.toList());
+        }
+
         return TestListDto.builder()
-                .tests(TestConverter.getRolesDtoList(testRepository.findAll()))
+                .tests(TestConverter.getRolesDtoList(testsForUser))
                 .build();
     }
 
@@ -79,7 +101,7 @@ public class TestServiceImpl implements TestService {
         if (currentUser.isPresent() && currentTest.isPresent()) {
             if (UserUtils.checkUserRole(currentUser.get(), Constans.USER_ROLES.MODERATOR) ||
                     (UserUtils.checkUserRole(currentUser.get(), Constans.USER_ROLES.REDACTOR) &&
-                            currentTest.get().getOwners().contains(currentUser))) {
+                            currentTest.get().getOwners().contains(currentUser.get()))) {
                 testRepository.deleteById(testId);
             } else {
                 throw new ForbiddenException();

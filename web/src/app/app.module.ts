@@ -16,6 +16,7 @@ import {Interceptor} from './interceptor';
 import {RedactorModule} from './redactor/redactor.module';
 import {TestsModule} from './tests/tests.module';
 import {UserModule} from './user/user.module';
+import {ModeratorModule} from './moderator/moderator.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {UserModule} from './user/user.module';
     ErrorModule,
     RedactorModule,
     UserModule
-  ],
+    ModeratorModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

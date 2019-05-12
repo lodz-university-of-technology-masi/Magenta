@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Score, TestSolutionWithId} from '../../models/question';
 import {ActivatedRoute, Router} from '@angular/router';
 import {QuestionService} from '../services/question.service';
-import {REDACTOR_TESTS} from '../../shared/utils/frontend-urls';
+import {SOLUTIONS_PAGE_URL} from '../../shared/utils/frontend-urls';
 import {SolutionsService} from '../services/solutions.service';
 
 @Component({
@@ -31,7 +31,7 @@ export class CheckSolvedTestComponent implements OnInit {
       this.solution.id,
       scoreModel
     ).subscribe(result => {
-      this.router.navigate([REDACTOR_TESTS]);
+      this.router.navigate([SOLUTIONS_PAGE_URL]);
     });
   }
 }

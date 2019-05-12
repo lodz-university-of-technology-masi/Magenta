@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {QuestionService} from '../services/question.service';
 import {Questions, TestAnswer, TestSolution} from '../../models/question';
 import {NUMERIC_QUESTION, OPEN_QUESTION, SCALA_QUESTION, VARIANT_QUESTION} from '../../shared/utils/global-variables';
 import {USER_PAGE_URL} from '../../shared/utils/frontend-urls';

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddQuestionsComponent } from './add-questions/add-questions.component';
-import { SingleQuestionComponent } from './add-questions/single-question/single-question.component';
-import { ScalaAnswerComponent } from './add-questions/single-question/scala-answer/scala-answer.component';
-import { VariantAnswerComponent } from './add-questions/single-question/variant-answer/variant-answer.component';
+import { TestEditorComponent } from './test-editor/test-editor.component';
+import { SingleQuestionComponent } from './test-editor/single-question/single-question.component';
+import { ScalaAnswerComponent } from './test-editor/single-question/scala-answer/scala-answer.component';
+import { VariantAnswerComponent } from './test-editor/single-question/variant-answer/variant-answer.component';
 import {TestsRoutingModule} from './tests-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule, MatButtonModule, MatRadioModule} from '@angular/material';
@@ -13,6 +13,8 @@ import { SolvedTestComponent } from './solved-test/solved-test.component';
 import { CheckSolvedTestComponent } from './check-solved-test/check-solved-test.component';
 import { UserTestsComponent } from './user-tests/user-tests.component';
 import { UserSolutionComponent } from './user-solution/user-solution.component';
+import { AllTestsComponent } from './all-tests/all-tests.component';
+import {TestsResolveService} from './services/tests-resolve.service';
 
 @NgModule({
   imports: [
@@ -23,7 +25,7 @@ import { UserSolutionComponent } from './user-solution/user-solution.component';
     MatRadioModule,
     BrowserAnimationsModule,
   ],
-  declarations: [AddQuestionsComponent,
+  declarations: [TestEditorComponent,
     SingleQuestionComponent,
     ScalaAnswerComponent,
     VariantAnswerComponent,
@@ -35,6 +37,7 @@ import { UserSolutionComponent } from './user-solution/user-solution.component';
     UserSolutionComponent],
   exports: [
     UserTestsComponent
-  ]
+    UserSolutionComponent,
+    AllTestsComponent],
 })
 export class TestsModule { }
