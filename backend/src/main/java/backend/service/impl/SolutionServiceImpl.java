@@ -8,7 +8,7 @@ import backend.dto.solution.SolutionWithIdListDto;
 import backend.entity.Test;
 import backend.entity.User;
 import backend.entity.UserTestSolution;
-import backend.exception.SolutionNotFoundException;
+import backend.exception.not_found.SolutionNotFoundException;
 import backend.exception.not_found.TestNotFoundException;
 import backend.exception.not_found.UserNotFoundException;
 import backend.repository.SolutionRepository;
