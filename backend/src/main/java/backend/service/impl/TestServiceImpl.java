@@ -1,8 +1,10 @@
 package backend.service.impl;
 
 import backend.converter.TestConverter;
+import backend.dto.test.FullTestDto;
+import backend.dto.test.TestDto;
 import backend.dto.test.TestListDto;
-import backend.entity.Role;
+import backend.dto.test.TestUpdateData;
 import backend.entity.Test;
 import backend.entity.User;
 import backend.exception.forbidden.ForbiddenException;
@@ -14,12 +16,16 @@ import backend.service.TestService;
 import backend.utils.Constans;
 import backend.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+
+import static backend.converter.TestConverter.getFullTestDto;
+import static backend.converter.TestConverter.getTestDto;
+import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Stream.of;
 
 @Service
 @Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
@@ -39,7 +45,30 @@ public class TestServiceImpl implements TestService {
         return TestListDto.builder()
                 .tests(TestConverter.getRolesDtoList(testRepository.findAll()))
                 .build();
+    }
 
+    @Override
+    public FullTestDto getTest(int id) throws TestNotFoundException {
+        return testRepository.findById(id)
+                .map(TestConverter::getFullTestDto)
+                .orElseThrow(TestNotFoundException::new);
+    }
+
+    @Override
+    public TestDto addTest(String username, TestDto testDto) {
+        Optional<User> user = userRepository.findByUsernameIgnoreCase(username);
+        Test test = testRepository.save(TestConverter.getTest(testDto));
+        user.ifPresent(u -> test.setOwners(of(u).collect(toSet())));
+        return getTestDto(test);
+    }
+
+    @Override
+    public FullTestDto updateTest(int id, TestUpdateData updateData) throws TestNotFoundException {
+        Test test = testRepository.findById(id)
+                .orElseThrow(TestNotFoundException::new);
+        TestConverter.rewrite(test, updateData);
+        testRepository.save(test);
+        return getFullTestDto(test);
     }
 
     @Override
