@@ -1,0 +1,25 @@
+<div>
+  <div class="new-position">
+
+  </div>
+  <div class="positions-table">
+    <table>
+      <thead>
+        <tr>
+          <td>Id</td>
+          <td>Nazwa</td>
+          <td>Aktywny</td>
+          <td>Test</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let position of positions.positions">
+          <td>{{position.id}}</td>
+          <td>{{position.name}}</td>
+          <td>{{position.active}}</td>
+          <td>{{position.test.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
