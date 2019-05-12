@@ -4,7 +4,7 @@ import backend.dto.solution.SolutionScoreDto;
 import backend.dto.solution.SolutionDto;
 import backend.dto.solution.SolutionDtoWithId;
 import backend.dto.solution.SolutionWithIdListDto;
-import backend.exception.SolutionNotFoundException;
+import backend.exception.not_found.SolutionNotFoundException;
 import backend.exception.not_found.TestNotFoundException;
 import backend.exception.not_found.UserNotFoundException;
 

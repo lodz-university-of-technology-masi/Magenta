@@ -9,10 +9,11 @@ import java.net.URL;
 
 public class WikipediaUtils {
 
-    public static String getWikipediaDefinition(String wantedText) {
+    public static String getWikipediaDefinition(String wantedText, String language) {
 
         try {
-            URL url = new URL("https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + wantedText + "&limit=1 ");
+            //TODO obsługa poliskch znaków i spacji
+            URL url = new URL("https://" + language + ".wikipedia.org/w/api.php?action=opensearch&format=json&search=" + wantedText + "&limit=1 ");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
