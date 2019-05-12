@@ -11,7 +11,7 @@ export class UserGuard implements CanActivate {
               private router: Router) {}
 
   canActivate(): boolean {
-    if (this.sessionStorageService.isRedactor()) {
+    if (this.sessionStorageService.isUser()) {
       return true;
     } else {
       this.router.navigate([MAIN_PAGE_URL]);
