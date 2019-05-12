@@ -36,7 +36,7 @@ import {ModeratorModule} from './moderator/moderator.module';
     DialogsModule,
     ErrorModule,
     RedactorModule,
-    UserModule
+    UserModule,
     ModeratorModule],
   providers: [
     {
