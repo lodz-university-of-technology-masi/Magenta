@@ -1,6 +1,4 @@
-package backend;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+package backend.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,14 +7,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Wikipedia {
+public class WikipediaUtils {
 
-    // https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=rainbow
-    public static void getWikipediaApi() {
+    public static String getWikipediaDefinition(String wantedText) {
 
         try {
-
-            URL url = new URL("https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=rainbow&limit=1 ");
+            URL url = new URL("https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + wantedText + "&limit=1 ");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
@@ -30,20 +26,21 @@ public class Wikipedia {
                     (conn.getInputStream())));
 
             String output;
-            StringBuilder whole = new StringBuilder();
-            System.out.println("Output from Server .... \n");
+            StringBuilder wholeResponse = new StringBuilder();
             while ((output = br.readLine()) != null) {
-                System.out.println(output);
-                whole.append(output);
+                wholeResponse.append(output);
             }
 
-            ObjectMapper mapper = new ObjectMapper();
+            String[] results = wholeResponse.toString().split("\\[");
 
-            Object obj = mapper.readValue(whole.toString(), Object.class);
-
-            System.out.println(obj);
+            if (results[3].isEmpty()) {
+                return Constans.WIKIPEDIA_RESPONSE.WIKIPEDIA_EMPTY_RESPONSE;
+            }
+            String returnString = results[3].substring(1, results[3].length() - 3);
 
             conn.disconnect();
+
+            return returnString;
 
         } catch (MalformedURLException e) {
 
@@ -54,7 +51,6 @@ public class Wikipedia {
             e.printStackTrace();
 
         }
-
+        return Constans.WIKIPEDIA_RESPONSE.WIKIPEDIA_RESPONSE_ERROR;
     }
-
 }

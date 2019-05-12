@@ -7,4 +7,9 @@ public abstract class Constans {
         public static final String MODERATOR = "MODERATOR";
         public static final String ADMIN = "ADMIN";
     }
+    public abstract class WIKIPEDIA_RESPONSE {
+        public static final String WIKIPEDIA_RESPONSE_ERROR = "WIKIPEDIA ERROR";
+        public static final String WIKIPEDIA_EMPTY_RESPONSE = "NIE ZNALEZIONO DEFNICJI";
+    }
 }
+
