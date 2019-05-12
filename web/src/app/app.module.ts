@@ -15,6 +15,7 @@ import {ErrorModule} from './error/error.module';
 import {Interceptor} from './interceptor';
 import {RedactorModule} from './redactor/redactor.module';
 import {TestsModule} from './tests/tests.module';
+import {UserModule} from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {TestsModule} from './tests/tests.module';
     BrowserAnimationsModule,
     DialogsModule,
     ErrorModule,
-    RedactorModule
+    RedactorModule,
+    UserModule
   ],
   providers: [
     {

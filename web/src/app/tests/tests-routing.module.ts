@@ -1,7 +1,7 @@
 import {Route, RouterModule} from '@angular/router';
 
 import {NgModule} from '@angular/core';
-import {ADD_QUESTIONS, CHECK_TEST, MY_SOLUTIONS, REDACTOR_TEST_PAGE_URL, REDACTOR_TESTS, RESOLVE_TEST} from '../shared/utils/frontend-urls';
+import {ADD_QUESTIONS, CHECK_TEST, MY_SOLUTIONS, REDACTOR_TEST_PAGE_URL, REDACTOR_TESTS, RESOLVE_TEST_PAGE} from '../shared/utils/frontend-urls';
 import {RedactorGuard} from '../guards/redactor-quard';
 import {AddQuestionsComponent} from './add-questions/add-questions.component';
 import {QuestionResolveService} from './services/question-resolve.service';
@@ -28,7 +28,7 @@ const MAIN_PAGE_ROUTES: Route[] = [
     runGuardsAndResolvers: 'always'
   },
   {
-    path: `${RESOLVE_TEST}/:test`,
+    path: `${RESOLVE_TEST_PAGE}/:test`,
     component: <any>ResolveTestComponent,
     resolve: {
       test: QuestionResolveService
@@ -57,17 +57,6 @@ const MAIN_PAGE_ROUTES: Route[] = [
     },
     canActivate: [
       RedactorGuard
-    ],
-    runGuardsAndResolvers: 'always'
-  },
-  {
-    path: `${MY_SOLUTIONS}`,
-    component: <any>UserTestsComponent,
-    resolve: {
-      solutions: UserSolutionsResolveService
-    },
-    canActivate: [
-      UserGuard
     ],
     runGuardsAndResolvers: 'always'
   },

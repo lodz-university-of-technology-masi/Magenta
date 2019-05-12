@@ -32,6 +32,9 @@ import { UserSolutionComponent } from './user-solution/user-solution.component';
     SolvedTestComponent,
     CheckSolvedTestComponent,
     UserTestsComponent,
-    UserSolutionComponent]
+    UserSolutionComponent],
+  exports: [
+    UserTestsComponent
+  ]
 })
 export class TestsModule { }

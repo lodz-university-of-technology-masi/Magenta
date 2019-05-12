@@ -8,3 +8,5 @@ export const TESTS_URL = '/api/tests';
 export const QUESTIONS_POSTFIX = 'questions';
 export const SOLUTIONS_POSTFIX = 'solutions';
 export const SOLUTIONS_URL = '/api/solutions';
+export const POSITIONS_URL = '/api/positions';
+export const TESTS_POSTFIX = 'tests';

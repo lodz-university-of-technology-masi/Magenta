@@ -1,7 +1,12 @@
+.test-question-answer-container {
+  background-color: var(--background-secondary-color);
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
 .question {
   margin-bottom: 10px;
 }
 .answer {
-  border-bottom: 1px solid var(--main-color);
   padding-bottom: 5px;
 }
