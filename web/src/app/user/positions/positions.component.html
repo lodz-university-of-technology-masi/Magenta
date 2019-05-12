@@ -1,0 +1,24 @@
+<div class="positions-container">
+  <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Nazwa stanowiska</td>
+        <td>Język</td>
+        <td>Nazwa testu</td>
+        <td>Rozwiąż</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let position of positions.positions">
+        <td>{{position.id}}</td>
+        <td>{{position.name}}</td>
+        <td>{{position.test.language}}</td>
+        <td>{{position.test.name}}</td>
+        <td class="material-form">
+          <button mat-button (click)="resolveTest(position.id)">Rozwiąż</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

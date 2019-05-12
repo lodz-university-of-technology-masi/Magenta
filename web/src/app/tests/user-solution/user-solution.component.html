@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-4">
     </div>
-    <div class="col-md-4 full-width-button">
+    <div *ngIf="solution.checked" class="col-md-4 full-width-button score-container">
       <b>Wynik: {{solution.score}}</b>
     </div>
   </div>
