@@ -13,3 +13,6 @@ thead td {
   background-color: var(--background-secondary-color);
   font-weight: bold;
 }
+.moderator-page-container {
+  margin-bottom: 20px;
+}

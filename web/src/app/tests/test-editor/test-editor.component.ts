@@ -70,8 +70,10 @@ export class TestEditorComponent implements OnInit {
   sendTest(): Observable<Test> {
     console.log(this.test.id);
     if (this.test.id === 0 || this.checkUrl(TRANSLATE_TEST_PAGE_URL)) {
+      console.log('create');
       return this.testService.create(this.test);
     } else {
+      console.log('update');
       return this.testService.update(this.test.id, this.test);
     }
   }
@@ -79,7 +81,7 @@ export class TestEditorComponent implements OnInit {
     this.sendTest().subscribe(testResult => {
       if ( this.isRedactor()) {
         this.questionService.save(
-          +this.route.snapshot.paramMap.get('test'),
+          testResult.id,
           this.questions
         ).subscribe(
           questionResult => {
@@ -114,9 +116,6 @@ export class TestEditorComponent implements OnInit {
   areQuestionsValid(): boolean {
     if (!this.isRedactor()) {
       return true;
-    }
-    if (this.questions.questions.length === 0) {
-      return false;
     }
     for (let i = 0; i < this.questions.questions.length; i++) {
       const element = this.questions.questions[i];
