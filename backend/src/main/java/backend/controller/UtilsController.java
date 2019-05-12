@@ -43,7 +43,7 @@ public class UtilsController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping("synonyms")
-    public List<String> getTest(
+    public List<String> getSynonyms(
             @RequestParam String baseWord) throws BadSynonymRequest {
         return utilsService.getSynonyms(baseWord);
     }
