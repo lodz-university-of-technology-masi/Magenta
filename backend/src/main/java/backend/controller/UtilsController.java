@@ -26,10 +26,25 @@ public class UtilsController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping("wikipedia")
-    public String getTest(
+    public String getDefinition(
             @RequestParam String wantedText,
             @RequestParam(required = false, defaultValue = "pl") String language)
             throws WikipediaDefinitionNotFound {
         return utilsService.getWikipediaDefinition(wantedText, language);
     }
+
+    /*@ApiOperation(value = "Get wiki definition",
+            response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success."),
+            @ApiResponse(code = 404, message = "Definition not found."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @GetMapping("wikipedia")
+    public String getTest(
+            @RequestParam String wantedText,
+            @RequestParam(required = false, defaultValue = "pl") String language)
+            throws WikipediaDefinitionNotFound {
+        return utilsService.getWikipediaDefinition(wantedText, language);
+    }*/
 }
