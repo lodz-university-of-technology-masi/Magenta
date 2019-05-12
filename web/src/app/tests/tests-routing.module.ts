@@ -1,14 +1,12 @@
 import {Route, RouterModule} from '@angular/router';
 
 import {NgModule} from '@angular/core';
-import {ADD_QUESTIONS, CHECK_TEST, MY_SOLUTIONS, REDACTOR_TEST_PAGE_URL, REDACTOR_TESTS, RESOLVE_TEST_PAGE} from '../shared/utils/frontend-urls';
 import {
   ADD_QUESTIONS,
   CHECK_TEST,
   MY_SOLUTIONS,
+  RESOLVE_TEST_PAGE, SOLUTIONS_PAGE_URL,
   TEST_PAGE_URL,
-  SOLUTIONS_PAGE_URL,
-  RESOLVE_TEST,
   TRANSLATE_TEST_PAGE_URL
 } from '../shared/utils/frontend-urls';
 import {RedactorGuard} from '../guards/redactor-quard';
@@ -20,9 +18,7 @@ import {SolutionsForRedactorResolveService} from './services/solutions-for-redac
 import {RedactorTestsComponent} from './redactor-tests/redactor-tests.component';
 import {CheckSolvedTestComponent} from './check-solved-test/check-solved-test.component';
 import {SolutionResolveService} from './services/solution-resolve.service';
-import {UserTestsComponent} from './user-tests/user-tests.component';
 import {UserSolutionComponent} from './user-solution/user-solution.component';
-import {UserSolutionsResolveService} from './services/user-solutions-resolve.service';
 import {RedactorOrModeratorGuard} from '../guards/redactor-or-moderator-guard';
 import {TestResolveService} from './services/test-resolve.service';
 
