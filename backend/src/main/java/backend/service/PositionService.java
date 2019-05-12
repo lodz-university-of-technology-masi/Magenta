@@ -8,6 +8,8 @@ import backend.exception.not_found.TestNotFoundException;
 public interface PositionService {
     PositionListDto getPositions();
 
+    PositionListDto getPositionsByLanguage(String language);
+
     PositionDto addPosition(PositionDto positionDto);
 
     PositionDto changeStatus(int id, boolean active) throws PositionNotFoundException;

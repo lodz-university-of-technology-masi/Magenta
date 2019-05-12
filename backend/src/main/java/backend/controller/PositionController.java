@@ -29,12 +29,24 @@ public class PositionController {
             @ApiResponse(code = 200, message = "Success."),
             @ApiResponse(code = 401, message = "You are not authorized."),
             @ApiResponse(code = 403, message = "You haven't permissions."),
-            @ApiResponse(code = 404, message = "User not found."),
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping()
     public ResponseEntity getPositions() {
         return ResponseEntity.ok(positionService.getPositions());
+    }
+
+    @ApiOperation(value = "Get all position and test by language",
+            response = PositionListDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @GetMapping("/tests")
+    public ResponseEntity getPositionsByLanguage(@RequestParam String language) {
+        return ResponseEntity.ok(positionService.getPositionsByLanguage(language));
     }
 
     @ApiOperation(value = "Add new position",
