@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test, Tests} from '../../models/test';
-import {TESTS_URL, TRANSLATE_UTILS_URL, WIKIPEDIA_UTILS_URL} from '../../shared/utils/backend-urls';
+import {SYNONYMS_UTILS_URL, TESTS_URL, TRANSLATE_UTILS_URL, WIKIPEDIA_UTILS_URL} from '../../shared/utils/backend-urls';
 import {SessionStorageService} from '../../shared/services/session-storage.service';
 
 @Injectable({
@@ -41,5 +41,9 @@ export class TestService {
   getTranslation(textToTranslate: String, translateToPolish: Boolean): Observable<String> {
     return this.http.get(`${TRANSLATE_UTILS_URL}?textToTranslate=${textToTranslate}&translateToPolish=${translateToPolish}`
       , {responseType: 'text'});
+  }
+
+  getSynonyms(baseWord: String): Observable<[String]> {
+    return this.http.get<[String]>(`${SYNONYMS_UTILS_URL}?baseWord=${baseWord}`);
   }
 }
