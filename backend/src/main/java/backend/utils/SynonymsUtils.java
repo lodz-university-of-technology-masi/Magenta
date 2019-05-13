@@ -14,10 +14,10 @@ public class SynonymsUtils {
     public static List<String> getSynonyms(String baseWord) throws BadSynonymRequest {
 
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl
+        String url
                 = "https://api.datamuse.com/words?ml=" + baseWord;
         ResponseEntity<SynonymDto[]> response
-                = restTemplate.getForEntity(fooResourceUrl, SynonymDto[].class);
+                = restTemplate.getForEntity(url, SynonymDto[].class);
 
         List<String> returnList = new ArrayList<>();
         if (response.getStatusCode().equals(HttpStatus.OK)) {
