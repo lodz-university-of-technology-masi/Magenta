@@ -3,6 +3,7 @@ package backend.utils;
 import backend.dto.synonyms.SynonymDto;
 import backend.dto.translation.TranslationResponseDto;
 import backend.exception.bad_request.BadSynonymRequest;
+import backend.exception.bad_request.BadTranslationRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -16,7 +17,7 @@ import static backend.utils.Constans.TRANSLATION_API_KEY;
  */
 public class TranslationUtils {
 
-    public static String getTranslation(String textToTranslate, boolean translateToPolish) {
+    public static String getTranslation(String textToTranslate, boolean translateToPolish) throws BadTranslationRequest {
         String url = getUrl(textToTranslate, translateToPolish);
 
         RestTemplate restTemplate = new RestTemplate();
@@ -27,7 +28,7 @@ public class TranslationUtils {
         if (response.getStatusCode().equals(HttpStatus.OK)) {
             Objects.requireNonNull(response.getBody()).getText().forEach(returnStringBuilder::append);
         } else {
-
+            throw new BadTranslationRequest();
         }
 
         return returnStringBuilder.toString();

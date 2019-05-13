@@ -1,6 +1,7 @@
 package backend.service.impl;
 
 import backend.exception.bad_request.BadSynonymRequest;
+import backend.exception.bad_request.BadTranslationRequest;
 import backend.exception.not_found.WikipediaDefinitionNotFound;
 import backend.utils.SynonymsUtils;
 import backend.utils.TranslationUtils;
@@ -29,7 +30,7 @@ public class UtilsServiceImpl implements UtilsService {
     }
 
     @Override
-    public String getTranslation(String textToTranslate, boolean translateToPolish) {
+    public String getTranslation(String textToTranslate, boolean translateToPolish) throws BadTranslationRequest {
         return TranslationUtils.getTranslation(textToTranslate, translateToPolish);
     }
 }

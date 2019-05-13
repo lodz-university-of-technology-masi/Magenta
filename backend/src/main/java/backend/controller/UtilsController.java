@@ -1,6 +1,7 @@
 package backend.controller;
 
 import backend.exception.bad_request.BadSynonymRequest;
+import backend.exception.bad_request.BadTranslationRequest;
 import backend.exception.not_found.WikipediaDefinitionNotFound;
 
 import backend.service.UtilsService;
@@ -57,7 +58,7 @@ public class UtilsController {
     @GetMapping("translate")
     public String getTranslatedText(
             @RequestParam String textToTranslate,
-            @RequestParam boolean translateToPolish) {
+            @RequestParam boolean translateToPolish) throws BadTranslationRequest {
         return utilsService.getTranslation(textToTranslate, translateToPolish);
     }
 }
