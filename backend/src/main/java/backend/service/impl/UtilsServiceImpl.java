@@ -3,6 +3,7 @@ package backend.service.impl;
 import backend.exception.bad_request.BadSynonymRequest;
 import backend.exception.not_found.WikipediaDefinitionNotFound;
 import backend.utils.SynonymsUtils;
+import backend.utils.TranslationUtils;
 import backend.utils.WikipediaUtils;
 import backend.service.UtilsService;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,10 @@ public class UtilsServiceImpl implements UtilsService {
     @Override
     public List<String> getSynonyms(String baseWord) throws BadSynonymRequest {
         return SynonymsUtils.getSynonyms(baseWord);
+    }
+
+    @Override
+    public String getTranslation(String textToTranslate, boolean translateToPolish) {
+        return TranslationUtils.getTranslation(textToTranslate, translateToPolish);
     }
 }

@@ -7,6 +7,7 @@ public abstract class Constans {
         public static final String MODERATOR = "MODERATOR";
         public static final String ADMIN = "ADMIN";
     }
+
     public abstract class WIKIPEDIA_RESPONSE {
         public static final String WIKIPEDIA_RESPONSE_ERROR = "WIKIPEDIA ERROR";
         public static final String WIKIPEDIA_EMPTY_RESPONSE = "NIE ZNALEZIONO DEFNICJI";
@@ -33,5 +34,9 @@ public abstract class Constans {
         public static final String ż = "\\u017c";
         public static final String DASH = "\\u2013";
     }
+
+    public static final String TRANSLATION_API_KEY = "trnsl.1.1.20190512T231203Z.3a243b24aa8a9316.69378ef4ee2bf8c6536509fb191a7822bebbe9d3";
+    public static final String TRANSLATE_TO_ENGLISH = "pl-en";
+    public static final String TRANSLATE_TO_POLISH = "en-pl";
 }
 

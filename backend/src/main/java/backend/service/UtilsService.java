@@ -9,4 +9,6 @@ public interface UtilsService {
     String getWikipediaDefinition(String wantedText, String language) throws WikipediaDefinitionNotFound;
 
     List<String> getSynonyms(String baseWord) throws BadSynonymRequest;
+
+    String getTranslation(String textToTranslate, boolean translateToPolish);
 }

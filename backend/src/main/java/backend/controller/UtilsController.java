@@ -47,4 +47,17 @@ public class UtilsController {
             @RequestParam String baseWord) throws BadSynonymRequest {
         return utilsService.getSynonyms(baseWord);
     }
+
+    @ApiOperation(value = "Get translated text")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success."),
+            @ApiResponse(code = 404, message = "Synonyms not found."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @GetMapping("translate")
+    public String getTranslatedText(
+            @RequestParam String textToTranslate,
+            @RequestParam boolean translateToPolish) {
+        return utilsService.getTranslation(textToTranslate, translateToPolish);
+    }
 }
