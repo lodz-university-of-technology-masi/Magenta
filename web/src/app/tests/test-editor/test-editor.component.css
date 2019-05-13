@@ -51,3 +51,11 @@
   width: 125px;
   height: 389px;
 }
+
+.textarea_right {
+  position: fixed;
+  top: 380px;
+  right: 0;
+  width: 275px;
+  height: 389px;
+}

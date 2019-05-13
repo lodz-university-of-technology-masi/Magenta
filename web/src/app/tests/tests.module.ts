@@ -15,6 +15,7 @@ import { UserTestsComponent } from './user-tests/user-tests.component';
 import { UserSolutionComponent } from './user-solution/user-solution.component';
 import { AllTestsComponent } from './all-tests/all-tests.component';
 import {TestsResolveService} from './services/tests-resolve.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import {TestsResolveService} from './services/tests-resolve.service';
     MatButtonModule,
     MatRadioModule,
     BrowserAnimationsModule,
+    FormsModule,
   ],
   declarations: [TestEditorComponent,
     SingleQuestionComponent,

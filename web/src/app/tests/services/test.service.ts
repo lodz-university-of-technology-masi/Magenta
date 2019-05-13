@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {Test, Tests} from '../../models/test';
 import {TESTS_URL, WIKIPEDIA_UTILS_URL} from '../../shared/utils/backend-urls';
 import {SessionStorageService} from '../../shared/services/session-storage.service';
-import {WikipediaResponse} from '../../models/user/wikipediaResponse';
 
 @Injectable({
   providedIn: 'root'

@@ -27,7 +27,7 @@ export class TestEditorComponent implements OnInit {
   test: Test;
   url: UrlSegment[];
   selectedText: String = '';
-
+  textValue: String = '';
 
   ngOnInit(): void {
     this.questions = this.route.snapshot.data['questions'];
@@ -155,8 +155,8 @@ export class TestEditorComponent implements OnInit {
   }
 
   onWikipediaButtonClick(): void {
-    this.testService.getWikipediaDefinition(this.selectedText).subscribe( result =>
-      result.valueOf()
+    this.testService.getWikipediaDefinition(this.selectedText).subscribe(result =>
+      this.textValue = result.valueOf()
     );
   }
 }
