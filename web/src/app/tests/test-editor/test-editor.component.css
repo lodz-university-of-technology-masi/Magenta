@@ -2,23 +2,52 @@
   width: 60%;
   margin: 5px auto;
 }
+
 .add-button,
 .send-button {
   margin-top: 10px;
 }
+
 .single-question-container {
   padding-bottom: 20px;
   margin: 0 auto 20px auto;
   background-color: var(--background-secondary-color);
 }
+
 .delete-button {
   padding: 20px 40px 20px 40px;
 }
+
 .name-input {
   width: 100%;
 }
+
 .test-container {
   margin: 0 auto 40px auto;
   background-color: var(--background-secondary-color);
   padding: 20px;
+}
+
+.wiki_right {
+  position: fixed;
+  top: 220px;
+  right: 0;
+  width: 125px;
+  height: 389px;
+}
+
+.synonyms_right {
+  position: fixed;
+  top: 270px;
+  right: 0;
+  width: 125px;
+  height: 389px;
+}
+
+.translate_right {
+  position: fixed;
+  top: 320px;
+  right: 0;
+  width: 125px;
+  height: 389px;
 }

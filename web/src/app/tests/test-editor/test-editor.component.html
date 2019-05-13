@@ -1,24 +1,24 @@
-<div class="test-editor-container material-form">
+<div class="test-editor-container material-form" (mouseup)="getSelectedText()">
   <div class="row test-container">
     <div class="col-md-8">
-        <input matInput class="name-input" placeholder="Nazwa" [value]="test.name"
-               (input)="test.name = $event.target.value" >
-        <mat-error *ngIf="test.name.length === 0">
-          Nazwa jest wymagana.
-        </mat-error>
+      <input matInput class="name-input" placeholder="Nazwa" [value]="test.name"
+             (input)="test.name = $event.target.value">
+      <mat-error *ngIf="test.name.length === 0">
+        Nazwa jest wymagana.
+      </mat-error>
     </div>
     <div class="col-md-4">
       <mat-select placeholder="Język" [(value)]="test.language">
-          <mat-option [value]="'pl'">Polski</mat-option>
-          <mat-option [value]="'en'">Angielski</mat-option>
-        </mat-select>
-        <mat-error *ngIf="test.language.length === 0">
-          Język jest wymagany.
-        </mat-error>
+        <mat-option [value]="'pl'">Polski</mat-option>
+        <mat-option [value]="'en'">Angielski</mat-option>
+      </mat-select>
+      <mat-error *ngIf="test.language.length === 0">
+        Język jest wymagany.
+      </mat-error>
     </div>
   </div>
   <div *ngIf="isRedactor()">
-    <div  *ngFor="let question of questions.questions; let i = index;">
+    <div *ngFor="let question of questions.questions; let i = index;">
       <div class="single-question-container">
         <app-single-question [question]="question"></app-single-question>
         <div>
@@ -39,6 +39,17 @@
       <button mat-button (click)="send()" [disabled]="!isTestValid() || !areQuestionsValid()">Zapisz</button>
     </div>
   </div>
+
+  <div class="wiki_right">
+    <button mat-button (click)="onWikipediaButtonClick()" [disabled]="disableUtilsButton()">Wikipedia</button>
+  </div>
+  <div class="synonyms_right">
+    <button mat-button [disabled]="disableUtilsButton()">Synonimy</button>
+  </div>
+  <div class="translate_right">
+    <button mat-button [disabled]="disableUtilsButton()">Tłumacz</button>
+  </div>
+
   <pre>
 </pre>
 </div>

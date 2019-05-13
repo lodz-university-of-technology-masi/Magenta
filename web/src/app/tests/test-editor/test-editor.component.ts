@@ -26,6 +26,8 @@ export class TestEditorComponent implements OnInit {
   questions: Questions;
   test: Test;
   url: UrlSegment[];
+  selectedText: String = '';
+
 
   ngOnInit(): void {
     this.questions = this.route.snapshot.data['questions'];
@@ -45,6 +47,7 @@ export class TestEditorComponent implements OnInit {
     });
 
   }
+
   checkUrl(path: string): boolean {
     for (let i = 0; i < this.url.length; i++) {
       const item = this.url[i];
@@ -54,6 +57,7 @@ export class TestEditorComponent implements OnInit {
     }
     return false;
   }
+
   add(): void {
     const question = new Question();
     question.min = 1;
@@ -67,6 +71,7 @@ export class TestEditorComponent implements OnInit {
   delete(id: number): void {
     this.questions.questions.splice(id, 1);
   }
+
   sendTest(): Observable<Test> {
     console.log(this.test.id);
     if (this.test.id === 0 || this.checkUrl(TRANSLATE_TEST_PAGE_URL)) {
@@ -77,9 +82,10 @@ export class TestEditorComponent implements OnInit {
       return this.testService.update(this.test.id, this.test);
     }
   }
+
   send(): void {
     this.sendTest().subscribe(testResult => {
-      if ( this.isRedactor()) {
+      if (this.isRedactor()) {
         this.questionService.save(
           testResult.id,
           this.questions
@@ -113,6 +119,7 @@ export class TestEditorComponent implements OnInit {
     }
     return true;
   }
+
   areQuestionsValid(): boolean {
     if (!this.isRedactor()) {
       return true;
@@ -134,7 +141,22 @@ export class TestEditorComponent implements OnInit {
     }
     return true;
   }
+
   isRedactor(): boolean {
     return this.sessionStorageService.isRedactor();
+  }
+
+  getSelectedText(): void {
+    this.selectedText = window.getSelection().toString();
+  }
+
+  disableUtilsButton(): Boolean {
+    return this.selectedText === '';
+  }
+
+  onWikipediaButtonClick(): void {
+    this.testService.getWikipediaDefinition(this.selectedText).subscribe( result =>
+      result.valueOf()
+    );
   }
 }
