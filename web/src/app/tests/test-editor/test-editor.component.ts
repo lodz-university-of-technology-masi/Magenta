@@ -159,4 +159,11 @@ export class TestEditorComponent implements OnInit {
       this.textValue = result.valueOf()
     );
   }
+
+  onTranslateButtonClick(): void {
+    const translateToPolish: Boolean = this.test.language === 'en';
+    this.testService.getTranslation(this.selectedText, translateToPolish).subscribe(result =>
+      this.textValue = result.valueOf()
+    );
+  }
 }

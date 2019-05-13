@@ -47,7 +47,7 @@
     <button mat-button [disabled]="disableUtilsButton()">Synonimy</button>
   </div>
   <div class="translate_right">
-    <button mat-button [disabled]="disableUtilsButton()">Tłumacz</button>
+    <button mat-button (click)="onTranslateButtonClick()" [disabled]="disableUtilsButton()">Tłumacz</button>
   </div>
 
   <div class="textarea_right">
