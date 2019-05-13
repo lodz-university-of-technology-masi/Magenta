@@ -62,7 +62,7 @@ public class SolutionController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('MODERATOR')")
+    @PreAuthorize("hasRole('REDACTOR')")
     public ResponseEntity create(@PathVariable int id,
                                  @RequestBody SolutionScoreDto solutionScoreDto) throws Exception {
         return ResponseEntity.ok(solutionService.updateScore(id, solutionScoreDto));
