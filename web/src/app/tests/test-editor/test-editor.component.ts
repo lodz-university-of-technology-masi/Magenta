@@ -154,6 +154,10 @@ export class TestEditorComponent implements OnInit {
     return this.selectedText === '';
   }
 
+  disableSynonymsButton(): Boolean {
+    return this.test.language === 'pl' || this.disableUtilsButton();
+  }
+
   onWikipediaButtonClick(): void {
     this.testService.getWikipediaDefinition(this.selectedText).subscribe(result =>
       this.textValue = result.valueOf()
@@ -164,6 +168,14 @@ export class TestEditorComponent implements OnInit {
     const translateToPolish: Boolean = this.test.language === 'en';
     this.testService.getTranslation(this.selectedText, translateToPolish).subscribe(result =>
       this.textValue = result.valueOf()
+    );
+  }
+
+  onSynonymsButtonClick(): void {
+    this.testService.getSynonyms(this.selectedText).subscribe(result =>
+      result.forEach(synonym => {
+        this.textValue = this.textValue.concat(`${synonym.valueOf()}, `);
+      })
     );
   }
 }
