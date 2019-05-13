@@ -1,11 +1,14 @@
 package backend.controller;
 
+import backend.exception.bad_request.BadSynonymRequest;
 import backend.exception.not_found.WikipediaDefinitionNotFound;
 
 import backend.service.UtilsService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/utils")
@@ -31,5 +34,17 @@ public class UtilsController {
             @RequestParam(required = false, defaultValue = "pl") String language)
             throws WikipediaDefinitionNotFound {
         return utilsService.getWikipediaDefinition(wantedText, language);
+    }
+
+    @ApiOperation(value = "Get synonyms list")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success."),
+            @ApiResponse(code = 404, message = "Synonyms not found."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @GetMapping("synonyms")
+    public List<String> getSynonyms(
+            @RequestParam String baseWord) throws BadSynonymRequest {
+        return utilsService.getSynonyms(baseWord);
     }
 }
