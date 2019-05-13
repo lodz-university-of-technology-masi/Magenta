@@ -1,6 +1,4 @@
-package backend.exception;
-
-import backend.exception.not_found.NotFoundException;
+package backend.exception.not_found;
 
 public class SolutionNotFoundException extends NotFoundException {
     @Override
