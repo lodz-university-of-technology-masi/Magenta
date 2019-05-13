@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {ErrorHandlingService} from '../../shared/services/error-handling.service';
-import {QuestionService} from './question.service';
 import {ActivatedRouteSnapshot, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Questions} from '../../models/question';

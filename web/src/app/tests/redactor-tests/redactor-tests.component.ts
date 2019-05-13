@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Solutions} from '../../models/question';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {CHECK_TEST} from '../../shared/utils/frontend-urls';
 
 @Component({
