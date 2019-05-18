@@ -1,11 +1,11 @@
 package backend.service;
 
-import backend.dto.test.FullTestDto;
-import backend.dto.test.TestDto;
-import backend.dto.test.TestListDto;
-import backend.dto.test.TestUpdateData;
+import backend.dto.test.*;
 import backend.exception.forbidden.ForbiddenException;
 import backend.exception.not_found.TestNotFoundException;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface TestService {
 
