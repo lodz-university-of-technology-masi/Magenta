@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { WarningDialogComponent } from './warning-dialog/warning-dialog.component';
 import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
 import { DeleteUserAccountDialogComponent } from './yes-no-dialog/delete-user-account-dialog/delete-user-account-dialog.component';
+import { AssignRedactorToTestComponent } from './warning-dialog/assign-redactor-to-test/assign-redactor-to-test.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { DeleteUserAccountDialogComponent } from './yes-no-dialog/delete-user-ac
   declarations: [
     WarningDialogComponent,
     YesNoDialogComponent,
-    DeleteUserAccountDialogComponent
+    DeleteUserAccountDialogComponent,
+    AssignRedactorToTestComponent
   ]
 })
 export class DialogsModule { }

@@ -8,6 +8,7 @@
       <td>Edytuj</td>
       <td>Skasuj</td>
       <td *ngIf="isRedactor()">Przetłumacz ręcznie</td>
+      <td *ngIf="isRedactor() && redactors">Przekaż prawo do testu</td>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +24,16 @@
       </td>
       <td *ngIf="isRedactor()">
         <button mat-button (click)="translate(test.id)">Tłumacz</button>
+      </td>
+      <td *ngIf="isRedactor() && redactors">
+        <mat-select placeholder="Użytkownik" (selectionChange)="assign(test.id, $event.value)">
+          <div *ngFor="let redactor of redactors.users">
+            <mat-option *ngIf="redactor.username !== getUsername()" [value]="redactor.username">
+              {{redactor.username}}
+            </mat-option>
+          </div>
+
+        </mat-select>
       </td>
     </tr>
     </tbody>

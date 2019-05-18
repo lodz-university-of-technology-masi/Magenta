@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/tests/{id}/redactor")
+@RequestMapping("/api/tests/{id}/redactors")
 @Api(value = "Test management",
-        basePath = "/api/tests",
+        basePath = "/api/tests/{id}/redactors",
         produces = "application/json",
         description = "Assign redactor to test")
 public class TestRedactorRestController {
@@ -26,7 +26,7 @@ public class TestRedactorRestController {
             @ApiResponse(code = 404, message = "User not found."),
             @ApiResponse(code = 500, message = "Unknown error.")
     })
-    @GetMapping()
+    @PutMapping()
     public ResponseEntity getTests(@PathVariable("id") int id,
                                    @RequestParam("username") String username) throws Exception {
         testRedactorService.assign(id, username);
