@@ -10,8 +10,9 @@ import {ADD_QUESTIONS, SOLUTIONS_PAGE_URL, TEST_PAGE_URL} from '../../shared/uti
 })
 export class ModeratorPageComponent implements OnInit {
 
-  constructor(private userService: UserService,
-              private router: Router) {
+  show = 'tests';
+
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {

@@ -16,3 +16,6 @@ thead td {
 .redactor-main-page-container {
   margin-bottom: 20px;
 }
+h1 {
+  text-align: left;
+}

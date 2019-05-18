@@ -11,16 +11,13 @@ import {ADD_QUESTIONS, SOLUTIONS_PAGE_URL, TEST_PAGE_URL} from '../../shared/uti
   styleUrls: ['./redactor-main-page.component.css']
 })
 export class RedactorMainPageComponent implements OnInit {
-  users: User[] = [];
+  show = 'tests';
 
   constructor(private userService: UserService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(result => result.users.forEach(user =>
-      this.users.push(user)
-    ));
   }
 
   onCheckTestButtonClick(): void {

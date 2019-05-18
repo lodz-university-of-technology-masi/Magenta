@@ -41,6 +41,7 @@ import {FormsModule} from '@angular/forms';
   exports: [
     UserTestsComponent,
     UserSolutionComponent,
-    AllTestsComponent],
+    AllTestsComponent,
+    RedactorTestsComponent],
 })
 export class TestsModule { }
