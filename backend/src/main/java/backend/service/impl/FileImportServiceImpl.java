@@ -7,7 +7,6 @@ import backend.entity.Test;
 import backend.entity.VariantAnswer;
 import backend.repository.TestRepository;
 import backend.service.FileImportService;
-import backend.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,7 +44,7 @@ public class FileImportServiceImpl implements FileImportService {
                 importDto.addError(row,"Zbyt mało komórek");
             } else {
                 language = cells[2];
-                checkIfEmty(language, importDto, row, "Język nie może być pusty");
+                checkIfEmpty(language, importDto, row, "Język nie może być pusty");
                 switch (cells[1]) {
                     case "O":
                         addOpenQuestion(test, importDto, cells, row);
@@ -89,7 +88,7 @@ public class FileImportServiceImpl implements FileImportService {
                 return;
             }
             String question = cells[3];
-            checkIfEmty(question, importDto, row, "Pytanie nie może być puste");
+            checkIfEmpty(question, importDto, row, "Pytanie nie może być puste");
             int answers = parseInt(cells[4], importDto, row, "Liczba odpowiedzi musi być liczbą");
             if (answers != 2) {
                 importDto.addError(row, "Pytanie typu skali wymaga 2 odpowiedzi");
@@ -127,7 +126,7 @@ public class FileImportServiceImpl implements FileImportService {
                 return;
             }
             String question = cells[3];
-            checkIfEmty(question, importDto, row, "Pytanie nie może być puste");
+            checkIfEmpty(question, importDto, row, "Pytanie nie może być puste");
             int answers = parseInt(cells[4], importDto, row, "Liczba odpowiedzi musi być liczbą");
             if (answers < 2) {
                 importDto.addError(row, "Pytanie typu wariantowego wymaga co najmniej 2 odpowiedzi");
@@ -145,7 +144,7 @@ public class FileImportServiceImpl implements FileImportService {
                     .build();
             for (int i = 0; i < answers; i++) {
                 String text = cells[5 + i];
-                checkIfEmty(text, importDto, row, "Pytanie nie może być puste");
+                checkIfEmpty(text, importDto, row, "Pytanie nie może być puste");
                 VariantAnswer variantAnswer = VariantAnswer.builder()
                         .question(questionEntity)
                         .text(text)
@@ -172,7 +171,7 @@ public class FileImportServiceImpl implements FileImportService {
                 return;
             }
             String question = cells[3];
-            checkIfEmty(question, importDto, row, "Pytanie nie może być puste");
+            checkIfEmpty(question, importDto, row, "Pytanie nie może być puste");
             int answers = parseInt(cells[4], importDto, row, "Liczba odpowiedzi musi być liczbą");
             if (answers != 1) {
                 importDto.addError(row, "Pytanie typu numerycznego wymaga 1 odpowiedzi");
@@ -205,7 +204,7 @@ public class FileImportServiceImpl implements FileImportService {
                 return;
             }
             String question = cells[3];
-            checkIfEmty(question, importDto, row, "Pytanie nie może być puste");
+            checkIfEmpty(question, importDto, row, "Pytanie nie może być puste");
             int answers = parseInt(cells[4], importDto, row, "Liczba odpowiedzi musi być liczbą");
             if (answers != 1) {
                 importDto.addError(row, "Pytanie typu otwartego wymaga 1 odpowiedzi");
@@ -236,7 +235,7 @@ public class FileImportServiceImpl implements FileImportService {
         return result;
     }
 
-    private void checkIfEmty(String string, CsvImportDto importDto, int row, String error) {
+    private void checkIfEmpty(String string, CsvImportDto importDto, int row, String error) {
         if (string.isEmpty()) {
             importDto.addError(row, error);
         }
