@@ -1,0 +1,18 @@
+<app-warning-dialog>
+  <div title>
+    Import testu
+    <pre></pre>
+  </div>
+  <div content>
+    <div *ngIf="importReportWrapper.importReport.status === 'OK'">
+      Import zakończony sukcesem
+    </div>
+    <div *ngIf="importReportWrapper.importReport.status === 'ERROR'">
+      Import zakończony z błędami: <br>
+      <span *ngFor="let error of importReportWrapper.importReport.errors">
+        {{error}}
+      </span>
+    </div>
+  </div>
+</app-warning-dialog>
+
