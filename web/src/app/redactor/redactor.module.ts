@@ -7,6 +7,8 @@ import {MatButtonModule} from '@angular/material';
 import {TestsModule} from '../tests/tests.module';
 import {DialogsModule} from '../dialogs/dialogs.module';
 import {AssignRedactorToTestComponent} from '../dialogs/warning-dialog/assign-redactor-to-test/assign-redactor-to-test.component';
+import {ImportDialogComponent} from '../dialogs/warning-dialog/import-dialog/import-dialog.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import {AssignRedactorToTestComponent} from '../dialogs/warning-dialog/assign-re
   declarations: [RedactorMainPageComponent],
   exports : [RedactorMainPageComponent],
   entryComponents: [
+    ImportDialogComponent,
     AssignRedactorToTestComponent
   ]
 })

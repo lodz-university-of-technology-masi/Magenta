@@ -6,6 +6,7 @@ import { WarningDialogComponent } from './warning-dialog/warning-dialog.componen
 import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
 import { DeleteUserAccountDialogComponent } from './yes-no-dialog/delete-user-account-dialog/delete-user-account-dialog.component';
 import { AssignRedactorToTestComponent } from './warning-dialog/assign-redactor-to-test/assign-redactor-to-test.component';
+import { ImportDialogComponent } from './warning-dialog/import-dialog/import-dialog.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { AssignRedactorToTestComponent } from './warning-dialog/assign-redactor-
     WarningDialogComponent,
     YesNoDialogComponent,
     DeleteUserAccountDialogComponent,
+    ImportDialogComponent,
     AssignRedactorToTestComponent
   ]
 })

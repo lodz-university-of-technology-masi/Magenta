@@ -9,10 +9,11 @@
       <td>Skasuj</td>
       <td *ngIf="isRedactor()">Przetłumacz ręcznie</td>
       <td *ngIf="isRedactor() && redactors">Przekaż prawo do testu</td>
+      <td *ngIf="isRedactor()">Eksportuj</td>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let test of tests.tests">
+    <tr *ngFor="let test of tests.tests; let i = index">
       <td>{{test.id}}</td>
       <td>{{test.name}}</td>
       <td>{{test.language}}</td>
@@ -20,7 +21,7 @@
         <button mat-button (click)="edit(test.id)">Edytuj</button>
       </td>
       <td class="danger-button">
-        <button mat-button (click)="delete(test.id)">Skasuj</button>
+        <button mat-button (click)="delete(test.id, i)">Skasuj</button>
       </td>
       <td *ngIf="isRedactor()">
         <button mat-button (click)="translate(test.id)">Tłumacz</button>
@@ -34,6 +35,9 @@
           </div>
 
         </mat-select>
+      </td>
+      <td *ngIf="isRedactor()">
+        <button mat-button (click)="export(test.id, test.name)">Eksportuj</button>
       </td>
     </tr>
     </tbody>
