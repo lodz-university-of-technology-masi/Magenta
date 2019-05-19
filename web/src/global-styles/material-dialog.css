@@ -1,4 +1,4 @@
 .mat-dialog-container {
   background-color: var(--background-secondary-color);
-  color: var(--secondary-text-color);
+  color: var(--primary-text-color);
 }

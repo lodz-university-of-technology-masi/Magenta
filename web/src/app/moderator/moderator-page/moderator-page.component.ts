@@ -10,16 +10,10 @@ import {ADD_QUESTIONS, SOLUTIONS_PAGE_URL, TEST_PAGE_URL} from '../../shared/uti
 })
 export class ModeratorPageComponent implements OnInit {
 
-  constructor(private userService: UserService,
-              private router: Router) {
+  constructor() {
   }
 
   ngOnInit(): void {
-  }
-
-
-  onCreateTestButtonClick(): void {
-    this.router.navigate([TEST_PAGE_URL, ADD_QUESTIONS]);
   }
 
 }
