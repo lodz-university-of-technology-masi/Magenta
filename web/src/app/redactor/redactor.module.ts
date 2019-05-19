@@ -5,6 +5,8 @@ import {RedactorRoutingModule} from './redactor-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
 import {TestsModule} from '../tests/tests.module';
+import {DialogsModule} from '../dialogs/dialogs.module';
+import {AssignRedactorToTestComponent} from '../dialogs/warning-dialog/assign-redactor-to-test/assign-redactor-to-test.component';
 import {ImportDialogComponent} from '../dialogs/warning-dialog/import-dialog/import-dialog.component';
 
 @NgModule({
@@ -14,12 +16,14 @@ import {ImportDialogComponent} from '../dialogs/warning-dialog/import-dialog/imp
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
-    TestsModule
+    TestsModule,
+    DialogsModule
   ],
   declarations: [RedactorMainPageComponent],
   exports : [RedactorMainPageComponent],
   entryComponents: [
-    ImportDialogComponent
+    ImportDialogComponent,
+    AssignRedactorToTestComponent
   ]
 })
 export class RedactorModule {

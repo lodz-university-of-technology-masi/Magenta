@@ -14,6 +14,8 @@ export const ASSIGN_POSTFIX = 'assign';
 export const WIKIPEDIA_UTILS_URL = '/api/utils/wikipedia';
 export const SYNONYMS_UTILS_URL = '/api/utils/synonyms';
 export const TRANSLATE_UTILS_URL = '/api/utils/translate';
+export const REDACTOR_URL = '/api/redactors';
+export const REDACTOR_POSTFIX = 'redactors';
 export const IMPORT_POSTFIX = 'import';
 export const EXPORT_POSTFIX = 'export';
 
