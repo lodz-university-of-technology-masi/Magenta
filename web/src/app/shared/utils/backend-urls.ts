@@ -15,4 +15,5 @@ export const WIKIPEDIA_UTILS_URL = '/api/utils/wikipedia';
 export const SYNONYMS_UTILS_URL = '/api/utils/synonyms';
 export const TRANSLATE_UTILS_URL = '/api/utils/translate';
 export const IMPORT_POSTFIX = 'import';
+export const EXPORT_POSTFIX = 'export';
 

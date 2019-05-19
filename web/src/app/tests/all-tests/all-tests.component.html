@@ -8,6 +8,7 @@
       <td>Edytuj</td>
       <td>Skasuj</td>
       <td *ngIf="isRedactor()">Przetłumacz ręcznie</td>
+      <td *ngIf="isRedactor()">Eksportuj</td>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +24,9 @@
       </td>
       <td *ngIf="isRedactor()">
         <button mat-button (click)="translate(test.id)">Tłumacz</button>
+      </td>
+      <td *ngIf="isRedactor()">
+        <button mat-button (click)="export(test.id, test.name)">Eksportuj</button>
       </td>
     </tr>
     </tbody>

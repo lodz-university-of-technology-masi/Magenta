@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Test, Tests} from '../../models/test';
+import {Tests} from '../../models/test';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TestService} from '../services/test.service';
 import {ADD_QUESTIONS, TEST_PAGE_URL, TRANSLATE_TEST_PAGE_URL} from '../../shared/utils/frontend-urls';
 import {SessionStorageService} from '../../shared/services/session-storage.service';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-all-tests',
@@ -29,6 +30,11 @@ export class AllTestsComponent implements OnInit {
   }
   edit(id: number): void {
     this.router.navigate([TEST_PAGE_URL, id, ADD_QUESTIONS]);
+  }
+  export(id: number, name: string): void {
+    this.testService.export(id).subscribe((file) => {
+      FileSaver.saveAs(file, `${name}.csv`);
+    });
   }
   delete(id: number, index: number): void {
     this.testService.delete(id).subscribe(() => {
