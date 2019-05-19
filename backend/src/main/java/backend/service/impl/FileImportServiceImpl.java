@@ -44,7 +44,7 @@ public class FileImportServiceImpl implements FileImportService {
             if(cells.length <= 3) {
                 importDto.addError(row,"Zbyt mało komórek");
             } else {
-                language = cells[3];
+                language = cells[2];
                 checkIfEmty(language, importDto, row, "Język nie może być pusty");
                 switch (cells[1]) {
                     case "O":
