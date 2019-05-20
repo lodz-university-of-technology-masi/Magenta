@@ -6,6 +6,7 @@ import {TestsModule} from '../tests/tests.module';
 import {SharedModule} from '../shared/shared.module';
 import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule} from '@angular/material';
 import { PositionsEditComponent } from './positions-edit/positions-edit.component';
+import { ModeratorTestsComponent } from './moderator-tests/moderator-tests.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { PositionsEditComponent } from './positions-edit/positions-edit.componen
     TestsModule,
     SharedModule
   ],
-  declarations: [ModeratorPageComponent, PositionsEditComponent]
+  declarations: [ModeratorPageComponent, PositionsEditComponent, ModeratorTestsComponent]
 })
 export class ModeratorModule { }

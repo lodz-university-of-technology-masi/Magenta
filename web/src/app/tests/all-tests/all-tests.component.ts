@@ -15,10 +15,6 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./all-tests.component.css']
 })
 export class AllTestsComponent implements OnInit {
-
-  @Input()
-  redactor: boolean;
-
   tests: Tests;
   redactors: Users;
 
