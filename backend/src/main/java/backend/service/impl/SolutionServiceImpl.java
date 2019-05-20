@@ -15,6 +15,7 @@ import backend.repository.SolutionRepository;
 import backend.repository.TestRepository;
 import backend.repository.UserRepository;
 import backend.security.TokenAuthentication;
+import backend.service.EmailService;
 import backend.service.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,23 +39,26 @@ public class SolutionServiceImpl implements SolutionService {
     @Autowired
     private TokenAuthentication tokenAuthentication;
 
+    @Autowired
+    private EmailService emailService;
+
     @Override
     public SolutionWithIdListDto getAllForRedactor(String authorization) {
         String redactor = tokenAuthentication.getUsername(authorization);
 
         List<UserTestSolution> solutions =
                 solutionRepository.findAll().stream()
-                .filter(item -> isOwner(item, redactor))
-                .collect(Collectors.toList());
+                        .filter(item -> isOwner(item, redactor))
+                        .collect(Collectors.toList());
         return SolutionWithIdListDto.builder()
                 .solutions(SolutionConverter.getSolutionDtosWithId(solutions))
                 .build();
     }
 
     private boolean isOwner(UserTestSolution item, String username) {
-        for (User owner:
-            item.getTest().getOwners()) {
-            if(owner.getUsername().equals(username))
+        for (User owner :
+                item.getTest().getOwners()) {
+            if (owner.getUsername().equals(username))
                 return true;
         }
         return false;
@@ -105,5 +109,12 @@ public class SolutionServiceImpl implements SolutionService {
         solution.setScore(solutionScoreDto.getScore());
         solutionRepository.save(solution);
         return SolutionConverter.getSolutionDtoWithId(solution);
+    }
+
+    @Override
+    public void sendEmail(int id) throws SolutionNotFoundException {
+        UserTestSolution solution = solutionRepository.findById(id)
+                .orElseThrow(SolutionNotFoundException::new);
+        emailService.sendScoreEmail(solution.getUser().getEmail(), solution.getScore());
     }
 }

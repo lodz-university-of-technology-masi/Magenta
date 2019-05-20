@@ -9,4 +9,5 @@ public interface EmailService {
     void sendEmail(String address, String title, String content);
     void sendRegisterEmail(String address, String username);
     void sendResetPasswordEmail(String address, String username, String newPassword);
+    void sendScoreEmail(String address, double score);
 }

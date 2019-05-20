@@ -1,16 +1,16 @@
 package backend.service.impl;
 
+import backend.entity.User;
+import backend.exception.bad_request.InvalidEmailException;
+import backend.exception.confict.EmailNotUniqueException;
+import backend.repository.UserRepository;
+import backend.service.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
-import backend.entity.User;
-import backend.repository.UserRepository;
-import backend.exception.bad_request.InvalidEmailException;
-import backend.exception.confict.EmailNotUniqueException;
-import backend.service.EmailService;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -72,6 +72,13 @@ public class EmailServiceImpl implements EmailService {
                 formatEmail("Hasło zresetowane"),
                 formatEmail("%s twoje hasło zostało zresetowane.\n" +
                         "Twoje nowe hasło to:%s", username, newPassword));
+    }
+
+    @Override
+    public void sendScoreEmail(String address, double score) {
+        sendEmail(address,
+                formatEmail("Wynik testu"),
+                formatEmail("Uzyskany przez Ciebie wynik to: %s", score));
     }
 
     private String formatEmail(String message, Object... args) {
