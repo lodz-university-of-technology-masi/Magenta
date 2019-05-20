@@ -40,18 +40,4 @@ export class HeaderComponent implements OnInit {
     this.router.navigated = false;
     this.router.navigate(commands);
   }
-
-  navigateToMainPage(): void {
-    switch (this.sessionStorage.getUser().roles[0].name) {
-      case ROLE_USER:
-        this.router.navigate([USER_PAGE_URL]);
-        break;
-      case ROLE_MODERATOR:
-        this.router.navigate([MODERATOR_PAGE_URL]);
-        break;
-      case ROLE_REDACTOR:
-        this.router.navigate([REDACTOR_PAGE_URL]);
-        break;
-    }
-  }
 }
