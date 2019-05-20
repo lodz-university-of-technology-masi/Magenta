@@ -137,7 +137,9 @@ public class TestServiceImpl implements TestService {
         });
 
 
-        questionService.create(translatedTest.getId(), QuestionListDto.builder().questions(newTestQuestions).build());
+        if(newTestQuestions.size() != 0) {
+            questionService.create(translatedTest.getId(), QuestionListDto.builder().questions(newTestQuestions).build());
+        }
         return getTest(translatedTest.getId());
     }
 
