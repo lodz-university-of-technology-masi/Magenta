@@ -59,7 +59,9 @@ export class AllTestsComponent implements OnInit {
   translateWholeTest(id: number): void {
     const test = this.tests.tests.find(it => it.id === id);
     const translateToPolish = test.language === 'en';
-    this.testService.translateTest(id, translateToPolish).subscribe();
+    this.testService.translateTest(id, translateToPolish).subscribe(result =>
+      this.tests.tests.push(result)
+    );
   }
 
   isRedactor(): boolean {
