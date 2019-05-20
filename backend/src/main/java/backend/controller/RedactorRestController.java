@@ -46,7 +46,7 @@ public class RedactorRestController {
             @ApiResponse(code = 500, message = "Unknown error.")
     })
     @GetMapping("/{username}")
-    public ResponseEntity getRedactors(@PathVariable("username") String username) throws Exception {
+    public ResponseEntity getRedactor(@PathVariable("username") String username) throws Exception {
         return ResponseEntity.ok(userService.getUserData(username));
     }
     @ApiOperation(value = "Add new redactor",
