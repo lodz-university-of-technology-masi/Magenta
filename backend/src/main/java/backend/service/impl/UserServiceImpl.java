@@ -46,13 +46,6 @@ public class UserServiceImpl implements UserService {
     private TokenAuthentication tokenAuthentication;
 
     @Override
-    public void canPerformOperation(String username, String authorizationToken) throws ForbiddenException {
-        if (!tokenAuthentication.checkUser(username, authorizationToken)) {
-            throw new ForbiddenException();
-        }
-    }
-
-    @Override
     public UserListDto getUsersDataByRole(String roleName) throws CustomException {
         Role role = roleService.getRole(roleName);
         List<User> users = userRepository.getUserByRoles(role);
@@ -79,7 +72,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserLoginDetails updateUser(String username, UserUpdateData userUpdateData, String authorizationToken) throws CustomException {
-        canPerformOperation(username, authorizationToken);
         return updateUser(username, userUpdateData);
     }
 
@@ -98,7 +90,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(String username, String authorizationToken) throws ForbiddenException {
-        canPerformOperation(username, authorizationToken);
         deleteUser(username);
     }
 

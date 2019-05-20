@@ -14,7 +14,6 @@ import {ImportDialogComponent} from '../../dialogs/warning-dialog/import-dialog/
   styleUrls: ['./redactor-main-page.component.css']
 })
 export class RedactorMainPageComponent implements OnInit {
-  users: User[] = [];
   @ViewChild('fileInput') fileInput: any;
   constructor(private userService: UserService,
               private router: Router,
@@ -23,9 +22,6 @@ export class RedactorMainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe(result => result.users.forEach(user =>
-      this.users.push(user)
-    ));
   }
 
   onCheckTestButtonClick(): void {

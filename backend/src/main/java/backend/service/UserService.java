@@ -11,7 +11,6 @@ import java.util.List;
 
 public interface UserService {
     UserListDto getUsersDataByRole(String role) throws CustomException;
-    void canPerformOperation(String username, String authorizationToken) throws ForbiddenException;
     UserLoginDetails addUser(UserRegisterDetails userRegisterData, String... roles) throws CustomException;
     UserLoginDetails updateUser(String username, UserUpdateData userRegisterDetails, String authorizationToken) throws CustomException;
     UserLoginDetails updateUser(String id, UserUpdateData userRegisterDetails) throws CustomException;
