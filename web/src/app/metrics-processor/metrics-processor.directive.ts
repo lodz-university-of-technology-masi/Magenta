@@ -64,6 +64,7 @@ export class MetricsProcessorDirective {
   private startProcessing() {
     this.startTime = Date.now();
     this.metricsModel = new MetricsModel();
+	  alert("Start");
   }
 
   private stopProcessing(failed = false) {
