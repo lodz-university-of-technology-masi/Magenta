@@ -64,7 +64,7 @@ export class MetricsProcessorDirective {
   private startProcessing() {
     this.startTime = Date.now();
     this.metricsModel = new MetricsModel();
-	  alert("Start");
+	  console.log("Start");
   }
 
   private stopProcessing(failed = false) {
@@ -72,9 +72,9 @@ export class MetricsProcessorDirective {
 
     this.prepareModelToPersist(failed);
     this.metricsProcessorService.persist(this.metricsModel).subscribe(() => {
-      alert("Metrics saved successfully");
+      console.log("Metrics saved successfully");
     }, () => {
-      alert("Metrics save failed");
+      console.log("Metrics save failed");
     });
   }
 
