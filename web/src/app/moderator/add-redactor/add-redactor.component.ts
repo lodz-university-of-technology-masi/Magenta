@@ -15,9 +15,49 @@ import {MODERATOR_REDACTORS_PAGE_URL} from '../../shared/utils/frontend-urls';
 })
 export class AddRedactorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private redactorService: RedactorService,
+              private formBuilder: FormBuilder,
+              private router: Router) { }
+
+  registerForm: FormGroup;
+  confirmPassword = new RegistrationConfirmPassword();
+  errorMatcher = new ConfirmPasswordErrorMatcher();
+
+  minUsernameLength = MIN_USERNAME_LENGTH;
+  maxUsernameLength = MAX_USERNAME_LENGTH;
+  minPasswordLength = MIN_PASSWORD_LENGTH;
+  maxPasswordLength = MAX_PASSWORD_LENGTH;
 
 
   ngOnInit(): void {
+    this.buildForm();
   }
+  buildForm(): void {
+    this.registerForm = this.formBuilder.group({
+      username: ['', [
+        Validators.required,
+        Validators.minLength(this.minUsernameLength),
+        Validators.maxLength(this.maxUsernameLength)
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(this.minPasswordLength),
+        Validators.maxLength(this.maxPasswordLength)
+      ]],
+      confirmPassword: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      nameSurname: [''],
+    }, {
+      validator: this.confirmPassword.matchPassword
+    } );
+  }
+  add(): void {
+    this.redactorService.add(this.registerForm.value).subscribe(() => {
+      this.router.navigate([MODERATOR_REDACTORS_PAGE_URL]);
+    });
+  }
+  getProcessingRegistration(): boolean {
+    return LoadingSpinnerComponent.showLoadingIndicator;
+  }
+
 }
