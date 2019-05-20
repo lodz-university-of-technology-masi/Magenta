@@ -8,6 +8,7 @@
       <td>Edytuj</td>
       <td>Skasuj</td>
       <td *ngIf="isRedactor()">Przetłumacz ręcznie</td>
+      <td *ngIf="isRedactor()">Przetłumacz</td>
       <td *ngIf="isRedactor() && redactors">Przekaż prawo do testu</td>
       <td *ngIf="isRedactor()">Eksportuj</td>
     </tr>
@@ -25,6 +26,9 @@
       </td>
       <td *ngIf="isRedactor()">
         <button mat-button (click)="translate(test.id)">Tłumacz</button>
+      </td>
+      <td *ngIf="isRedactor()">
+        <button mat-button (click)="translateWholeTest(test.id)">Tłumacz</button>
       </td>
       <td *ngIf="isRedactor() && redactors">
         <mat-select placeholder="Użytkownik" (selectionChange)="assign(test.id, $event.value)">

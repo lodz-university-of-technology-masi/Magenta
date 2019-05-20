@@ -26,33 +26,46 @@ export class AllTestsComponent implements OnInit {
               private router: Router,
               private testService: TestService,
               private sessionStorageService: SessionStorageService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
-    this.route.data.subscribe(data  => {
+    this.route.data.subscribe(data => {
       this.tests = data['tests'];
     });
     this.redactors = this.route.snapshot.data['redactors'];
   }
+
   edit(id: number): void {
     this.router.navigate([TEST_PAGE_URL, id, ADD_QUESTIONS]);
   }
+
   export(id: number, name: string): void {
     this.testService.export(id).subscribe((file) => {
       FileSaver.saveAs(file, `${name}.csv`);
     });
   }
+
   delete(id: number, index: number): void {
     this.testService.delete(id).subscribe(() => {
       this.tests.tests.splice(index, 1);
     });
   }
+
   translate(id: number): void {
     this.router.navigate([TRANSLATE_TEST_PAGE_URL, id, ADD_QUESTIONS]);
   }
+
+  translateWholeTest(id: number): void {
+    const test = this.tests.tests.find(it => it.id === id);
+    const translateToPolish = test.language === 'en';
+    this.testService.translateTest(id, translateToPolish).subscribe();
+  }
+
   isRedactor(): boolean {
     return this.sessionStorageService.isRedactor();
   }
+
   assign(testId: number, username: string): void {
     this.testService.assign(testId, username).subscribe(() => {
       this.dialog.open(AssignRedactorToTestComponent, {
@@ -61,7 +74,8 @@ export class AllTestsComponent implements OnInit {
       });
     });
   }
-  getUsername() {
+
+  getUsername(): string {
     return this.sessionStorageService.getUser().username;
   }
 }
