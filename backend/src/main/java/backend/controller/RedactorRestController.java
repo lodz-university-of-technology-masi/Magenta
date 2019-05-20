@@ -1,9 +1,6 @@
 package backend.controller;
 
-import backend.dto.user.UserListDto;
-import backend.dto.user.UserLoginDetails;
-import backend.dto.user.UserRegisterDetails;
-import backend.dto.user.UserUpdateData;
+import backend.dto.user.*;
 import backend.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -39,6 +36,19 @@ public class RedactorRestController {
         return ResponseEntity.ok(userService.getUsersDataByRole("REDACTOR"));
     }
 
+    @ApiOperation(value = "Get redactor data",
+            response = UserData.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 404, message = "User not found."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @GetMapping("/{username}")
+    public ResponseEntity getRedactors(@PathVariable("username") String username) throws Exception {
+        return ResponseEntity.ok(userService.getUserData(username));
+    }
     @ApiOperation(value = "Add new redactor",
             response = UserLoginDetails.class)
     @ApiResponses(value = {

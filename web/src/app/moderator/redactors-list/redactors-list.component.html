@@ -13,7 +13,9 @@
         <tr *ngFor="let redactor of redactors.users; let i = index">
             <td>{{redactor.username}}</td>
             <td>{{redactor.nameSurname}}</td>
-            <td>Modyfikuj</td>
+            <td class="material-form">
+              <button mat-button [routerLink]="['/', modifyRedactor, redactor.username]">Modyfikuj</button>
+            </td>
             <td class="danger-button">
               <button mat-button (click)="delete(redactor.username, i)">Usuń</button>
             </td>

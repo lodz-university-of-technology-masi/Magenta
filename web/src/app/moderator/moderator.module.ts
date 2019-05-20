@@ -10,6 +10,7 @@ import { ModeratorTestsComponent } from './moderator-tests/moderator-tests.compo
 import { RedactorsListComponent } from './redactors-list/redactors-list.component';
 import { AddRedactorComponent } from './add-redactor/add-redactor.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ModifyRedactorComponent } from './modify-redactor/modify-redactor.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,6 @@ import {ReactiveFormsModule} from '@angular/forms';
     TestsModule,
     SharedModule
   ],
-  declarations: [ModeratorPageComponent, PositionsEditComponent, ModeratorTestsComponent, RedactorsListComponent, AddRedactorComponent]
+  declarations: [ModeratorPageComponent, PositionsEditComponent, ModeratorTestsComponent, RedactorsListComponent, AddRedactorComponent, ModifyRedactorComponent]
 })
 export class ModeratorModule { }
