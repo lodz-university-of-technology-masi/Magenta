@@ -56,8 +56,5 @@ export class AddRedactorComponent implements OnInit {
       this.router.navigate([MODERATOR_REDACTORS_PAGE_URL]);
     });
   }
-  getProcessingRegistration(): boolean {
-    return LoadingSpinnerComponent.showLoadingIndicator;
-  }
 
 }
