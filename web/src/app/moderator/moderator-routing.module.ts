@@ -39,11 +39,6 @@ const MODERATOR_PAGE_ROUTES: Route[] = [
     resolve: {
       redactors: RedactorsResolveService
     }
-  },
-  {
-    path: ADD_REDACTOR_PAGE_URL,
-    component: <any>AddRedactorComponent,
-    runGuardsAndResolvers: 'always'
   }
 ];
 
