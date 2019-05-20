@@ -21,10 +21,36 @@ export class AddRedactorComponent implements OnInit {
 
   registerForm: FormGroup;
   confirmPassword = new RegistrationConfirmPassword();
+  errorMatcher = new ConfirmPasswordErrorMatcher();
+
+  minPasswordLength = MIN_PASSWORD_LENGTH;
+  maxPasswordLength = MAX_PASSWORD_LENGTH;
+  minUsernameLength = MIN_USERNAME_LENGTH;
+  maxUsernameLength = MAX_USERNAME_LENGTH;
 
 
 
   ngOnInit(): void {
+    this.buildForm();
+  }
+  buildForm(): void {
+    this.registerForm = this.formBuilder.group({
+      password: ['', [
+        Validators.required,
+        Validators.minLength(this.minPasswordLength),
+        Validators.maxLength(this.maxPasswordLength)
+      ]],
+      username: ['', [
+        Validators.required,
+        Validators.minLength(this.minUsernameLength),
+        Validators.maxLength(this.maxUsernameLength)
+      ]],
+      email: ['', [Validators.required]],
+      nameSurname: [''],
+      confirmPassword: ['', [Validators.required]],
+    }, {
+      validator: this.confirmPassword.matchPassword
+    } );
   }
   add(): void {
     this.redactorService.add(this.registerForm.value).subscribe(() => {
