@@ -42,16 +42,18 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToMainPage(): void {
-    switch (this.sessionStorage.getUser().roles[0].name) {
-      case ROLE_USER:
-        this.router.navigate([USER_PAGE_URL]);
+    const role = this.sessionStorage.getUser().roles[0].name;
+    switch (role) {
+      case ROLE_REDACTOR:
+        this.router.navigate([REDACTOR_PAGE_URL]);
         break;
       case ROLE_MODERATOR:
         this.router.navigate([MODERATOR_PAGE_URL]);
         break;
-      case ROLE_REDACTOR:
-        this.router.navigate([REDACTOR_PAGE_URL]);
+      case ROLE_USER:
+        this.router.navigate([USER_PAGE_URL]);
         break;
+
     }
   }
 }
