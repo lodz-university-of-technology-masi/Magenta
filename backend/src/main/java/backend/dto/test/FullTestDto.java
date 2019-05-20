@@ -1,8 +1,6 @@
 package backend.dto.test;
 
 import backend.dto.position.PositionDto;
-import backend.dto.question.QuestionDto;
-import backend.dto.solution.SolutionDto;
 import lombok.*;
 
 import java.util.List;

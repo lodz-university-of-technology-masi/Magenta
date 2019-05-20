@@ -1,9 +1,9 @@
 package backend.controller;
 
-
 import backend.dto.test.TestDto;
 import backend.dto.test.TestListDto;
 import backend.dto.test.TestUpdateData;
+import backend.exception.not_found.TestNotFoundException;
 import backend.service.TestService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,5 +93,20 @@ public class TestsController {
             throws Exception {
         testService.deleteTest(id, authorization);
         return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation(value = "Translate test",
+            response = TestDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success."),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 404, message = "Test not found."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @GetMapping("translate/{id}")
+    @PreAuthorize("hasAnyRole('MODERATOR', 'REDACTOR')")
+    public ResponseEntity translateTest(@PathVariable int id, @RequestParam String username, @RequestParam boolean translateToPolish) throws TestNotFoundException {
+        return ResponseEntity.ok(testService.translateTest(id, translateToPolish, username));
     }
 }

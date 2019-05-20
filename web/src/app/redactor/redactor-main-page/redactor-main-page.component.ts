@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Test} from '../../models/test';
 import {User} from '../../models/user/user';
 import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
