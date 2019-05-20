@@ -35,9 +35,4 @@ public abstract class TestConverter extends ConverterBase {
     public static Test getTest(TestDto testDto) {
         return mapper.map(testDto, Test.class);
     }
-
-    public static Test getTest(FullTestDto test) {
-        return mapper.map(test, Test.class);
-    }
-
 }

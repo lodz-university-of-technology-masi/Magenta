@@ -3,6 +3,8 @@ package backend.controller;
 import backend.dto.test.TestDto;
 import backend.dto.test.TestListDto;
 import backend.dto.test.TestUpdateData;
+import backend.exception.bad_request.BadTranslationRequest;
+import backend.exception.bad_request.UnsupportedQuestionType;
 import backend.exception.not_found.TestNotFoundException;
 import backend.service.TestService;
 import io.swagger.annotations.*;
@@ -106,7 +108,7 @@ public class TestsController {
     })
     @GetMapping("translate/{id}")
     @PreAuthorize("hasAnyRole('MODERATOR', 'REDACTOR')")
-    public ResponseEntity translateTest(@PathVariable int id, @RequestParam String username, @RequestParam boolean translateToPolish) throws TestNotFoundException {
+    public ResponseEntity translateTest(@PathVariable int id, @RequestParam String username, @RequestParam boolean translateToPolish) throws TestNotFoundException, BadTranslationRequest, UnsupportedQuestionType {
         return ResponseEntity.ok(testService.translateTest(id, translateToPolish, username));
     }
 }
