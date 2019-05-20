@@ -4,10 +4,11 @@ import {Router} from '@angular/router';
 import {ErrorHandlingService} from '../../shared/services/error-handling.service';
 import {
   LOGIN_PAGE_URL,
-  MAIN_PAGE_URL,
+  MAIN_PAGE_URL, MODERATOR_PAGE_URL, REDACTOR_PAGE_URL,
   REGISTER_PAGE_URL,
-  USER_EDIT_PAGE_URL
+  USER_EDIT_PAGE_URL, USER_PAGE_URL
 } from '../../shared/utils/frontend-urls';
+import {ROLE_MODERATOR, ROLE_REDACTOR, ROLE_USER} from '../../shared/utils/global-variables';
 
 @Component({
   selector: 'app-header',
@@ -38,5 +39,19 @@ export class HeaderComponent implements OnInit {
     this.errorHandlingService.clear();
     this.router.navigated = false;
     this.router.navigate(commands);
+  }
+
+  navigateToMainPage(): void {
+    switch (this.sessionStorage.getUser().roles[0].name) {
+      case ROLE_USER:
+        this.router.navigate([USER_PAGE_URL]);
+        break;
+      case ROLE_MODERATOR:
+        this.router.navigate([MODERATOR_PAGE_URL]);
+        break;
+      case ROLE_REDACTOR:
+        this.router.navigate([REDACTOR_PAGE_URL]);
+        break;
+    }
   }
 }

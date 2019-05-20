@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Users} from '../../models/user/user';
-import {REDACTOR_URL, USERS_URL} from '../../shared/utils/backend-urls';
+import {REDACTOR_URL, REGISTER_URL, USERS_URL} from '../../shared/utils/backend-urls';
+import {RegisterUserDetails} from '../../models/user/register-user-details';
+import {LoggedUser} from '../../models/user/logged-user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,10 @@ export class RedactorService {
   }
   delete(username: string): Observable<any> {
     return this.http.delete(
-      `${USERS_URL}/${username}`
+      `${REDACTOR_URL}/${username}`
     );
+  }
+  add(registerDetails: RegisterUserDetails): Observable<any> {
+    return this.http.post(REDACTOR_URL, registerDetails);
   }
 }

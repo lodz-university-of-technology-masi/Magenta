@@ -8,10 +8,13 @@ import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule} fro
 import { PositionsEditComponent } from './positions-edit/positions-edit.component';
 import { ModeratorTestsComponent } from './moderator-tests/moderator-tests.component';
 import { RedactorsListComponent } from './redactors-list/redactors-list.component';
+import { AddRedactorComponent } from './add-redactor/add-redactor.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatSelectModule,
@@ -21,6 +24,6 @@ import { RedactorsListComponent } from './redactors-list/redactors-list.componen
     TestsModule,
     SharedModule
   ],
-  declarations: [ModeratorPageComponent, PositionsEditComponent, ModeratorTestsComponent, RedactorsListComponent]
+  declarations: [ModeratorPageComponent, PositionsEditComponent, ModeratorTestsComponent, RedactorsListComponent, AddRedactorComponent]
 })
 export class ModeratorModule { }

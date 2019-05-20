@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Users} from '../../models/user/user';
 import {RedactorService} from '../services/redactor.service';
 import {ActivatedRoute, Route} from '@angular/router';
+import {ADD_REDACTOR_PAGE_URL} from '../../shared/utils/frontend-urls';
 
 @Component({
   selector: 'app-redactors-list',
@@ -10,6 +11,7 @@ import {ActivatedRoute, Route} from '@angular/router';
 })
 export class RedactorsListComponent implements OnInit {
 
+  addRedactor = ADD_REDACTOR_PAGE_URL;
   redactors: Users;
 
   constructor(private redactorService: RedactorService,
