@@ -9,7 +9,8 @@
       <td>Skasuj</td>
       <td *ngIf="isRedactor()">Przetłumacz ręcznie</td>
       <td *ngIf="isRedactor() && redactors">Przekaż prawo do testu</td>
-      <td *ngIf="isRedactor()">Eksportuj</td>
+      <td *ngIf="isRedactor()">Eksportuj (csv)</td>
+      <td *ngIf="isRedactor()">Eksportuj (PDF)</td>
     </tr>
     </thead>
     <tbody>
@@ -37,7 +38,10 @@
         </mat-select>
       </td>
       <td *ngIf="isRedactor()">
-        <button mat-button (click)="export(test.id, test.name)">Eksportuj</button>
+        <button mat-button (click)="exportCSV(test.id, test.name)">Eksportuj CSV</button>
+      </td>
+      <td *ngIf="isRedactor()">
+        <button mat-button (click)="exportPDF(test.id, test.name)">Eksportuj PDF</button>
       </td>
     </tr>
     </tbody>

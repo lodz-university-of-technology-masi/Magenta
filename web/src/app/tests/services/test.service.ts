@@ -2,7 +2,15 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test, Tests} from '../../models/test';
-import {REDACTOR_POSTFIX, EXPORT_POSTFIX, SYNONYMS_UTILS_URL, TESTS_URL, TRANSLATE_UTILS_URL, WIKIPEDIA_UTILS_URL} from '../../shared/utils/backend-urls';
+import {
+  REDACTOR_POSTFIX,
+  EXPORT_POSTFIX,
+  SYNONYMS_UTILS_URL,
+  TESTS_URL,
+  TRANSLATE_UTILS_URL,
+  WIKIPEDIA_UTILS_URL,
+  PDF_POSTFIX
+} from '../../shared/utils/backend-urls';
 import {SessionStorageService} from '../../shared/services/session-storage.service';
 
 @Injectable({
@@ -49,8 +57,12 @@ export class TestService {
   assign(testId: number, username: string): Observable<any> {
     return this.http.put(`${TESTS_URL}/${testId}/${REDACTOR_POSTFIX}?username=${username}`, null);
   }
-  export(id: number): Observable<any> {
+  exportCSV(id: number): Observable<any> {
     return this.http.get(`${TESTS_URL}/${id}/${EXPORT_POSTFIX}`,
+      {responseType: 'blob'});
+  }
+  exportPDF(id: number): Observable<any> {
+    return this.http.get(`${TESTS_URL}/${EXPORT_POSTFIX}/${id}/${PDF_POSTFIX}`,
       {responseType: 'blob'});
   }
 }
