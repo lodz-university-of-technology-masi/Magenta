@@ -123,7 +123,7 @@ public class TestServiceImpl implements TestService {
                     translatedQuestion.getVariants().forEach(variant ->
                             {
                                 try {
-                                    variant.setText(utilsService.getTranslation(questionDto.getQuestion(), translateToPolish));
+                                    variant.setText(utilsService.getTranslation(variant.getText(), translateToPolish));
                                 } catch (BadTranslationRequest badTranslationRequest) {
                                     badTranslationRequest.printStackTrace();
                                 }
