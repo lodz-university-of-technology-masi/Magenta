@@ -39,4 +39,12 @@
             <b>question</b>
         </field-exclude>
     </mapping>
+    <mapping>
+        <class-a>backend.entity.UsabilityData</class-a>
+        <class-b>backend.dto.usabilitydata.UsabilityDataDto</class-b>
+        <field-exclude>
+            <a>browser</a>
+            <b>browser</b>
+        </field-exclude>
+    </mapping>
 </mappings>
