@@ -7,7 +7,7 @@ import {
   EXPORT_POSTFIX,
   SYNONYMS_UTILS_URL,
   TESTS_URL,
-  TRANSLATE_UTILS_URL
+  TRANSLATE_UTILS_URL,
   WIKIPEDIA_UTILS_URL,
   PDF_POSTFIX
 } from '../../shared/utils/backend-urls';
@@ -58,6 +58,7 @@ export class TestService {
   assign(testId: number, username: string): Observable<any> {
     return this.http.put(`${TESTS_URL}/${testId}/${REDACTOR_POSTFIX}?username=${username}`, null);
   }
+
   export(id: number): Observable<any> {
     return this.http.get(`${TESTS_URL}/${id}/${EXPORT_POSTFIX}`,
       {responseType: 'blob'});
@@ -65,12 +66,16 @@ export class TestService {
 
   translateTest(id: number, translateToPolish: Boolean): Observable<Test> {
     return this.http.get<Test>(`${TESTS_URL}/translate/${id}?username=${this.sessionStorageService.getUser().username}&translateToPolish=${translateToPolish}`);
+  }
 
-  exportCSV(id: number): Observable<any> {
+  exportCSV(id: number):
+    Observable<any> {
     return this.http.get(`${TESTS_URL}/${id}/${EXPORT_POSTFIX}`,
       {responseType: 'blob'});
   }
-  exportPDF(id: number): Observable<any> {
+
+  exportPDF(id: number):
+    Observable<any> {
     return this.http.get(`${TESTS_URL}/${EXPORT_POSTFIX}/${id}/${PDF_POSTFIX}`,
       {responseType: 'blob'});
   }
