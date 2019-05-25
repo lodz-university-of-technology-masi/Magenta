@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Solutions} from '../../models/question';
 import {ActivatedRoute} from '@angular/router';
 import {CHECK_TEST} from '../../shared/utils/frontend-urls';
+import {SolutionsService} from '../services/solutions.service';
 
 @Component({
   selector: 'app-redactor-tests',
@@ -10,7 +11,8 @@ import {CHECK_TEST} from '../../shared/utils/frontend-urls';
 })
 export class RedactorTestsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private solutionsService: SolutionsService) {
   }
 
   solutions: Solutions;
@@ -19,5 +21,7 @@ export class RedactorTestsComponent implements OnInit {
   ngOnInit(): void {
     this.solutions = this.route.snapshot.data['solutions'];
   }
-
+  sendEmail(id: number): void {
+    this.solutionsService.sendEmail(id).subscribe();
+  }
 }
