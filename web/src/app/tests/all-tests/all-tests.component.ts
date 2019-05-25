@@ -37,9 +37,14 @@ export class AllTestsComponent implements OnInit {
   edit(id: number): void {
     this.router.navigate([TEST_PAGE_URL, id, ADD_QUESTIONS]);
   }
-  export(id: number, name: string): void {
-    this.testService.export(id).subscribe((file) => {
+  exportCSV(id: number, name: string): void {
+    this.testService.exportCSV(id).subscribe((file) => {
       FileSaver.saveAs(file, `${name}.csv`);
+    });
+  }
+  exportPDF(id: number, name: string): void {
+    this.testService.exportPDF(id).subscribe((file) => {
+      FileSaver.saveAs(file, `${name}.pdf`);
     });
   }
   delete(id: number, index: number): void {
@@ -61,7 +66,7 @@ export class AllTestsComponent implements OnInit {
       });
     });
   }
-  getUsername() {
+  getUsername(): string {
     return this.sessionStorageService.getUser().username;
   }
 }
