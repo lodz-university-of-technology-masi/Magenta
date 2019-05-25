@@ -18,4 +18,7 @@ export const REDACTOR_URL = '/api/redactors';
 export const REDACTOR_POSTFIX = 'redactors';
 export const IMPORT_POSTFIX = 'import';
 export const EXPORT_POSTFIX = 'export';
+export const METRICS_URL = '/api/metrics';
+export const EMAIL_POSTFIX = 'email';
+export const PDF_POSTFIX = 'pdf';
 

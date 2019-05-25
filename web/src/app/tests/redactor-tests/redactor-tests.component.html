@@ -9,6 +9,7 @@
       <td>Sprawdzony</td>
       <td>Wynik</td>
       <td>Sprawdź</td>
+      <td>Wyślij email</td>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +22,9 @@
         <td>{{solution.score}}</td>
         <td>
           <button mat-button [routerLink]="['..', checkPage, solution.id]">Sprawdź</button>
+        </td>
+        <td>
+          <button mat-button [disabled]="!solution.checked" (click)="sendEmail(solution.id)">Wyślij</button>
         </td>
       </tr>
     </tbody>

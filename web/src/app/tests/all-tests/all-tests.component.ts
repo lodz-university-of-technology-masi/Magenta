@@ -39,10 +39,20 @@ export class AllTestsComponent implements OnInit {
   edit(id: number): void {
     this.router.navigate([TEST_PAGE_URL, id, ADD_QUESTIONS]);
   }
-
   export(id: number, name: string): void {
     this.testService.export(id).subscribe((file) => {
       FileSaver.saveAs(file, `${name}.csv`);
+    });
+  }
+
+  exportCSV(id: number, name: string): void {
+    this.testService.exportCSV(id).subscribe((file) => {
+      FileSaver.saveAs(file, `${name}.csv`);
+    });
+  }
+  exportPDF(id: number, name: string): void {
+    this.testService.exportPDF(id).subscribe((file) => {
+      FileSaver.saveAs(file, `${name}.pdf`);
     });
   }
 
