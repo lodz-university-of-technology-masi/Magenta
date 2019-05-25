@@ -4,7 +4,7 @@
   </mat-error>
   <div class="variant-wrapper danger-button" *ngFor="let variant of variants; let i = index;" >
     <div class="input-wrapper">
-      <input class="variant-input" [value]="variant.text" (click)="variant.text = $event.target.value">
+      <input class="variant-input" [value]="variant.text" (input)="variant.text = $event.target.value">
       <mat-error *ngIf="variant.text.length === 0">
         Musisz podać odpowiedź
       </mat-error>
