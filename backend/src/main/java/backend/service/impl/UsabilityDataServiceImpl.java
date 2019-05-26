@@ -47,6 +47,6 @@ public class UsabilityDataServiceImpl implements UsabilityDataService {
         final String filename = (username != null ? username : "") + "_" + LocalDateTime.now().format(DATE_TIME_FORMATTER) + ".jpg";
         FileOutputStream fileOutputStream = new FileOutputStream(filename);
         fileOutputStream.write(Base64.decodeBase64(imageValue.substring(imageValue.indexOf(','))));
-
+        fileOutputStream.close();
     }
 }
