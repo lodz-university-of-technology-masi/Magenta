@@ -22,4 +22,6 @@ export const METRICS_URL = '/api/metrics';
 export const EMAIL_POSTFIX = 'email';
 export const PDF_POSTFIX = 'pdf';
 export const CSV_POSTFIX = 'csv';
+export const SCREEN_URL = `${METRICS_URL}/screen`;
+
 

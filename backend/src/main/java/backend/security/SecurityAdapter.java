@@ -24,7 +24,7 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
             "/api/users/login",
             "/api/users",
             "/api/texts/**",
-            "/api/metrics",
+            "/api/metrics/**",
             "/api/users/{username}/texts",
             "/api/images/{imageId}",
             "/api/users/{username}",
