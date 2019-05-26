@@ -36,12 +36,6 @@ export class AllTestsComponent implements OnInit {
   edit(id: number): void {
     this.router.navigate([TEST_PAGE_URL, id, ADD_QUESTIONS]);
   }
-  export(id: number, name: string): void {
-    this.testService.export(id).subscribe((file) => {
-      FileSaver.saveAs(file, `${name}.csv`);
-    });
-  }
-
   exportCSV(id: number, name: string): void {
     this.testService.exportCSV(id).subscribe((file) => {
       FileSaver.saveAs(file, `${name}.csv`);
@@ -52,17 +46,14 @@ export class AllTestsComponent implements OnInit {
       FileSaver.saveAs(file, `${name}.pdf`);
     });
   }
-
   delete(id: number, index: number): void {
     this.testService.delete(id).subscribe(() => {
       this.tests.tests.splice(index, 1);
     });
   }
-
   translate(id: number): void {
     this.router.navigate([TRANSLATE_TEST_PAGE_URL, id, ADD_QUESTIONS]);
   }
-
   translateWholeTest(id: number): void {
     const test = this.tests.tests.find(it => it.id === id);
     const translateToPolish = test.language === 'en';
@@ -70,11 +61,9 @@ export class AllTestsComponent implements OnInit {
       this.tests.tests.push(result)
     );
   }
-
   isRedactor(): boolean {
     return this.sessionStorageService.isRedactor();
   }
-
   assign(testId: number, username: string): void {
     this.testService.assign(testId, username).subscribe(() => {
       this.dialog.open(AssignRedactorToTestComponent, {
