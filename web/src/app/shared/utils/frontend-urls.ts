@@ -14,3 +14,7 @@ export const RESOLVE_TEST_PAGE = 'resolve';
 export const SOLUTIONS_PAGE_URL = 'redactor-tests';
 export const CHECK_TEST = 'check-test';
 export const MY_SOLUTIONS = 'my-tests';
+export const MODERATOR_TESTS_PAGE_URL = 'moderator-tests';
+export const MODERATOR_REDACTORS_PAGE_URL = 'moderator-redactors';
+export const ADD_REDACTOR_PAGE_URL = 'add-redactor';
+export const MODIFY_REDACTOR_PAGE_URL = 'modify-redactor';

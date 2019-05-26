@@ -4,7 +4,6 @@ import {NgModule} from '@angular/core';
 import {RedactorMainPageComponent} from './redactor-main-page/redactor-main-page.component';
 import {REDACTOR_PAGE_URL} from '../shared/utils/frontend-urls';
 import {TestsResolveService} from '../tests/services/tests-resolve.service';
-import {RedactorsResolveService} from '../tests/services/redactors-resolve.service';
 
 const REDACTOR_PAGE_ROUTES: Route[] = [
   {
@@ -13,7 +12,6 @@ const REDACTOR_PAGE_ROUTES: Route[] = [
     runGuardsAndResolvers: 'always',
     resolve: {
       tests: TestsResolveService,
-      redactors: RedactorsResolveService
     }
   }
 ];

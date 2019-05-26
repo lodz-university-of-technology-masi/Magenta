@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import {ErrorHandlingService} from '../../shared/services/error-handling.service';
-import {TestService} from './test.service';
+
 import {ActivatedRouteSnapshot, Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {Tests} from '../../models/test';
-import {RedactorsService} from './redactors.service';
 import {Users} from '../../models/user/user';
+import {RedactorService} from './redactor.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +12,13 @@ import {Users} from '../../models/user/user';
 export class RedactorsResolveService {
 
   constructor(private errorHandlingService: ErrorHandlingService,
-              private redactorsService: RedactorsService,
+              private redactorService: RedactorService,
               private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot)
     : Observable<Users> | Promise<Users> | Users  {
     this.errorHandlingService.clear();
-    return this.redactorsService
+    return this.redactorService
       .getAll()
       .toPromise()
       .then( result => {

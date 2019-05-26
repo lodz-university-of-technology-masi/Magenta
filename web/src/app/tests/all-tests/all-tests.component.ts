@@ -16,10 +16,6 @@ import {DistanceCalculatorService} from "../../metrics-processor/services/distan
   styleUrls: ['./all-tests.component.css']
 })
 export class AllTestsComponent implements OnInit {
-
-  @Input()
-  redactor: boolean;
-
   tests: Tests;
   redactors: Users;
 

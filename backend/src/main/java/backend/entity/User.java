@@ -56,7 +56,10 @@ public class User {
     private Set<Role> roles;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "owners")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_tests",
+            joinColumns = @JoinColumn(name = "owner_id"),
+            inverseJoinColumns = @JoinColumn(name = "test_id"))
     private Set<Test> tests;
 
     @OneToMany(fetch = FetchType.EAGER,

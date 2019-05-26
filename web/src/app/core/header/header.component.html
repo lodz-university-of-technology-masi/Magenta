@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark header">
   <div class="logo">
     <div>
-      <span (click)="navigate([mainPage])">
+      <span (click)="navigateToMainPage()">
       Magenta
       </span>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -19,7 +19,7 @@
 
       <li *ngIf="isUserLoggedIn()" class="nav-item item" (click)="navigate([loggedUserPage])">Moje konto</li>
       <li *ngIf="isUserLoggedIn()" class="nav-item item"
-      (click)="logout()">Wyloguj się</li>
+          (click)="logout()">Wyloguj się</li>
     </ul>
   </div>
 

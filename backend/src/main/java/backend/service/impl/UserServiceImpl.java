@@ -120,6 +120,12 @@ public class UserServiceImpl implements UserService {
                 tokenAuthentication.checkUser(username, authorizationToken));
     }
 
+    @Override
+    public UserData getUserData(String username) throws UserNotFoundException {
+        User user = userRepository.findByUsernameIgnoreCase(username).orElseThrow(UserNotFoundException::new);
+        return UserConverter.getUserData(user, true);
+    }
+
     private void validate(UserRegisterDetails userRegisterData) throws InvalidUsernameException, UsernameNotUniqueException, InvalidPasswordException, InvalidEmailException, EmailNotUniqueException {
         validateUsername(userRegisterData.getUsername());
         validateEmail(userRegisterData.getEmail());
