@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class UsabilityDataDto {
 
+    private String browser;
+
+    private String username;
+
     private String width;
 
     private String height;
@@ -16,5 +20,9 @@ public class UsabilityDataDto {
 
     private int time;
 
+    private int distance;
+
     private boolean failed;
+
+    private String errorTypeNumber;
 }

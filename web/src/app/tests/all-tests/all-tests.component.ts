@@ -8,6 +8,7 @@ import * as FileSaver from 'file-saver';
 import {Users} from '../../models/user/user';
 import {AssignRedactorToTestComponent} from '../../dialogs/warning-dialog/assign-redactor-to-test/assign-redactor-to-test.component';
 import {MatDialog} from '@angular/material';
+import {DistanceCalculatorService} from "../../metrics-processor/services/distance-calculator.service";
 
 @Component({
   selector: 'app-all-tests',
@@ -26,7 +27,8 @@ export class AllTestsComponent implements OnInit {
               private router: Router,
               private testService: TestService,
               private sessionStorageService: SessionStorageService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              public distanceCalculator: DistanceCalculatorService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data  => {

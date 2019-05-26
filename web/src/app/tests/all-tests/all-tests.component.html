@@ -19,13 +19,13 @@
       <td>{{test.name}}</td>
       <td>{{test.language}}</td>
       <td>
-        <button mat-button (click)="edit(test.id)">Edytuj</button>
+        <button mat-button (click)="edit(test.id)" (mouseenter)="distanceCalculator.addPosition($event)">Edytuj</button>
       </td>
       <td class="danger-button">
         <button mat-button (click)="delete(test.id, i)">Skasuj</button>
       </td>
       <td *ngIf="isRedactor()">
-        <button mat-button (click)="translate(test.id)">Tłumacz</button>
+        <button mat-button (click)="translate(test.id)" (mouseenter)="distanceCalculator.addPosition($event)">Tłumacz</button>
       </td>
       <td *ngIf="isRedactor() && redactors">
         <mat-select placeholder="Użytkownik" (selectionChange)="assign(test.id, $event.value)">
