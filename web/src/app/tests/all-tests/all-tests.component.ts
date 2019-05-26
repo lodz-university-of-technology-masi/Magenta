@@ -32,7 +32,6 @@ export class AllTestsComponent implements OnInit {
     });
     this.redactors = this.route.snapshot.data['redactors'];
   }
-
   edit(id: number): void {
     this.router.navigate([TEST_PAGE_URL, id, ADD_QUESTIONS]);
   }
@@ -72,7 +71,6 @@ export class AllTestsComponent implements OnInit {
       });
     });
   }
-
   getUsername(): string {
     return this.sessionStorageService.getUser().username;
   }
