@@ -17,6 +17,7 @@ import {RedactorModule} from './redactor/redactor.module';
 import {TestsModule} from './tests/tests.module';
 import {UserModule} from './user/user.module';
 import {ModeratorModule} from './moderator/moderator.module';
+import {MetricsProcessorModule} from "./metrics-processor/metrics-processor.module";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {ModeratorModule} from './moderator/moderator.module';
     ErrorModule,
     RedactorModule,
     UserModule,
-    ModeratorModule],
+    ModeratorModule,
+    MetricsProcessorModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
