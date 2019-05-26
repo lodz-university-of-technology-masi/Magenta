@@ -7,6 +7,7 @@ import {ADD_QUESTIONS, MAIN_PAGE_URL, REDACTOR_PAGE_URL, SOLUTIONS_PAGE_URL, TES
 import {MatDialog} from '@angular/material';
 import {TestService} from '../services/test.service';
 import {ImportDialogComponent} from '../../dialogs/warning-dialog/import-dialog/import-dialog.component';
+import {DistanceCalculatorService} from '../../metrics-processor/services/distance-calculator.service';
 
 @Component({
   selector: 'app-editor-main-page',
@@ -18,7 +19,8 @@ export class RedactorMainPageComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router,
               private dialog: MatDialog,
-              private testService: TestService) {
+              private testService: TestService,
+              public distanceCalculator: DistanceCalculatorService) {
   }
 
   ngOnInit(): void {

@@ -1,5 +1,7 @@
 package backend.utils;
 
+import java.time.format.DateTimeFormatter;
+
 public abstract class Constans {
     public abstract class USER_ROLES {
         public static final String USER = "USER";
@@ -38,5 +40,7 @@ public abstract class Constans {
     public static final String TRANSLATION_API_KEY = "trnsl.1.1.20190512T231203Z.3a243b24aa8a9316.69378ef4ee2bf8c6536509fb191a7822bebbe9d3";
     public static final String TRANSLATE_TO_ENGLISH = "pl-en";
     public static final String TRANSLATE_TO_POLISH = "en-pl";
+
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH mm ss");
 }
 

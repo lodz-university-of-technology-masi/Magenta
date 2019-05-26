@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Score, Solutions, TestSolution, TestSolutionWithId} from '../../models/question';
 import {Observable} from 'rxjs';
-import {SOLUTIONS_POSTFIX, SOLUTIONS_URL, USERS_URL} from '../../shared/utils/backend-urls';
+import {EMAIL_POSTFIX, SOLUTIONS_POSTFIX, SOLUTIONS_URL, USERS_URL} from '../../shared/utils/backend-urls';
 import {HttpClient} from '@angular/common/http';
 import {SessionStorageService} from '../../shared/services/session-storage.service';
 
@@ -31,5 +31,10 @@ export class SolutionsService {
     return this.http.put<Score>(
       `${SOLUTIONS_URL}/${id}`,
       score);
+  }
+  sendEmail(id: number): Observable<any> {
+    return this.http.post<any>(
+      `${SOLUTIONS_URL}/${id}/${EMAIL_POSTFIX}`,
+      null);
   }
 }

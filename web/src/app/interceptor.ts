@@ -6,6 +6,7 @@ import {ErrorHandlingService} from './shared/services/error-handling.service';
 import {LoadingSpinnerComponent} from './core/loading-spinner/loading-spinner.component';
 import {catchError, map} from 'rxjs/operators';
 import {of} from 'rxjs/internal/observable/of';
+import {MetricsProcessorDirective} from "./metrics-processor/metrics-processor.directive";
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,7 @@ export class Interceptor  implements HttpInterceptor {
   }
   handleErrorResponse(error: any): Observable<any> {
     LoadingSpinnerComponent.setShowLoadingIndicator(false);
+    MetricsProcessorDirective.assignErrorTypeNumber(error.status);
     this.errorHandlingService.handle(error);
     return of(error);
   }
