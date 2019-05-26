@@ -29,9 +29,9 @@ INSERT INTO scala(min, max, question_id) VALUES (1, 5, 2);
 UPDATE questions SET scala_answer_id = 1 WHERE id = 2;
 INSERT INTO questions(question, type, test_id) VALUES ('Co jest lepsze JSON czy XML i dlaczego?', 'open', 1);
 INSERT INTO questions(question, type, test_id) VALUES ('Jak oceniasz jakość kodu?', 'numeric', 1);
-INSERT INTO variants(text, question_id) VALUES ('C#', 1);
+INSERT INTO variants(text, question_id) VALUES ('JavaScript', 1);
 INSERT INTO variants(text, question_id) VALUES ('Java', 1);
-INSERT INTO variants(text, question_id) VALUES ('C++', 1);
+INSERT INTO variants(text, question_id) VALUES ('Ruby', 1);
 
 INSERT INTO questions(question, type, test_id) VALUES ('What is the best language?', 'variant', 2);
 INSERT INTO questions(question, type, test_id) VALUES ('What is score of movie Butter?', 'scala', 2);
@@ -39,9 +39,9 @@ INSERT INTO scala(min, max, question_id) VALUES (1, 5, 6);
 UPDATE questions SET scala_answer_id = 2 WHERE id = 6;
 INSERT INTO questions(question, type, test_id) VALUES ('What is better JSON or XML and why?', 'open', 2);
 INSERT INTO questions(question, type, test_id) VALUES ('How do you rate the quality of the code?', 'numeric', 2);
-INSERT INTO variants(text, question_id) VALUES ('C#', 5);
+INSERT INTO variants(text, question_id) VALUES ('JavaScript', 5);
 INSERT INTO variants(text, question_id) VALUES ('Java', 5);
-INSERT INTO variants(text, question_id) VALUES ('C++', 5);
+INSERT INTO variants(text, question_id) VALUES ('Ruby', 5);
 
 INSERT INTO positions(name, active, test_id) VALUES ('Senior Java Developer', true, 1);
 INSERT INTO positions(name, active, test_id) VALUES ('Senior Java Developer', true, 2);
