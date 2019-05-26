@@ -9,7 +9,8 @@ import {
   TESTS_URL,
   TRANSLATE_UTILS_URL,
   WIKIPEDIA_UTILS_URL,
-  PDF_POSTFIX
+  PDF_POSTFIX,
+  CSV_POSTFIX
 } from '../../shared/utils/backend-urls';
 import {SessionStorageService} from '../../shared/services/session-storage.service';
 
@@ -58,7 +59,7 @@ export class TestService {
     return this.http.put(`${TESTS_URL}/${testId}/${REDACTOR_POSTFIX}?username=${username}`, null);
   }
   exportCSV(id: number): Observable<any> {
-    return this.http.get(`${TESTS_URL}/${id}/${EXPORT_POSTFIX}`,
+    return this.http.get(`${TESTS_URL}/${EXPORT_POSTFIX}/${id}/${CSV_POSTFIX}`,
       {responseType: 'blob'});
   }
   exportPDF(id: number): Observable<any> {
