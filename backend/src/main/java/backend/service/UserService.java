@@ -18,4 +18,5 @@ public interface UserService {
     void deleteUser(String username, String authorizationToken) throws ForbiddenException;
     void deleteUser(String username) throws ForbiddenException;
     UserData getUserData(String username, String authorizationToken) throws UserNotFoundException;
+    UserData getUserData(String username) throws UserNotFoundException;
 }

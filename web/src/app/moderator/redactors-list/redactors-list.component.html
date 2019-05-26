@@ -1,0 +1,32 @@
+<div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <td>Nazwa użytkownika</td>
+          <td>Imię i nazwisko</td>
+          <td>Modyfikuj</td>
+          <td>Usuń</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let redactor of redactors.users; let i = index">
+            <td>{{redactor.username}}</td>
+            <td>{{redactor.nameSurname}}</td>
+            <td class="material-form">
+              <button mat-button [routerLink]="['/', modifyRedactor, redactor.username]">Modyfikuj</button>
+            </td>
+            <td class="danger-button">
+              <button mat-button (click)="delete(redactor.username, i)">Usuń</button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row add-button material-form full-width-button">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <button mat-button [routerLink]="['/', addRedactor]">Dodaj</button>
+    </div>
+  </div>
+</div>

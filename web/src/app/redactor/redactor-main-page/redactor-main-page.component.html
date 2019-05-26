@@ -4,23 +4,6 @@
     <app-all-tests></app-all-tests>
   </div>
 
-  <div class="margin-top">
-    <table>
-      <thead>
-      <tr>
-        <td>Imie</td>
-        <td>Nazwisko</td>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{user.username}}</td>
-        <td>{{user.nameSurname}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-
   <div class="row material-form full-width-button">
     <div class="margin-top col-md-4">
       <button mat-button class="main-editor-button" (click)=onCheckTestButtonClick()
@@ -34,12 +17,12 @@
              class="file-input"
              type="file" accept=".csv"
              (change)="onImportTestButtonClick($event)">
-      <button mat-button  class="main-editor-button" type="button" (click)="showFileDialog()">
+      <button mat-button class="main-editor-button" type="button" (click)="showFileDialog()" (mouseenter)="distanceCalculator.addPosition($event)">
         Importuj test
       </button>
     </div>
     <div class="margin-top col-md-4">
-      <button mat-button class="main-editor-button" (click)=onCreateTestButtonClick()
+      <button mat-button class="main-editor-button" (click)=onCreateTestButtonClick() (mouseenter)="distanceCalculator.addPosition($event)"
               type="button">
         Stwórz test
       </button>

@@ -1,0 +1,39 @@
+<div class="user-details-edit-wrapper full-width-form">
+  <form [formGroup]="redactorDetailsForm" class="material-form">
+    <div>
+      <mat-form-field>
+        <input matInput formControlName="username" placeholder="Nazwa użytkownika">
+        <mat-error *ngIf="redactorDetailsForm.get('username').hasError('required')">
+          Nazwa użytkownika jest wymagana.
+        </mat-error>
+        <mat-error *ngIf="redactorDetailsForm.get('username').hasError('minlength')">
+          Nazwa użytkownika musi zawierać co najmniej{{minUsernameLength}} znaków.
+        </mat-error>
+        <mat-error *ngIf="redactorDetailsForm.get('username').hasError('maxlength')">
+          Nazwa użytkownika może zawierać maksymalnie {{maxUsernameLength}} znaków.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput formControlName="nameSurname" placeholder="Imię i nazwisko">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput email formControlName="email" placeholder="Email">
+        <mat-error *ngIf="redactorDetailsForm.get('email').hasError('required')">
+          Email jest wymagany.
+        </mat-error>
+        <mat-error *ngIf="redactorDetailsForm.get('email').hasError('email')">
+          Podaj prawidłowy adres email.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="full-width-button">
+      <button mat-button
+              [disabled]="redactorDetailsForm.invalid || redactorDetailsForm.errors"
+              type="submit" (click)="update()">Zaktualizuj dane konta</button>
+    </div>
+  </form>
+</div>

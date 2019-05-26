@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../redactor/services/user.service';
 import {Router} from '@angular/router';
-import {ADD_QUESTIONS, SOLUTIONS_PAGE_URL, TEST_PAGE_URL} from '../../shared/utils/frontend-urls';
+import {
+  ADD_QUESTIONS,
+  MODERATOR_REDACTORS_PAGE_URL,
+  MODERATOR_TESTS_PAGE_URL,
+  TEST_PAGE_URL
+} from '../../shared/utils/frontend-urls';
+import {DistanceCalculatorService} from '../../metrics-processor/services/distance-calculator.service';
 
 @Component({
   selector: 'app-moderator-page',
@@ -10,10 +15,13 @@ import {ADD_QUESTIONS, SOLUTIONS_PAGE_URL, TEST_PAGE_URL} from '../../shared/uti
 })
 export class ModeratorPageComponent implements OnInit {
 
-  constructor() {
+  moderatorTest = MODERATOR_TESTS_PAGE_URL;
+  moderatorRedactors = MODERATOR_REDACTORS_PAGE_URL;
+  constructor(public distanceCalculator: DistanceCalculatorService) {
   }
 
   ngOnInit(): void {
   }
+
 
 }
