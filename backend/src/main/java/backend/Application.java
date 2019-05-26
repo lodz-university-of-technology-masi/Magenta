@@ -1,6 +1,5 @@
 package backend;
 
-import backend.utils.WikipediaUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
