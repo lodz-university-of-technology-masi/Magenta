@@ -1,27 +1,29 @@
 package backend.service.impl;
 
 import backend.converter.TestConverter;
+import backend.dto.question.QuestionDto;
+import backend.dto.question.QuestionListDto;
 import backend.dto.test.*;
+import backend.entity.Question;
 import backend.entity.Test;
 import backend.entity.User;
+import backend.exception.bad_request.BadTranslationRequest;
+import backend.exception.bad_request.UnsupportedQuestionType;
 import backend.exception.forbidden.ForbiddenException;
 import backend.exception.not_found.TestNotFoundException;
 import backend.repository.TestRepository;
 import backend.repository.UserRepository;
 import backend.security.TokenAuthentication;
+import backend.service.QuestionService;
 import backend.service.TestService;
+import backend.service.UtilsService;
 import backend.utils.Constans;
 import backend.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +46,12 @@ public class TestServiceImpl implements TestService {
 
     @Autowired
     private TokenAuthentication tokenAuthentication;
+
+    @Autowired
+    private QuestionService questionService;
+
+    @Autowired
+    private UtilsService utilsService;
 
     @Override
     public TestListDto getAllTests(String authorizationToken) {
@@ -93,6 +101,58 @@ public class TestServiceImpl implements TestService {
         TestConverter.rewrite(test, updateData);
         testRepository.save(test);
         return getFullTestDto(test);
+    }
+
+    @Override
+    public FullTestDto translateTest(int id, boolean translateToPolish, String username) throws TestNotFoundException, BadTranslationRequest, UnsupportedQuestionType {
+        FullTestDto originalTest = testRepository.findById(id)
+                .map(TestConverter::getFullTestDto)
+                .orElseThrow(TestNotFoundException::new);
+
+        TestDto translatedTest = addTest(username, createTranslatedTestBody(translateToPolish, originalTest));
+
+        List<QuestionDto> newTestQuestions = new ArrayList<>();
+        List<QuestionDto> originalTestQuestions = questionService.getAll(originalTest.getId()).getQuestions();
+        originalTestQuestions.forEach(questionDto -> {
+
+            try {
+                QuestionDto translatedQuestion = questionDto;
+                translatedQuestion.setQuestion(utilsService.getTranslation(questionDto.getQuestion(), translateToPolish));
+
+                if (translatedQuestion.getType().equals(Question.TYPE_VARIANT) && translatedQuestion.getVariants().size() != 0) {
+                    translatedQuestion.getVariants().forEach(variant ->
+                            {
+                                try {
+                                    variant.setText(utilsService.getTranslation(variant.getText(), translateToPolish));
+                                } catch (BadTranslationRequest badTranslationRequest) {
+                                    badTranslationRequest.printStackTrace();
+                                }
+                            }
+                    );
+                }
+                newTestQuestions.add(translatedQuestion);
+            } catch (BadTranslationRequest badTranslationRequest) {
+                badTranslationRequest.printStackTrace();
+            }
+        });
+
+
+        if(newTestQuestions.size() != 0) {
+            questionService.create(translatedTest.getId(), QuestionListDto.builder().questions(newTestQuestions).build());
+        }
+        return getTest(translatedTest.getId());
+    }
+
+    private TestDto createTranslatedTestBody(boolean translateToPolish, FullTestDto originalTest) throws BadTranslationRequest {
+        TestDto translatedTest = new TestDto();
+        translatedTest.setId(0);
+        translatedTest.setName(utilsService.getTranslation(originalTest.getName(), translateToPolish));
+        if (originalTest.getLanguage().equals("pl")) {
+            translatedTest.setLanguage("en");
+        } else {
+            translatedTest.setLanguage("pl");
+        }
+        return translatedTest;
     }
 
     @Override

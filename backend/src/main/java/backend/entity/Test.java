@@ -31,8 +31,11 @@ public class Test {
             orphanRemoval = true)
     @OrderBy("id")
     private Set<Question> questions;
-
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tests")
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_tests",
+            joinColumns = @JoinColumn(name = "test_id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id"))
     private Set<User> owners;
 
     @OneToMany(fetch = FetchType.EAGER,

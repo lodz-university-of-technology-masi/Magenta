@@ -27,7 +27,7 @@ export class AllTestsComponent implements OnInit {
               public distanceCalculator: DistanceCalculatorService) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe(data  => {
+    this.route.data.subscribe(data => {
       this.tests = data['tests'];
     });
     this.redactors = this.route.snapshot.data['redactors'];
@@ -52,6 +52,13 @@ export class AllTestsComponent implements OnInit {
   }
   translate(id: number): void {
     this.router.navigate([TRANSLATE_TEST_PAGE_URL, id, ADD_QUESTIONS]);
+  }
+  translateWholeTest(id: number): void {
+    const test = this.tests.tests.find(it => it.id === id);
+    const translateToPolish = test.language === 'en';
+    this.testService.translateTest(id, translateToPolish).subscribe(result =>
+      this.tests.tests.push(result)
+    );
   }
   isRedactor(): boolean {
     return this.sessionStorageService.isRedactor();

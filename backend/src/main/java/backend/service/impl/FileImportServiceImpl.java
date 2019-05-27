@@ -1,11 +1,11 @@
 package backend.service.impl;
 
 import backend.dto.test.CsvImportDto;
-import backend.entity.Question;
-import backend.entity.ScalaAnswer;
-import backend.entity.Test;
-import backend.entity.VariantAnswer;
+import backend.entity.*;
+import backend.exception.not_found.UserNotFoundException;
 import backend.repository.TestRepository;
+import backend.repository.UserRepository;
+import backend.security.TokenAuthentication;
 import backend.service.FileImportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,12 +23,24 @@ public class FileImportServiceImpl implements FileImportService {
     @Autowired
     private TestRepository testRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private TokenAuthentication tokenAuthentication;
+
     @Override
-    public CsvImportDto addTest(MultipartFile file) throws IOException {
+    public CsvImportDto addTest(MultipartFile file, String authorization) throws IOException, UserNotFoundException {
         Test test = Test.builder()
                 .name(file.getOriginalFilename())
                 .questions(new HashSet<>())
+                .owners(new HashSet<>())
                 .build();
+        String username = tokenAuthentication.getUsername(authorization);
+        User user = userRepository.findByUsernameIgnoreCase(username)
+                .orElseThrow(UserNotFoundException::new);
+        test.getOwners().add(user);
+
         CsvImportDto importDto = CsvImportDto.builder()
                 .status("OK")
                 .errors(new ArrayList<>())

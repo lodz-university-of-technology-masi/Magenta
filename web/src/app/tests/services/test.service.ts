@@ -62,8 +62,12 @@ export class TestService {
     return this.http.get(`${TESTS_URL}/${EXPORT_POSTFIX}/${id}/${CSV_POSTFIX}`,
       {responseType: 'blob'});
   }
-  exportPDF(id: number): Observable<any> {
+  exportPDF(id: number):
+    Observable<any> {
     return this.http.get(`${TESTS_URL}/${EXPORT_POSTFIX}/${id}/${PDF_POSTFIX}`,
       {responseType: 'blob'});
+  }
+  translateTest(id: number, translateToPolish: Boolean): Observable<Test> {
+    return this.http.get<Test>(`${TESTS_URL}/translate/${id}?username=${this.sessionStorageService.getUser().username}&translateToPolish=${translateToPolish}`);
   }
 }

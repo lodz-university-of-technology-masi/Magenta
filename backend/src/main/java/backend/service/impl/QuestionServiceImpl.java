@@ -29,9 +29,9 @@ public class QuestionServiceImpl implements QuestionService {
     public QuestionListDto getAll(int testId) throws TestNotFoundException {
         Test test = getTest(testId);
         List<QuestionDto> result = new ArrayList<>(test.getQuestions().size());
-        for (Question question:
-             test.getQuestions()) {
-            switch(question.getType()) {
+        for (Question question :
+                test.getQuestions()) {
+            switch (question.getType()) {
                 case Question.TYPE_NUMERIC:
                 case Question.TYPE_OPEN: {
                     result.add(QuestionConverter.getQuestionDto(question));
@@ -60,7 +60,11 @@ public class QuestionServiceImpl implements QuestionService {
     public QuestionListDto create(int testId, QuestionListDto questions) throws TestNotFoundException, UnsupportedQuestionType {
         List<QuestionDto> result = new ArrayList<>(questions.getQuestions().size());
         Test test = getTest(testId);
-        test.getQuestions().clear();
+        if (test.getQuestions() != null) {
+            test.getQuestions().clear();
+        } else {
+            test.setQuestions(new HashSet<>());
+        }
 
         for (QuestionDto item : questions.getQuestions()) {
             result.add(create(test, item));
@@ -78,14 +82,16 @@ public class QuestionServiceImpl implements QuestionService {
                 questionDto
         );
     }
+
     private Test getTest(int id) throws TestNotFoundException {
         return testRepository.findById(id)
                 .orElseThrow(TestNotFoundException::new);
     }
+
     private QuestionDto create(Test test, QuestionDto questionDto) throws UnsupportedQuestionType {
         Question question = QuestionConverter.getQuestion(questionDto);
 
-        if(questionDto.getType().equals(Question.TYPE_SCALA)) {
+        if (questionDto.getType().equals(Question.TYPE_SCALA)) {
             addScalaAnswer(questionDto, question);
         } else if (question.getType().equals(Question.TYPE_VARIANT)) {
             addVariantQuestion(questionDto, question);

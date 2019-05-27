@@ -1,8 +1,6 @@
 package backend.utils;
 
-import backend.dto.synonyms.SynonymDto;
 import backend.dto.translation.TranslationResponseDto;
-import backend.exception.bad_request.BadSynonymRequest;
 import backend.exception.bad_request.BadTranslationRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

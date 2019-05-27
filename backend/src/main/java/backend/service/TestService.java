@@ -1,11 +1,10 @@
 package backend.service;
 
 import backend.dto.test.*;
+import backend.exception.bad_request.BadTranslationRequest;
+import backend.exception.bad_request.UnsupportedQuestionType;
 import backend.exception.forbidden.ForbiddenException;
 import backend.exception.not_found.TestNotFoundException;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 public interface TestService {
 
@@ -18,4 +17,6 @@ public interface TestService {
     TestDto addTest(String username, TestDto testDto);
 
     FullTestDto updateTest(int id, TestUpdateData updateData) throws TestNotFoundException;
+
+    FullTestDto translateTest(int id, boolean translateToPolish, String username) throws TestNotFoundException, BadTranslationRequest, UnsupportedQuestionType;;
 }
