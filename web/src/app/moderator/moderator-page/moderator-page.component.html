@@ -1,7 +1,4 @@
 <div class="center moderator-page-container">
-  <div class="positions-container">
-    <app-positions-edit></app-positions-edit>
-  </div>
   <div class="row material-form full-width-button buttons">
     <div class="col-md-6 full-width-button">
       <button mat-button [routerLink]="['/', moderatorTest]">Testy</button>
@@ -9,5 +6,8 @@
     <div class="col-md-6 full-width-button">
       <button mat-button [routerLink]="['/', moderatorRedactors]">Redaktorzy</button>
     </div>
+  </div>
+  <div class="positions-container">
+    <app-positions-edit></app-positions-edit>
   </div>
 </div>
