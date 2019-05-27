@@ -1,31 +1,33 @@
-<div class="center redactor-main-page-container">
+<div class="redactor-main-page-container">
 
-  <div class="margin-top">
-    <app-all-tests></app-all-tests>
-  </div>
-
-  <div class="row material-form full-width-button">
-    <div class="margin-top col-md-4">
-      <button mat-button class="main-editor-button" (click)=onCheckTestButtonClick()
+  <div class="row material-form full-width-button buttons">
+    <div class="col-md-4">
+      <button mat-button (click)=onCheckTestButtonClick()
               type="button">
         Sprawdź testy
       </button>
     </div>
-    <div class="margin-top col-md-4">
+    <div class="col-md-4">
       <input #fileInput
              data-max-size="2048"
              class="file-input"
              type="file" accept=".csv"
              (change)="onImportTestButtonClick($event)">
-      <button mat-button class="main-editor-button" type="button" (click)="showFileDialog()" (mouseenter)="distanceCalculator.addPosition($event)">
+      <button mat-button type="button" (click)="showFileDialog()" (mouseenter)="distanceCalculator.addPosition($event)">
         Importuj test
       </button>
     </div>
-    <div class="margin-top col-md-4">
-      <button mat-button class="main-editor-button" (click)=onCreateTestButtonClick() (mouseenter)="distanceCalculator.addPosition($event)"
+    <div class="col-md-4">
+      <button mat-button (click)=onCreateTestButtonClick() (mouseenter)="distanceCalculator.addPosition($event)"
               type="button">
         Stwórz test
       </button>
     </div>
   </div>
+
+  <div class="margin-top">
+    <app-all-tests></app-all-tests>
+  </div>
+
+
 </div>

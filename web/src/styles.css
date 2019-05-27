@@ -64,10 +64,6 @@ hr {
   margin: 0px 10px;
 }
 
-.main-editor-button:hover {
-  background-color: var(--background-secondary-color-hover)
-}
-
 .main-editor-button:focus {
   outline: 0;
 }
