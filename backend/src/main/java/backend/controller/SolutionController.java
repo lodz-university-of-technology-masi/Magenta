@@ -67,4 +67,20 @@ public class SolutionController {
                                  @RequestBody SolutionScoreDto solutionScoreDto) throws Exception {
         return ResponseEntity.ok(solutionService.updateScore(id, solutionScoreDto));
     }
+
+    @ApiOperation(value = "Send email with store")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Not used."),
+            @ApiResponse(code = 204, message = "Success"),
+            @ApiResponse(code = 401, message = "You are not authorized."),
+            @ApiResponse(code = 403, message = "You haven't permissions."),
+            @ApiResponse(code = 404, message = "Test not found."),
+            @ApiResponse(code = 500, message = "Unknown error.")
+    })
+    @PostMapping("/{id}/email")
+    @PreAuthorize("hasRole('REDACTOR')")
+    public ResponseEntity sendEmail(@PathVariable int id) throws Exception {
+        solutionService.sendEmail(id);
+        return ResponseEntity.noContent().build();
+    }
 }

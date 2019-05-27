@@ -18,4 +18,6 @@ public interface SolutionService {
     SolutionDtoWithId create(String username, SolutionDto solutionDto) throws UserNotFoundException, TestNotFoundException;
 
     SolutionDtoWithId updateScore(int id, SolutionScoreDto solutionScoreDto) throws SolutionNotFoundException;
+
+    void sendEmail(int id) throws SolutionNotFoundException;
 }
