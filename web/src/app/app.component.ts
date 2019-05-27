@@ -15,6 +15,7 @@ export class AppComponent {
   handleDeleteKeyboardEvent(evt: KeyboardEvent): void {
     if (this.sessionStorageService.isUser()) {
       if (evt.key === 'PrintScreen') {
+        this.copyToClipboard();
         event.preventDefault();
       }
     }
@@ -27,5 +28,14 @@ export class AppComponent {
         event.preventDefault();
       }
     }
+  }
+
+  copyToClipboard(): void {
+    const aux = document.createElement('input');
+    aux.setAttribute('value', 'DO NOT EVENT TRY IT!');
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand('copy');
+    document.body.removeChild(aux);
   }
 }
