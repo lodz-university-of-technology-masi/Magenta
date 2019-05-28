@@ -160,7 +160,7 @@ export class TestEditorComponent implements OnInit {
 
   onWikipediaButtonClick(): void {
     this.clearText();
-    this.testService.getWikipediaDefinition(this.selectedText).subscribe(result =>
+    this.testService.getWikipediaDefinition(this.selectedText, this.test.language).subscribe(result =>
       this.textValue = result.valueOf()
     );
   }

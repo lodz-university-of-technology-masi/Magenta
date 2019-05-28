@@ -43,8 +43,8 @@ export class TestService {
     return this.http.delete(`${TESTS_URL}/${id}`);
   }
 
-  getWikipediaDefinition(baseText: String): Observable<String> {
-    return this.http.get(`${WIKIPEDIA_UTILS_URL}?wantedText=${baseText}`, {responseType: 'text'});
+  getWikipediaDefinition(baseText: String, language: String): Observable<String> {
+    return this.http.get(`${WIKIPEDIA_UTILS_URL}?wantedText=${baseText}&language=${language}`, {responseType: 'text'});
   }
 
   getTranslation(textToTranslate: String, translateToPolish: Boolean): Observable<String> {
