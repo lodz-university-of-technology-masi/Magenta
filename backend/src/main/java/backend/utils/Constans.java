@@ -37,6 +37,12 @@ public abstract class Constans {
         public static final String DASH = "\\u2013";
     }
 
+    public abstract class SYNONYMS {
+        public static final String BASE_URL = "http://thesaurus.altervista.org/thesaurus/v1";
+        public static final String PL_CODE = "pl_PL";
+        public static final String EN_CODE = "en_US";
+    }
+
     public static final String TRANSLATION_API_KEY = "trnsl.1.1.20190512T231203Z.3a243b24aa8a9316.69378ef4ee2bf8c6536509fb191a7822bebbe9d3";
     public static final String TRANSLATE_TO_ENGLISH = "pl-en";
     public static final String TRANSLATE_TO_POLISH = "en-pl";

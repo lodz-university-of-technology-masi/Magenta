@@ -45,8 +45,9 @@ public class UtilsController {
     })
     @GetMapping("synonyms")
     public List<String> getSynonyms(
-            @RequestParam String baseWord) throws BadSynonymRequest {
-        return utilsService.getSynonyms(baseWord);
+            @RequestParam String baseWord,
+            @RequestParam String language) throws BadSynonymRequest {
+        return utilsService.getSynonyms(baseWord, language);
     }
 
     @ApiOperation(value = "Get translated text")

@@ -52,8 +52,8 @@ export class TestService {
       , {responseType: 'text'});
   }
 
-  getSynonyms(baseWord: String): Observable<[String]> {
-    return this.http.get<[String]>(`${SYNONYMS_UTILS_URL}?baseWord=${baseWord}`);
+  getSynonyms(baseWord: String, language: String): Observable<[String]> {
+    return this.http.get<[String]>(`${SYNONYMS_UTILS_URL}?baseWord=${baseWord}&language=${language}`);
   }
   assign(testId: number, username: string): Observable<any> {
     return this.http.put(`${TESTS_URL}/${testId}/${REDACTOR_POSTFIX}?username=${username}`, null);

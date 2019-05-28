@@ -9,7 +9,7 @@ import java.util.List;
 public interface UtilsService {
     String getWikipediaDefinition(String wantedText, String language) throws WikipediaDefinitionNotFound;
 
-    List<String> getSynonyms(String baseWord) throws BadSynonymRequest;
+    List<String> getSynonyms(String baseWord, String language) throws BadSynonymRequest;
 
     String getTranslation(String textToTranslate, boolean translateToPolish) throws BadTranslationRequest;
 }
