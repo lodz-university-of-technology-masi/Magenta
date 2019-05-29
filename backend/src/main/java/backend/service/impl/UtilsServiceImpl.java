@@ -25,8 +25,8 @@ public class UtilsServiceImpl implements UtilsService {
     }
 
     @Override
-    public List<String> getSynonyms(String baseWord) throws BadSynonymRequest {
-        return SynonymsUtils.getSynonyms(baseWord);
+    public List<String> getSynonyms(String baseWord, String language) throws BadSynonymRequest {
+        return SynonymsUtils.getSynonyms(baseWord, language);
     }
 
     @Override

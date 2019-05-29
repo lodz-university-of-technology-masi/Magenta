@@ -154,13 +154,9 @@ export class TestEditorComponent implements OnInit {
     return this.selectedText === '';
   }
 
-  disableSynonymsButton(): Boolean {
-    return this.test.language === 'pl' || this.disableUtilsButton();
-  }
-
   onWikipediaButtonClick(): void {
     this.clearText();
-    this.testService.getWikipediaDefinition(this.selectedText).subscribe(result =>
+    this.testService.getWikipediaDefinition(this.selectedText, this.test.language).subscribe(result =>
       this.textValue = result.valueOf()
     );
   }
@@ -175,7 +171,7 @@ export class TestEditorComponent implements OnInit {
 
   onSynonymsButtonClick(): void {
     this.clearText();
-    this.testService.getSynonyms(this.selectedText).subscribe(result =>
+    this.testService.getSynonyms(this.selectedText, this.test.language).subscribe(result =>
       result.forEach(synonym => {
         this.textValue = this.textValue.concat(`${synonym.valueOf()}, `);
       })

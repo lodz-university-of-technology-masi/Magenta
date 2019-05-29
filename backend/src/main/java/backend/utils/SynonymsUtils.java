@@ -1,6 +1,6 @@
 package backend.utils;
 
-import backend.dto.synonyms.SynonymDto;
+import backend.dto.synonyms.SynonymResponse;
 import backend.exception.bad_request.BadSynonymRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,29 +11,41 @@ import java.util.List;
 
 public class SynonymsUtils {
 
-    public static List<String> getSynonyms(String baseWord) throws BadSynonymRequest {
+    public static List<String> getSynonyms(String baseWord, String language) throws BadSynonymRequest {
 
         RestTemplate restTemplate = new RestTemplate();
         String url
-                = "https://api.datamuse.com/words?ml=" + baseWord;
-        ResponseEntity<SynonymDto[]> response
-                = restTemplate.getForEntity(url, SynonymDto[].class);
+                = Constans.SYNONYMS.BASE_URL + "?word=" + baseWord + "&language=" + getLanguageCode(language) + "&key=DU24l3Q1lMMzlmRTD3h5&output=json";
+
+        ResponseEntity<SynonymResponse> response;
+
+        try {
+            response = restTemplate.getForEntity(url, SynonymResponse.class);
+        } catch (Exception e) {
+            throw new BadSynonymRequest();
+        }
+
 
         List<String> returnList = new ArrayList<>();
+
         if (response.getStatusCode().equals(HttpStatus.OK)) {
-            SynonymDto[] synonyms = response.getBody();
+            SynonymResponse synonyms = response.getBody();
             if (synonyms != null) {
-                for (int i = 0; i < synonyms.length; i++) {
-                    returnList.add(synonyms[i].getWord());
-                    if (i == 9) {
-                        break;
-                    }
-                }
+                synonyms.getResponse().forEach(synonym -> returnList.add(synonym.getList().getSynonyms() + "\n"));
             }
+
         } else {
             throw new BadSynonymRequest();
         }
 
         return returnList;
+    }
+
+    private static String getLanguageCode(String language) {
+        if (language.equals("pl")) {
+            return Constans.SYNONYMS.PL_CODE;
+        } else {
+            return Constans.SYNONYMS.EN_CODE;
+        }
     }
 }
