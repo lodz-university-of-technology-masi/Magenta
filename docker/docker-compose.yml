@@ -9,11 +9,11 @@ services:
         networks:
             - magenta_net
         ports:
-            - "8080:8080"
+            - "6075:8080"
     magenta-frontend:
         build: ./frontend/
         image: magenta-frontend
         networks:
             - magenta_net
         ports:
-            - "80:80"
+            - "6076:80"
