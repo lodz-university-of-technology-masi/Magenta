@@ -15,16 +15,16 @@ spring:
             trust: "*"
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
         jdbc:
           lob:
             non_contextual_creation: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/db
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://212.191.92.88:51530/magenta
+    username: magenta
+    password: dbpass
   http:
     multipart:
       max-file-size: 11MB

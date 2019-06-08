@@ -1,0 +1,19 @@
+version: '3.4'
+networks:
+    magenta_net:
+    
+services:
+    magenta-backend:
+        build: ./backend/
+        image: magenta-backend
+        networks:
+            - magenta_net
+        ports:
+            - "8080:8080"
+    magenta-frontend:
+        build: ./frontend/
+        image: magenta-frontend
+        networks:
+            - magenta_net
+        ports:
+            - "80:80"
