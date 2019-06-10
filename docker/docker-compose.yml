@@ -10,6 +10,8 @@ services:
             - magenta_net
         ports:
             - "6075:8080"
+        volumes:
+            - "./backend:/app"
     magenta-frontend:
         build: ./frontend/
         image: magenta-frontend
@@ -17,3 +19,6 @@ services:
             - magenta_net
         ports:
             - "6076:80"
+        volumes:
+            - "./frontend/nginx.conf:/etc/nginx/nginx.conf"
+            - "./frontend/dist:/usr/share/nginx/html"
